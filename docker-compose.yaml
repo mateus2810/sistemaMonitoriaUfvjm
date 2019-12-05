@@ -1,0 +1,22 @@
+version: "2"
+services:
+  dbase:
+    image: mysql:8
+    #image: mysql:5.7    
+    container_name: mysqlmonitoria
+    volumes:
+      - ./database:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYDBPASS
+    ports:
+      - 3306:3306
+    restart: "always"
+  apache:
+    build: .
+    volumes:
+      - ./src/:/var/www/html/
+    ports:
+      - $WEBPORT:80
+    depends_on:
+      - dbase
+    restart: "always"
