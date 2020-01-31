@@ -1,0 +1,9 @@
+docker-compose.yml
+Dockerfile
+build.sh
+gera-sumario.sh
+gh-md-toc.sh
+run.sh
+vendor
+.env
+.env.testing
