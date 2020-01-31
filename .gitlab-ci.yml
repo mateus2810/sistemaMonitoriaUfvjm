@@ -47,9 +47,7 @@ tests-other:
     - ./security-check.sh
     # Verificador de erros/sujeira PHP Mess Detector
     - ./phpmd.sh
-  only:
-    - test
-    - tags
+    - ./phpmd.sh
 
 
 #Atualizando o ambiente de testes
