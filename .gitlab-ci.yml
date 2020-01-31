@@ -4,7 +4,7 @@
 
 # Definindo os estagios
 stages:
-  - tests
+ # - tests
   - build-and-push
   - deploy
 
