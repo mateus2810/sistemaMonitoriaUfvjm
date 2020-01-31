@@ -4,6 +4,7 @@
 
 # Definindo os estagios
 stages:
+  - tests
   - build-and-push
   - deploy
 
@@ -46,6 +47,9 @@ tests-other:
     - ./security-check.sh
     # Verificador de erros/sujeira PHP Mess Detector
     - ./phpmd.sh
+  only:
+    - test
+    - tags
 
 
 #Atualizando o ambiente de testes
