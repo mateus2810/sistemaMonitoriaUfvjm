@@ -1,0 +1,68 @@
+.prepara_variaveis: &prepara_variaveis
+  - export DOCKER_TAG=`echo ${CI_BUILD_REF_NAME} | sed s/dev/latest/`
+  - export IMG_NAME=`echo ${CI_REGISTRY}/prograd/${CI_PROJECT_NAME}:${DOCKER_TAG}`
+
+# Definindo os estagios
+stages:
+  - tests
+  - build-and-push
+  - deploy
+
+#Criando imagem e enviando para o hub
+build-and-push:
+  stage: build-and-push
+  image: docker:dind
+  before_script:
+    - export DOCKER_TAG=`echo ${CI_BUILD_REF_NAME} | sed s/dev/latest/`
+    - export SHORT_SHA=`echo ${CI_COMMIT_SHA} | cut -c1-8`
+    - export APP_VERSION=`if [ "$CI_BUILD_REF_NAME" == "dev" ]; then echo "test@${SHORT_SHA}"; else echo "prod@${DOCKER_TAG}"; fi`
+    - sed -i "s/#dev/${APP_VERSION}/g" Dockerfile
+  script:
+    - echo "Criando imagem"
+    - docker build -t ${CI_PROJECT_NAME}:${DOCKER_TAG} .
+    - docker tag ${CI_PROJECT_NAME}:${DOCKER_TAG} ${CI_REGISTRY}/prograd/${CI_PROJECT_NAME}:${DOCKER_TAG}
+    - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
+    - echo "Enviando para o hub"
+    - docker push ${CI_REGISTRY}/prograd/${CI_PROJECT_NAME}:${DOCKER_TAG}
+  when: on_success
+  only:
+    - test
+    - tags
+
+
+# Code Sniffer, Security check, Mess Detector
+tests-other:
+  stage: tests
+  image: hub.dds.ufvjm.edu.br/desenvolvimento/prograd/monitoria:latest
+  before_script:
+    - sed -i "s|;zend_extension=xdebug.so|zend_extension=xdebug.so|i" /etc/php7/conf.d/xdebug.ini
+    - export APP_ENV='testing'
+  script:
+    - echo "Executando testes"
+    - composer install
+    - cp .env.testing .env
+    # Padrao de codificacao
+    - ./phpcs.sh
+    # Vulnerabilidades de seguranca nas bibliotecas
+    - ./security-check.sh
+    # Verificador de erros/sujeira PHP Mess Detector
+    - ./phpmd.sh
+
+
+#Atualizando o ambiente de testes
+deploy-test:
+  stage: deploy
+  image: hub.dds.ufvjm.edu.br/desenvolvimento/rancher-cli:latest
+  before_script:
+    - *prepara_variaveis
+    - export RANCHER_ACCESS_KEY=${RANCHER_TEST_ACCESS_KEY}
+    - export RANCHER_SECRET_KEY=${RANCHER_TEST_SECRET_KEY}
+  script:
+    - echo "Atualizando ambiente de testes"
+    - upgrade --environment ${RANCHER_TEST_ENVIRONMENT} --stack ${STACK_NAME} --service monitoria --new-image ${IMG_NAME}
+  environment:
+    name: test
+    url: https://monitoria.apps-teste.ufvjm.edu.br
+  when: on_success
+  only:
+    - test
