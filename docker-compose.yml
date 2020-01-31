@@ -8,14 +8,13 @@ services:
     volumes:
       - ~/mysql/monitoria:/var/lib/mysql
     environment:
-      - MYSQL_DATABASE=gestao_monitorias
-      - MYSQL_ROOT_PASSWORD=$MYDBROOTPASS
+      - MYSQL_DATABASE=$BANCO
+      - MYSQL_ROOT_PASSWORD=$SENHA
     ports:
       - 3306:3306
     restart: "always"
   apache:
     container_name: appmonitoria
-#    image: monitoria_apache:latest
     build:
       context: .
       dockerfile: Dockerfile
