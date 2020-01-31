@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+ 
 /*
 | -------------------------------------------------------------------
 | DATABASE CONNECTIVITY SETTINGS
@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'mysql-monitoria',
-	'username' => 'root',
-	'password' => '3CRmIDZAgNXa9h5',
-	'database' => 'gestao_monitorias',
+	'hostname' => getenv("HOST"),   //'mysql-monitoria',
+	'username' => getenv("USUARIO"),//'root',
+	'password' => getenv("SENHA"),  //'3CRmIDZAgNXa9h5',
+	'database' => getenv("BANCO"),  //'gestao_monitorias',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
