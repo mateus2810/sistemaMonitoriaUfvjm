@@ -1,0 +1,36 @@
+{
+  "name": "prograd/monitoria",
+  "description": "Sistema de Monitoria - PROGRAD - UFVJM",
+  "keywords": [
+    "monitoria",
+    "prograd",
+    "ufvjm"
+  ],
+  "license": "MIT",
+  "version": "1.0.0",
+  "type": "project",
+  "require": {
+    "hirak/prestissimo": "^0.3.9",
+    "php": ">=5.6.4"
+  },
+  "require-dev": {
+    "mockery/mockery": "0.9.*",
+    "phpunit/phpunit": "~6.0",
+    "squizlabs/php_codesniffer": "^3.0"
+  },
+  "autoload": {
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "post-root-package-install": [
+      "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ]
+  },
+  "config": {
+    "preferred-install": "dist"
+  }
+}
