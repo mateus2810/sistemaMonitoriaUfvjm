@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'dbase',
+	'hostname' => 'mysql-monitoria',
 	'username' => 'root',
 	'password' => '3CRmIDZAgNXa9h5',
 	'database' => 'gestao_monitorias',

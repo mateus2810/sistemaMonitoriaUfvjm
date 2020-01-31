@@ -64,7 +64,7 @@ Para iniciar a aplicação:
 
 ```bash
 # entrar no container
-docker exec -it app-monitoria bash
+docker exec -it apache-monitoria bash
 
 # executar
 ./database/migrate.sh
@@ -147,7 +147,7 @@ Um relatório de cobertura de código será gerado na pasta **coverage**. Abrir 
 Entrando no container de nome **laravel-appgin**:
 
 ```bash
-docker exec -it appmonitoria bash
+docker exec -it apache-monitoria bash
 ```
 
 ## Acesso aos ambientes

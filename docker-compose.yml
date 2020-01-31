@@ -1,10 +1,9 @@
 version: "2"
 services:
-  dbase:
+  mysql-monitoria:
     #image: mysql:8
     #image: mysql:5.7
     image: mysql:5.7
-    container_name: mysqlmonitoria
     volumes:
       - ~/mysql/monitoria:/var/lib/mysql
     environment:
@@ -13,8 +12,7 @@ services:
     ports:
       - 3306:3306
     restart: "always"
-  apache:
-    container_name: appmonitoria
+  apache-monitoria:
     build:
       context: .
       dockerfile: Dockerfile
@@ -23,5 +21,5 @@ services:
     ports:
       - $WEBPORT:80
     depends_on:
-      - dbase 
+      - mysql-monitoria
     restart: "always"
