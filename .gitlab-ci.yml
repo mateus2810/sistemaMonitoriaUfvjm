@@ -33,7 +33,7 @@ build-and-push:
 # Code Sniffer, Security check, Mess Detector
 tests-other:
   stage: tests
-  image: hub.dds.ufvjm.edu.br/prograd/monitoria:test
+  image: hub.dds.ufvjm.edu.br/desenvolvimento/laravel-alpine-php7:latest  #hub.dds.ufvjm.edu.br/prograd/monitoria:test
   before_script:
     - sed -i "s|;zend_extension=xdebug.so|zend_extension=xdebug.so|i" /etc/php7/conf.d/xdebug.ini
     - export APP_ENV='testing'
