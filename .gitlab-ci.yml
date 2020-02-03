@@ -4,6 +4,7 @@
 
 # Definindo os estagios
 stages:
+  - tests
   - build-and-push
   - deploy
 
@@ -29,6 +30,25 @@ build-and-push:
     - tags
 
 
+# Code Sniffer, Security check, Mess Detector
+tests-other:
+  stage: tests
+  image: hub.dds.ufvjm.edu.br/prograd/monitoria:test
+  before_script:
+    - sed -i "s|;zend_extension=xdebug.so|zend_extension=xdebug.so|i" /etc/php7/conf.d/xdebug.ini
+    - export APP_ENV='testing'
+  script:
+    - echo "Executando testes"
+    - composer install
+    - cp .env.testing .env
+    # Padrao de codificacao
+    - ./phpcs.sh
+    # Vulnerabilidades de seguranca nas bibliotecas
+    - ./security-check.sh
+    # Verificador de erros/sujeira PHP Mess Detector
+    - ./phpmd.sh
+
+
 #Atualizando o ambiente de testes
 deploy-test:
   stage: deploy
@@ -39,7 +59,7 @@ deploy-test:
     - export RANCHER_SECRET_KEY=${RANCHER_TEST_SECRET_KEY}
   script:
     - echo "Atualizando ambiente de testes"
-    - upgrade --environment ${RANCHER_TEST_ENVIRONMENT} --stack ${STACK_NAME} --service monitoria --new-image ${IMG_NAME}
+    - upgrade --environment ${RANCHER_TEST_ENVIRONMENT} --stack ${STACK_NAME} --service apache-monitoria --new-image ${IMG_NAME}
   environment:
     name: test
     url: https://monitoria.apps-teste.ufvjm.edu.br
