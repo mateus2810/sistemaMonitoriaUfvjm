@@ -29,6 +29,9 @@ build-and-push:
     - tags
 
 
+
+
+
 #Atualizando o ambiente de testes
 deploy-test:
   stage: deploy
@@ -39,7 +42,7 @@ deploy-test:
     - export RANCHER_SECRET_KEY=${RANCHER_TEST_SECRET_KEY}
   script:
     - echo "Atualizando ambiente de testes"
-    - upgrade --environment ${RANCHER_TEST_ENVIRONMENT} --stack ${STACK_NAME} --service monitoria --new-image ${IMG_NAME}
+    - upgrade --environment ${RANCHER_TEST_ENVIRONMENT} --stack ${STACK_NAME} --service apache-monitoria --new-image ${IMG_NAME}
   environment:
     name: test
     url: https://monitoria.apps-teste.ufvjm.edu.br
