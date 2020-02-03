@@ -4,7 +4,6 @@
 
 # Definindo os estagios
 stages:
-  - tests
   - build-and-push
   - deploy
 
@@ -25,28 +24,6 @@ build-and-push:
     - echo "Enviando para o hub"
     - docker push ${CI_REGISTRY}/prograd/${CI_PROJECT_NAME}:${DOCKER_TAG}
   when: on_success
-  only:
-    - test
-    - tags
-
-
-# Code Sniffer, Security check, Mess Detector
-tests-other:
-  stage: tests
-  image: hub.dds.ufvjm.edu.br/prograd/monitoria:test
-  before_script:
-    - sed -i "s|;zend_extension=xdebug.so|zend_extension=xdebug.so|i" /etc/php7/conf.d/xdebug.ini
-    - export APP_ENV='testing'
-  script:
-    - echo "Executando testes"
-    - composer install
-    - cp .env.testing .env
-    # Padrao de codificacao
-    - ./phpcs.sh
-    # Vulnerabilidades de seguranca nas bibliotecas
-    - ./security-check.sh
-    # Verificador de erros/sujeira PHP Mess Detector
-    - ./phpmd.sh
   only:
     - test
     - tags
