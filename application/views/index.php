@@ -39,7 +39,7 @@ $semana = array(
                                 <?php $qtd = strlen($monitoria->nomeDisciplina); ?>
 
                                     <div class="col-md-6" style="height: auto;bottom:auto;" align="center" >
-                                <div  class="callout callout-danger"  style="background-color:<?= $corSemana[$monitoria->dia_semana] ?> !important; border-color: #001f3f !important "   >
+                                <div  class="callout callout-danger"  style="background-color:<?= $corSemana[mb_strtoupper($monitoria->dia_semana)] ?> !important; border-color: #001f3f !important "   >
                                     <b><font size="+1"> <?= mb_strtoupper($monitoria->codigo) ?></font> </b><br/>
                                    <b><font size="+1"> <?= mb_strtoupper($monitoria->nome) ?></font> </b>
                                     <h4><?= mb_strtoupper($monitoria->dia_semana)?>, <?=substr($monitoria->horario_inicio, 0, -3)?>h ATÉ <?=substr($monitoria->horario_fim, 0, -3)?> </h4>
