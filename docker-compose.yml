@@ -23,6 +23,8 @@ services:
       - BANCO=$BANCO
       - USUARIO=$USUARIO
       - SENHA=$SENHA 
+      - WEBURL=$WEBURL 
+      - WEBPORT=$WEBPORT 
     volumes:
       - ./:/var/www/html/
     ports:

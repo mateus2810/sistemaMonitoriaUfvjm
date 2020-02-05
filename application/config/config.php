@@ -24,9 +24,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = '';
-$config['base_url']  =  (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://".$_SERVER['HTTP_HOST'];
-$config['base_url'] .= preg_replace('@/+$@', '', dirname($_SERVER['SCRIPT_NAME'])).'/';
-
+//$config['base_url']  =  (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://".$_SERVER['HTTP_HOST'];
+//$config['base_url'] .= preg_replace('@/+$@', '', dirname($_SERVER['SCRIPT_NAME'])).'/';
+$config['base_url'] = getenv("WEBPORT") == '80' ? getenv("WEBURL") : getenv("WEBURL").':'.getenv("WEBPORT");
+ 
 /*
 |--------------------------------------------------------------------------
 | Index File
