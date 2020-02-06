@@ -1,5 +1,5 @@
-<?php 
-    $this->load->helper('url');  
+<?php
+    $this->load->helper('url');
 ?>
 
 <!DOCTYPE html>

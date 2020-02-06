@@ -1,5 +1,5 @@
-<?php 
-    $this->load->helper('url');  
+<?php
+    $this->load->helper('url');
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +52,7 @@
       </div>
     </form>
  
-	<br/>
+    <br/>
     <a href="<?=site_url('Home/alterar_senha_deslogado_view/')?>">Esqueci minha senha</a><br>
 
 

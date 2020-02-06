@@ -1,9 +1,9 @@
 <?php $this->load->view('header');?>
 <?php
-	//carrega a traducao em portugues para as tabelas
-	$ci =& get_instance();
-	$ci->load->model('Util_model');
-	$datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil(); 
+    //carrega a traducao em portugues para as tabelas
+    $ci =& get_instance();
+    $ci->load->model('Util_model');
+    $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
 ?>
  
   <!-- DataTables -->
@@ -32,7 +32,7 @@
    <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Aula <?= date('d/m/Y',strtotime($aula->data)) ?>
+        Aula <?= date('d/m/Y', strtotime($aula->data)) ?>
       </h1>
       <ol class="breadcrumb">
           <li><a href="<?= site_url('Home/Index') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -46,7 +46,7 @@
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
-		 
+         
           <div class="box">
             <div class="box-header">
               <h3 class="box-title"><?= $aula->id_aula == "" ? "Novo" : "Editar" ?> Aula</h3>
@@ -58,39 +58,39 @@
                         <input type="hidden" name="id_aula" value="<?=$aula->id_aula?>">
                         <input type="hidden" name="id_monitoria" value="<?=$aula->id_monitoria?>"> 
                        
-					   
-						<?php if($aula->id_aula != ""){ ?>
-						<div class="row">
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>Aula cadastrada em:</label> 
-									<div class="input-group">
-									  <div class="input-group-addon">
-										<i class="fa fa-calendar"></i>
-									  </div>
-									  <input type="text" class="form-control pull-right" id="cadastrado" name="cadastrado" value="<?= $ci->Util_model->formatarTimestamp($aula->cadastrado); ?>" disabled>
-									</div> 
-								</div>
-							</div>
-							<!-- /.col -->
+                       
+                        <?php if ($aula->id_aula != "") { ?>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Aula cadastrada em:</label> 
+                                    <div class="input-group">
+                                      <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                      </div>
+                                      <input type="text" class="form-control pull-right" id="cadastrado" name="cadastrado" value="<?= $ci->Util_model->formatarTimestamp($aula->cadastrado); ?>" disabled>
+                                    </div> 
+                                </div>
+                            </div>
+                            <!-- /.col -->
             
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>Aula atualizada em:</label> 
-									<div class="input-group">
-									  <div class="input-group-addon">
-										<i class="fa fa-calendar"></i>
-									  </div>
-									  <input type="text" class="form-control pull-right" id="atualizado" name="atualizado" value="<?= $ci->Util_model->formatarTimestamp($aula->atualizado); ?>" disabled>
-									</div> 
-								</div>
-							</div>
-							<!-- /.col -->  
-						</div>
-						<!-- /.row -->
-						<?php } ?>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Aula atualizada em:</label> 
+                                    <div class="input-group">
+                                      <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                      </div>
+                                      <input type="text" class="form-control pull-right" id="atualizado" name="atualizado" value="<?= $ci->Util_model->formatarTimestamp($aula->atualizado); ?>" disabled>
+                                    </div> 
+                                </div>
+                            </div>
+                            <!-- /.col -->  
+                        </div>
+                        <!-- /.row -->
+                        <?php } ?>
 
-						<div class="row">
+                        <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Data:</label>
@@ -103,59 +103,59 @@
                                         </div>
                                     </div>
                                 </div>
-							<!-- /.col -->
+                            <!-- /.col -->
             
-							<div class="col-md-4">
-								<div class="bootstrap-timepicker">
-									<div class="form-group">
-									  <label>Inicio:</label> 
-									  <div class="input-group">
-										<div class="input-group-addon">
-										  <i class="fa fa-clock-o"></i>
-										</div>
-										<input type="text" class="form-control timepicker" name="horario_inicio" id="horario_inicio" value="<?=$aula->horario_inicio?>"> 
-									  </div> 
-									</div> 
-								</div>
-							</div>
-							<!-- /.col -->
+                            <div class="col-md-4">
+                                <div class="bootstrap-timepicker">
+                                    <div class="form-group">
+                                      <label>Inicio:</label> 
+                                      <div class="input-group">
+                                        <div class="input-group-addon">
+                                          <i class="fa fa-clock-o"></i>
+                                        </div>
+                                        <input type="text" class="form-control timepicker" name="horario_inicio" id="horario_inicio" value="<?=$aula->horario_inicio?>"> 
+                                      </div> 
+                                    </div> 
+                                </div>
+                            </div>
+                            <!-- /.col -->
             
-							<div class="col-md-4">
-								<div class="bootstrap-timepicker">
-									<div class="form-group">
-									  <label>Fim:</label> 
-									  <div class="input-group">
-										<div class="input-group-addon">
-										  <i class="fa fa-clock-o"></i>
-										</div>
-										<input type="text" class="form-control timepicker" name="horario_fim" id="horario_fim" value="<?=$aula->horario_fim?>"> 
-									  </div> 
-									</div> 
-								</div> 
-							</div>
-							<!-- /.col -->
+                            <div class="col-md-4">
+                                <div class="bootstrap-timepicker">
+                                    <div class="form-group">
+                                      <label>Fim:</label> 
+                                      <div class="input-group">
+                                        <div class="input-group-addon">
+                                          <i class="fa fa-clock-o"></i>
+                                        </div>
+                                        <input type="text" class="form-control timepicker" name="horario_fim" id="horario_fim" value="<?=$aula->horario_fim?>"> 
+                                      </div> 
+                                    </div> 
+                                </div> 
+                            </div>
+                            <!-- /.col -->
              
-						</div>
-						<!-- /.row -->
-		   
-		   
+                        </div>
+                        <!-- /.row -->
+           
+           
                         <div class="form-group">
                             <label>Atividade</label>
                             <input type="text" class="form-control" name="atividades" placeholder="Entre a descrição da atividade realizada" value="<?=$aula->atividades?>">
                         </div>
          
-						<div class="form-group">
-							<label>Local</label>
-							<select class="form-control select2" style="width: 100%;" name="id_local">
-								<?php foreach($locais as $local){ ?>
-									<option value="<?=$local->id_local?>" <?= $aula->id_local == $local->id_local? 'selected="selected"' : '' ?>> 
-										<?=$local->predio .', '. $local->sala .', '. $local->campus?> 
-									</option>
-								<?php }?>
-							</select>
-						</div>
+                        <div class="form-group">
+                            <label>Local</label>
+                            <select class="form-control select2" style="width: 100%;" name="id_local">
+                                <?php foreach ($locais as $local) { ?>
+                                    <option value="<?=$local->id_local?>" <?= $aula->id_local == $local->id_local? 'selected="selected"' : '' ?>> 
+                                        <?=$local->predio .', '. $local->sala .', '. $local->campus?> 
+                                    </option>
+                                <?php }?>
+                            </select>
+                        </div>
                     
-					</div>
+                    </div>
                     <!-- /.box-body -->
 
                     <div class="box-footer">
@@ -163,10 +163,10 @@
                         <a href="<?=site_url('Monitoria/gerenciar/'.$aula->id_monitoria)?>" class="btn btn-default">Voltar</a>
                     </div>
                 </form> 
-				
+                
             </div>
             <!-- /.box-body -->
-			 
+             
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
@@ -213,28 +213,28 @@
    
     //Initialize Select2 Elements
     $('.select2').select2();
-	
+    
 
   
    $('#example1').DataTable({  
-		'language': <?= $datatablesPortugueseBrasil?>
+        'language': <?= $datatablesPortugueseBrasil?>
     });
-	
+    
 
     //Timepicker
     $('#horario_inicio').timepicker({
-		showMeridian: false,
-		showInputs: false,
-		showSeconds: false, 
-		interval: 15
+        showMeridian: false,
+        showInputs: false,
+        showSeconds: false, 
+        interval: 15
     });
-	
+    
     //Timepicker
     $('#horario_fim').timepicker({
-		showMeridian: false,
-		showInputs: false,
-		showSeconds: false, 
-		interval: 15
+        showMeridian: false,
+        showInputs: false,
+        showSeconds: false, 
+        interval: 15
     });
       $(function () {
           $('#data').datetimepicker({

@@ -1,9 +1,9 @@
 <?php $this->load->view('header');?>
 <?php
-	//carrega a traducao em portugues para as tabelas
-	$ci =& get_instance();
-	$ci->load->model('Util_model');
-	$datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
+    //carrega a traducao em portugues para as tabelas
+    $ci =& get_instance();
+    $ci->load->model('Util_model');
+    $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
 ?>
 
 
@@ -27,7 +27,7 @@
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
-		 
+         
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Semestres letivos cadastrados</h3>
@@ -43,8 +43,8 @@
                 </tr>
                 </thead>
                 <tbody>
-				
-				<?php foreach($periodos as $periodo){ ?>
+                
+                <?php foreach ($periodos as $periodo) { ?>
                 <tr>
                   <td><?= $periodo->semestre.'/'.$periodo->ano ?></td>
                   <td><?= ($periodo->ativo ? 'Sim' : 'Não')?></td>
@@ -57,21 +57,21 @@
                     </td>
                 </tr>
 
-				<?php }?>
+                <?php }?>
                 </tbody>
 
               </table>
             </div>
             <!-- /.box-body -->
-			
-			<div class="box-body"> 
-				  <div class="row"> 
-					<!-- /.col -->
-					<div class="col-xs-2"> 
+            
+            <div class="box-body"> 
+                  <div class="row"> 
+                    <!-- /.col -->
+                    <div class="col-xs-2"> 
                       <a href="<?=site_url('Periodo/editar_view/novo')?>" class="btn btn-default btn-block btn-flat">Novo semestre</a>
-					</div>
-					<!-- /.col -->
-				  </div> 
+                    </div>
+                    <!-- /.col -->
+                  </div> 
             </div>
             <!-- /.box-body -->
           </div>
@@ -82,7 +82,7 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
-	 
+     
 
 <?php $this->load->view('footer'); ?>
  
@@ -96,7 +96,7 @@
 <script>
   $(function () {
     $('#example1').DataTable({  
-	  'language': <?= $datatablesPortugueseBrasil?>
+      'language': <?= $datatablesPortugueseBrasil?>
     }) 
   })
 </script>

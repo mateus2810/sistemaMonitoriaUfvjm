@@ -1,9 +1,9 @@
-<?php 
-    $this->load->helper('url');  
+<?php
+    $this->load->helper('url');
     $this->load->library('session');
-    $ID_USUARIO = $this->session->userdata('id_usuario'); 
-    $NOME_USUARIO = $this->session->userdata('nome'); 
-    $PERFIL_USUARIO = $this->session->userdata('perfil'); 
+    $ID_USUARIO = $this->session->userdata('id_usuario');
+    $NOME_USUARIO = $this->session->userdata('nome');
+    $PERFIL_USUARIO = $this->session->userdata('perfil');
 ?>
 
 <!DOCTYPE html>
@@ -104,7 +104,7 @@
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
 
-            <?php if(false){?>   
+            <?php if (false) {?>   
             <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <img src="<?=base_url('/AdminLTE-2.4.3/dist/img/user2-160x160.jpg');?>" class="user-image" alt="User Image">
@@ -133,7 +133,7 @@
                     </li>
                 </ul>
             </li> 
-            <?php } else{ ?>
+            <?php } else { ?>
             <li class="dropdown user user-menu">
                 <a href="<?php echo site_url('Home/login'); ?>" >
                      <span class="hidden-xs">Login</span>

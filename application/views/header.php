@@ -1,8 +1,8 @@
-<?php 
-    $this->load->helper('url');  
+<?php
+    $this->load->helper('url');
     $this->load->library('session');
-    $ID_USUARIO = $this->session->userdata('id_usuario'); 
-    $NOME_USUARIO = $this->session->userdata('nome'); 
+    $ID_USUARIO = $this->session->userdata('id_usuario');
+    $NOME_USUARIO = $this->session->userdata('nome');
     $PERFIL_USUARIO = $this->session->userdata('perfil');
 
 ?>
@@ -81,9 +81,9 @@
 <!--                      <div class="pull-left">-->
 <!---->
 <!--                    <form id="form_edit_user" action="--><?php //echo site_url('usuarios/editar_view/'.$ID_USUARIO); ?><!--" method="post">-->
-<!--						<input type="hidden" name='id_usuario' value="--><?//=$ID_USUARIO?><!--">-->
+<!--                        <input type="hidden" name='id_usuario' value="--><?php //=$ID_USUARIO?><!--">-->
 <!--                        <a  href="#" onclick="document.getElementById('form_edit_user').submit()" class="btn btn-default btn-flat">Editar</a>-->
-<!--					</form>-->
+<!--                    </form>-->
 <!--                </div>-->
 
                 <div class="pull-right">
@@ -113,11 +113,11 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-		
-		
+        
+        
 
         <?php if (strpos("Administrador", $this->session->userdata('perfil')) !== false) {  ?>
-		<li class="treeview">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Gerenciar</span>
             <span class="pull-right-container">
@@ -138,7 +138,7 @@
           <?php } ?>
 
         <li><a href="<?=site_url('Monitoria/listar_view/'.$PERFIL_USUARIO.'/'.$ID_USUARIO)?>"><i class="fa fa-mortar-board"></i> <span>Monitorias</span></a></li>
-		
+        
            
       </ul>
     </section>

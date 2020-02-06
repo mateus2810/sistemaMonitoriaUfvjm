@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Usuarios extends CI_Controller
 {
@@ -23,7 +23,6 @@ class Usuarios extends CI_Controller
 
         $PERFIL_USUARIO = $this->session->userdata('perfil');
         if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
-
             //recupera os usuarios do sistema
             $DATA['monitores'] = $this->Usuario_model->getUsuariosMonitor();
             $DATA['alunos'] = $this->Usuario_model->getUsuariosAluno();
@@ -32,7 +31,6 @@ class Usuarios extends CI_Controller
         } else {
             $this->Util->telaResultado($this, "Acesso negado.", true);
         }
-
     }
 
 
@@ -88,10 +86,8 @@ class Usuarios extends CI_Controller
         if ($DATA['id_usuario'] != 0) {
             $this->Usuario_model->adicionaEditaUsuario($DATA);
             $this->Util->telaResultado($this, "Informações atualizados!", false, "Usuarios/listar_view");
-
         } else {
-            if (!$this->Monitoria_model->verificaEmail($DATA['email']) AND !$this->Monitoria_model->verificaMatricula($DATA['matricula']) AND $this->Usuario_model->adicionaEditaUsuario($DATA) != 0) {
-
+            if (!$this->Monitoria_model->verificaEmail($DATA['email']) and !$this->Monitoria_model->verificaMatricula($DATA['matricula']) and $this->Usuario_model->adicionaEditaUsuario($DATA) != 0) {
                 $this->Util->telaResultado($this, "Informações atualizados!", false, "Usuarios/listar_view");
             } else {
                 $this->Util->telaResultado($this, "Email ou Matricula ja existentes.", true);
@@ -108,8 +104,9 @@ class Usuarios extends CI_Controller
 
         //verifica se o usuario esta editando outro usuario. somente o admin pode fazer isso
         $id_usuario_user = $this->session->userdata('id_usuario');
-        if ($id_usuario != $id_usuario_user)
+        if ($id_usuario != $id_usuario_user) {
             $this->Util->verificaPermissao($this, 'Administrador');
+        }
 
         $DATA = $this->Usuario_model->getUsuarioById($id_usuario);
         $this->load->view('usuarios_senha', $DATA);
@@ -138,15 +135,13 @@ class Usuarios extends CI_Controller
         //var_dump($id_monitoria);
 
         if (!$DATA['monitoria'] = $this->Monitoria_model->verificaExclusaoUsuarioMonitoria($id_usuario)) {
-
-            if ($this->Usuario_model->excluirUsuario($id_usuario) != 0)
+            if ($this->Usuario_model->excluirUsuario($id_usuario) != 0) {
                 $this->Util->telaResultado($this, "Usuário excluido com sucesso!", false, "Usuarios/listar_view");
-            else
+            } else {
                 $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um periodo ativo ou ja cadastrado.", true);
-
+            }
         } else {
             $this->Util->telaResultado($this, "Você tem dados vinculados a esse usuario.", true);
         }
-
     }
-    }
+}

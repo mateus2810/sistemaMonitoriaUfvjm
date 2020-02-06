@@ -7,14 +7,14 @@ class Monitoria_model extends CI_Model
         $this->load->database();
     }
 
-    public function getMonitoriasLista($PERFIL_USUARIO,$id_usuario)
+    public function getMonitoriasLista($PERFIL_USUARIO, $id_usuario)
     {
 
-        if($PERFIL_USUARIO == "Administrador"){
+        if ($PERFIL_USUARIO == "Administrador") {
             $result = $this->getMonitoriasADM();
-        }else if($PERFIL_USUARIO == "Professor"){
+        } elseif ($PERFIL_USUARIO == "Professor") {
             $result = $this->getMonitoriasPROF($id_usuario);
-        }else if ($PERFIL_USUARIO == "Monitor"){
+        } elseif ($PERFIL_USUARIO == "Monitor") {
             $result = $this->getMonitoriasMON($id_usuario);
         }
 
@@ -36,7 +36,6 @@ class Monitoria_model extends CI_Model
             $ary = explode('|', $dias_semana);
             foreach ($ary as $key => $val) {
                 $where .= " '" . $ary[$key] . "', ";
-
             }
             $where .= " '')";
         }
@@ -71,7 +70,6 @@ class Monitoria_model extends CI_Model
             $w = $a->horario_inicio;
             $z = $b->horario_inicio;
             if ($x == $y) {
-
                 if ($w == $z) {
                     return 0;
                 }
@@ -95,8 +93,9 @@ class Monitoria_model extends CI_Model
 
         $result = $this->getMonitoriasADM($where);
 
-        if ($result == null)
+        if ($result == null) {
             return null;
+        }
 
         return $result[0];
     }
@@ -228,7 +227,6 @@ class Monitoria_model extends CI_Model
         $this->db->where('idaluno_monitoria', $idaluno_monitoria);
 
         return $this->db->delete('aluno_monitoria');
-
     }
 
     public function adicionaEditaHorarioMonitoria($DADOS)
@@ -252,7 +250,6 @@ class Monitoria_model extends CI_Model
         $this->db->trans_complete();
 
         return $id_horario_monitoria;
-
     }
 
 
@@ -277,7 +274,6 @@ class Monitoria_model extends CI_Model
         $this->db->trans_complete();
 
         return $id_monitoria;
-
     }
 
     public function excluirHorario($id_horario_monitoria)
@@ -285,7 +281,6 @@ class Monitoria_model extends CI_Model
         $this->db->where('id_horario_monitoria', $id_horario_monitoria);
 
         return $this->db->delete('horario_monitoria');
-
     }
 
     // Acho que nao está sendo utilizada em nenhum lugar by- Mateus
@@ -294,7 +289,6 @@ class Monitoria_model extends CI_Model
         $this->db->where('id_usuario', $id_usuario);
 
         return $this->db->delete('usuario');
-
     }
 
 
@@ -303,7 +297,6 @@ class Monitoria_model extends CI_Model
         $this->db->where('id_monitoria', $id_monitoria);
 
         return $this->db->delete('monitoria');
-
     }
 
     public function getAlunosMonitoria($id_monitoria)
@@ -319,8 +312,6 @@ class Monitoria_model extends CI_Model
 
 
         return $result;
-
-
     }
 
     public function verificaEmail($email)
@@ -339,15 +330,17 @@ class Monitoria_model extends CI_Model
         return $this->db->get('usuario')->row_array();
     }
 
-    public function verificaIDMonitor($id_usuario, $id_monitoria){
+    public function verificaIDMonitor($id_usuario, $id_monitoria)
+    {
 
-    $sql = "SELECT DISTINCT m.id_monitoria FROM monitoria m join usuario u where m.id_monitor = $id_usuario and m.id_monitoria = $id_monitoria;";
-    $Query = $this->db->query($sql, $id_monitoria);
-    $result = $Query->result();
+        $sql = "SELECT DISTINCT m.id_monitoria FROM monitoria m join usuario u where m.id_monitor = $id_usuario and m.id_monitoria = $id_monitoria;";
+        $Query = $this->db->query($sql, $id_monitoria);
+        $result = $Query->result();
 
-    return $result[0];
-}
-    public function verificaIDProf($id_usuario, $id_monitoria){
+        return $result[0];
+    }
+    public function verificaIDProf($id_usuario, $id_monitoria)
+    {
 
         $sql = "SELECT DISTINCT m.id_monitoria FROM monitoria m join usuario u where m.id_professor = $id_usuario and m.id_monitoria = $id_monitoria;";
         $Query = $this->db->query($sql, $id_monitoria);
@@ -356,7 +349,8 @@ class Monitoria_model extends CI_Model
         return $result[0];
     }
 
-    public function verificaFrenquencia($ida_aluno_mnnitoria){
+    public function verificaFrenquencia($ida_aluno_mnnitoria)
+    {
         $sql = "select f.id_frequencia from aluno_monitoria a 
         join frequencia  f JOIN usuario u where a.idaluno_monitoria = $ida_aluno_mnnitoria
         and f.id_aluno=a.id_aluno;";
@@ -364,16 +358,14 @@ class Monitoria_model extends CI_Model
         $result = $Query->result();
 
         return $result;
-
     }
 //Função para os monitores e professores estão inseridos em algum monitoria
-    function verificaExclusaoUsuarioMonitoria($id_usuario){
+    function verificaExclusaoUsuarioMonitoria($id_usuario)
+    {
         $sql = "Select * from usuario join monitoria m join aluno_monitoria a  where $id_usuario = m.id_monitor or $id_usuario = m.id_professor or  $id_usuario = a.id_aluno ";
         $Query = $this->db->query($sql, $id_usuario);
         $result = $Query->result();
 
         return $result;
     }
-
-
 }

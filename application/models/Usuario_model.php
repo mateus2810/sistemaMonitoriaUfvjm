@@ -1,16 +1,15 @@
 <?php
 
-class Usuario_model extends CI_Model{
+class Usuario_model extends CI_Model
+{
 
 
-    public
-    function __construct()
+    public function __construct()
     {
         $this->load->database();
     }
 
-    public
-    function getUsuarios()
+    public function getUsuarios()
     {
         //recupera os dados do banco de dados
         $sql = "SELECT * FROM usuario;";
@@ -20,8 +19,7 @@ class Usuario_model extends CI_Model{
         return $result;
     }
 
-    public
-    function getUsuariosMonitor()
+    public function getUsuariosMonitor()
     {
         //recupera os dados do banco de dados
         $sql = "SELECT * FROM usuario where perfil = 'Monitor';";
@@ -31,8 +29,7 @@ class Usuario_model extends CI_Model{
         return $result;
     }
 
-    public
-    function getUsuariosProfessor()
+    public function getUsuariosProfessor()
     {
         //recupera os dados do banco de dados
         $sql = "SELECT * FROM usuario where perfil = 'Professor';";
@@ -42,8 +39,7 @@ class Usuario_model extends CI_Model{
         return $result;
     }
 
-    public
-    function getUsuariosAluno()
+    public function getUsuariosAluno()
     {
         //recupera os dados do banco de dados
         $sql = "SELECT * FROM usuario where perfil = 'Aluno';";
@@ -53,8 +49,7 @@ class Usuario_model extends CI_Model{
         return $result;
     }
 
-    public
-    function getAlunoMatricula($id_monitoria)
+    public function getAlunoMatricula($id_monitoria)
     {
         $sql1 = 'SELECT id_monitor FROM monitoria WHERE id_monitoria = ?';
         $Query1 = $this->db->query($sql1, array($id_monitoria));
@@ -81,8 +76,7 @@ class Usuario_model extends CI_Model{
         return $result;
     }
 
-    public
-    function getUsuarioById($id_usuario)
+    public function getUsuarioById($id_usuario)
     {
         $idcliente = $this->db->escape($id_usuario);
 
@@ -91,35 +85,31 @@ class Usuario_model extends CI_Model{
         $Query = $this->db->query($sql);
         $result = $Query->result();
 
-        if ($result == null)
+        if ($result == null) {
             return null;
+        }
 
         return $result[0];
     }
 
-    public
-    function getUsuarioAlunoMonitor($id_usuario)
+    public function getUsuarioAlunoMonitor($id_usuario)
     {
         $idcliente = $this->db->escape($id_usuario);
         //recupera os dados do banco de dados
         $sql = "UPDATE usuario set perfil = 'Monitor' where id_usuario = " . $id_usuario;
         $this->db->query($sql);
-
     }
 
-    public
-    function getUsuarioMonitorAluno($id_usuario)
+    public function getUsuarioMonitorAluno($id_usuario)
     {
         $idcliente = $this->db->escape($id_usuario);
         //recupera os dados do banco de dados
         $sql = "UPDATE usuario set perfil = 'Aluno' where id_usuario = " . $id_usuario;
         $this->db->query($sql);
-
     }
 
 
-    public
-    function verificaLogin($matricula, $senha)
+    public function verificaLogin($matricula, $senha)
     {
         $matricula = $this->db->escape($matricula);
         $senha = $this->db->escape($senha);
@@ -130,15 +120,14 @@ class Usuario_model extends CI_Model{
         $Query = $this->db->query($sql);
         $result = $Query->result_array();
 
-        if ($result == NULL || count($result[0]) == 0) {
-            return NULL;
+        if ($result == null || count($result[0]) == 0) {
+            return null;
         }
 
         return $result[0];
     }
 
-    public
-    function adicionaEditaUsuario($DADOS)
+    public function adicionaEditaUsuario($DADOS)
     {
         $idUsuario = null;
 
@@ -188,10 +177,10 @@ class Usuario_model extends CI_Model{
         $this->db->where('id_usuario', $id_usuario);
 
         return $this->db->delete('usuario');
-
     }
 
-    public function  getMonitorById($id_monitoria){
+    public function getMonitorById($id_monitoria)
+    {
 
         //recupera os dados do banco de dados
         $sql = "SELECT * FROM monitoria m join usuario u where m.id_monitor = u.id_usuario and m.id_monitoria = ".$id_monitoria;
@@ -227,12 +216,4 @@ class Usuario_model extends CI_Model{
         $this->db->where('id_usuario', $id_usuario);
         $this->db->update('usuario', $DADOS);
     }
-
 }
-
-
-
-
-
-
-

@@ -123,7 +123,7 @@ $PERFIL_USUARIO = $this->session->userdata('perfil');
                             <th>horário</th>
                             <th>Atividades</th>
                             <th>Alunos</th>
-                            <?php if ( (strpos("Administrador", $this->session->userdata('perfil')) !== false) OR strpos("Professor", $this->session->userdata('perfil') )!== false)  {  ?>
+                            <?php if ((strpos("Administrador", $this->session->userdata('perfil')) !== false) or strpos("Professor", $this->session->userdata('perfil'))!== false) {  ?>
                             <th>Atualizado</th>
                             <th>Cadastrado</th>
                             <?php } ?>
@@ -139,8 +139,7 @@ $PERFIL_USUARIO = $this->session->userdata('perfil');
                                 <td> <?= date('H:i', strtotime($aula->horario_inicio)) . ' - ' . date('H:i', strtotime($aula->horario_fim)) ?> </td>
                                 <td> <?= $aula->atividades ?> </td>
                                 <td> <?= $aula->quant_alunos ?> </td>
-                                <?php if ( (strpos("Administrador", $this->session->userdata('perfil')) !== false) OR strpos("Professor", $this->session->userdata('perfil') )!== false)  {  ?>
-
+                                <?php if ((strpos("Administrador", $this->session->userdata('perfil')) !== false) or strpos("Professor", $this->session->userdata('perfil'))!== false) {  ?>
                                 <td> <?= $ci->Util_model->formatarTimestamp($aula->cadastrado); ?> </td>
                                 <td> <?= $ci->Util_model->formatarTimestamp($aula->atualizado); ?> </td>
 
@@ -150,8 +149,7 @@ $PERFIL_USUARIO = $this->session->userdata('perfil');
                                     <a href="<?= site_url('Monitoria/frequencia_listar_view/' . $monitoria->id_monitoria . '/' . $aula->id_aula) ?>"
                                         <span class="glyphicon glyphicon-plus-sign" title="Acessar Aula" ></span></a>
 
-                                    <?php if ( (strpos("Administrador", $this->session->userdata('perfil')) !== false) OR strpos("Professor", $this->session->userdata('perfil') )!== false)  {  ?>
-
+                                    <?php if ((strpos("Administrador", $this->session->userdata('perfil')) !== false) or strpos("Professor", $this->session->userdata('perfil'))!== false) {  ?>
                                     <a href="<?= site_url('Monitoria/aula_editar_view/' . $monitoria->id_monitoria . '/' . $aula->id_aula) ?>">
                                        <span class="glyphicon glyphicon-edit" title="Editar Aula" ></span></a>
                                     <?php } ?>
@@ -205,8 +203,7 @@ $PERFIL_USUARIO = $this->session->userdata('perfil');
                             <th>Data</th>
                             <th>horário</th>
                             <th>Descrição</th>
-                            <?php if ( (strpos("Administrador", $this->session->userdata('perfil')) !== false) OR strpos("Professor", $this->session->userdata('perfil') )!== false)  {  ?>
-
+                            <?php if ((strpos("Administrador", $this->session->userdata('perfil')) !== false) or strpos("Professor", $this->session->userdata('perfil'))!== false) {  ?>
                                 <th>Atualizado</th>
                             <th>Cadastrado</th>
                             <?php } ?>
@@ -221,15 +218,13 @@ $PERFIL_USUARIO = $this->session->userdata('perfil');
                                 <td><?= date('d/m/Y', strtotime($aula->data)) ?></td>
                                 <td> <?= date('H:i', strtotime($aula->horario_inicio)) . ' - ' . date('H:i', strtotime($aula->horario_fim)) ?> </td>
                                 <td> <?= $aula->descricao ?> </td>
-                                <?php if ( (strpos("Administrador", $this->session->userdata('perfil')) !== false) OR strpos("Professor", $this->session->userdata('perfil') )!== false)  {  ?>
-
+                                <?php if ((strpos("Administrador", $this->session->userdata('perfil')) !== false) or strpos("Professor", $this->session->userdata('perfil'))!== false) {  ?>
                                 <td> <?= $ci->Util_model->formatarTimestamp($aula->cadastrado); ?> </td>
                                 <td> <?= $ci->Util_model->formatarTimestamp($aula->atualizado); ?> </td>
                                 <?php } ?>
                                 <td>
 
-                                    <?php if ( (strpos("Administrador", $this->session->userdata('perfil')) !== false) OR strpos("Professor", $this->session->userdata('perfil') )!== false)  {  ?>
-
+                                    <?php if ((strpos("Administrador", $this->session->userdata('perfil')) !== false) or strpos("Professor", $this->session->userdata('perfil'))!== false) {  ?>
                                         <a href="<?= site_url('Monitoria/reuniao_editar_view/' . $monitoria->id_monitoria . '/' . $aula->id_atividade) ?>">
                                         <span class="glyphicon glyphicon-edit" title="Editar atividade"></span> </a>
                                     <?php } ?>

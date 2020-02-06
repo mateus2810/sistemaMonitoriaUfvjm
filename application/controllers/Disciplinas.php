@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Disciplinas extends CI_Controller
 {
@@ -17,7 +17,6 @@ class Disciplinas extends CI_Controller
 
     function index()
     {
-
     }
 
     function listar_view()
@@ -59,7 +58,6 @@ class Disciplinas extends CI_Controller
 
         if ($DATA['id_disciplina'] == 0) {
             if (!$this->Disciplina_model->verificaCodigo($DATA['codigo'])) {
-
                 if (strlen(trim($this->input->post('nome'))) > 0) {
                     $this->Disciplina_model->adicionaEditaDisciplina($DATA);
                     $this->Util->telaResultado($this, "Informações atualizados!", false, "Disciplinas/listar_view");
@@ -73,15 +71,10 @@ class Disciplinas extends CI_Controller
             } else {
                 $this->Util->telaResultado($this, "Codigo de disciplina ja existente.", true);
             }
-
         } else {
-
             $this->Disciplina_model->adicionaEditaDisciplina($DATA);
             $this->Util->telaResultado($this, "Informações atualizados!", false, "Disciplinas/listar_view");
-
         }
-
-
     }
 
 
@@ -93,19 +86,13 @@ class Disciplinas extends CI_Controller
         //var_dump($id_monitoria);
 
         if (!$this->Disciplina_model->verificaDisciplina($id_disciplina)) {
-
             if ($this->Disciplina_model->excluirDisciplina($id_disciplina) != 0) {
                 $this->Util->telaResultado($this, "Disciplina excluida com sucesso!", false, "Disciplinas/listar_view");
-            }else {
+            } else {
                 $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um periodo ativo ou ja cadastrado.", true);
             }
-            } else {
+        } else {
             $this->Util->telaResultado($this, "Disciplina vinculada a uma monitoria.", true);
-
         }
-
-
     }
-
 }
-

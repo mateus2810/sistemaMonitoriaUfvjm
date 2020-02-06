@@ -7,7 +7,7 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
 
 $PERFIL_USUARIO = $this->session->userdata('perfil');
 
-if($PERFIL_USUARIO == "Administrador"){
+if ($PERFIL_USUARIO == "Administrador") {
     ?>
 
 

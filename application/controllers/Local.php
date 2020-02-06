@@ -1,23 +1,27 @@
 <?php
 
-class Local extends CI_Controller {
+class Local extends CI_Controller
+{
 
-    function __construct() {
+    function __construct()
+    {
         parent::__construct();
 
         $this->load->library('session');
         $this->load->helper('url');
         $this->load->model('Local_model');
-        $this->load->model('Util_model','Util');
+        $this->load->model('Util_model', 'Util');
     }
 
-    function listar_view() {
+    function listar_view()
+    {
         $this->Util->verificaPermissao($this, 'Administrador');
         $data['locais'] = $this->Local_model->getLocais();
-        $this->load->view('local_listar',$data);
+        $this->load->view('local_listar', $data);
     }
-    function editar_view($id_local) {
-        $this->Util->verificaPermissao($this, 'Administrador' );
+    function editar_view($id_local)
+    {
+        $this->Util->verificaPermissao($this, 'Administrador');
         if ($id_local == 'novo') {
             $local = new stdClass();
             $local->id_local = $id_local;
@@ -31,7 +35,8 @@ class Local extends CI_Controller {
         $this->load->view('local_edit', $DATA);
     }
 
-    function editar() {
+    function editar()
+    {
 
         $DATA['id_local'] = $this->input->post('id_local');
         $DATA['predio'] = $this->input->post('predio');
@@ -57,13 +62,10 @@ class Local extends CI_Controller {
         $this->load->model('Local_model', 'local');//
         //var_dump($id_monitoria);
 
-        if ($this->Local_model->excluirLocal($id_local) != 0)
+        if ($this->Local_model->excluirLocal($id_local) != 0) {
             $this->Util->telaResultado($this, "Local excluido com sucesso!", false, "Local/listar_view");
-        else
+        } else {
             $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um periodo ativo ou ja cadastrado.", true);
-
-
-
+        }
     }
-
 }

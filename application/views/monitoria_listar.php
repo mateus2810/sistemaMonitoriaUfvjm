@@ -48,7 +48,7 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
                         </thead>
                         <tbody>
 
-                        <?php foreach($monitorias as $monitoria){ ?>
+                        <?php foreach ($monitorias as $monitoria) { ?>
                             <tr>
                                 <td>
                                     <?= $monitoria->nomeDisciplina ?>
@@ -57,7 +57,7 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
                                 <td><?= $monitoria->monitor ?></td>
                                 <td><?= $monitoria->professor ?></td>
                                 <td><?= $monitoria->periodo ?></td>
-                <?php if (strpos("Administrador", $this->session->userdata('perfil')) !== false or strpos("Professor", $this->session->userdata('perfil')) !== false) {  ?>
+                            <?php if (strpos("Administrador", $this->session->userdata('perfil')) !== false or strpos("Professor", $this->session->userdata('perfil')) !== false) {  ?>
                                 <td>
                                     <a href="<?=site_url('Monitoria/gerenciar/'.$monitoria->id_monitoria)?>"
                                        class="glyphicon glyphicon-plus-sign" title="Acessar monitoria"></a>
@@ -67,7 +67,7 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
                                     <a href="<?= site_url('Monitoria/excluir_monitoria_bd/'.$monitoria->id_monitoria) ?>"
                                        onclick="return confirm('Deseja realmente excluir?')" class="glyphicon glyphicon-trash" title="Excluir monitoria"></a>
                                 </td>
-                <?php }else { ?>
+                            <?php } else { ?>
                     <td>
                         <a href="<?=site_url('Monitoria/gerenciar/'.$monitoria->id_monitoria)?>"
                            class="glyphicon glyphicon-plus-sign" title="Acessar monitoria"></a>
@@ -77,7 +77,7 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
 
 
 
-                                <?php }?>
+                            <?php }?>
                             </tr>
                         <?php }?>
                         </tbody>
