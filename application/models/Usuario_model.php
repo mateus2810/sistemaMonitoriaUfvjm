@@ -57,11 +57,11 @@ class Usuario_model extends CI_Model
         $id_monitor = $result1[0]->id_monitor;
 
 
-        $sql = 'SELECT DISTINCT 
+        $sql = 'SELECT DISTINCT
                  a.idaluno_monitoria, a.id_monitoria, u.id_usuario, u.nome, u.matricula, u.email, u.perfil
-                FROM 
-                    usuario u 
-                    LEFT JOIN aluno_monitoria a on u.id_usuario = a.id_aluno 
+                FROM
+                    usuario u
+                    LEFT JOIN aluno_monitoria a on u.id_usuario = a.id_aluno
                      JOIN monitoria m
                 WHERE
                     u.perfil in ("Aluno", "Monitor")
@@ -187,7 +187,7 @@ class Usuario_model extends CI_Model
         $Query = $this->db->query($sql);
         $result = $Query->result();
 
-        return $result;
+        return $result[0];
     }
 
 

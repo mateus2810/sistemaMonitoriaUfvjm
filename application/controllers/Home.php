@@ -154,4 +154,5 @@ class Home extends CI_Controller
             redirect('Home/alterar_senha_deslogado_view/', 'refresh');
         }
     }
+
 }

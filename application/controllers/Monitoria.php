@@ -75,6 +75,7 @@ class Monitoria extends CI_Controller
 
             $DATA['somatorioAula'] = $this->Aula_model->somatorioHorarioAula($id_monitoria);
             $DATA['somatorioReuniao'] = $this->Aula_model->somatorioHorarioReuniao($id_monitoria);
+
             $this->load->view('monitoria_dados', $DATA);
         } else {
             $this->Util->telaResultado($this, "Acesso negado.", true);
@@ -168,9 +169,9 @@ class Monitoria extends CI_Controller
 
        // var_dump($DATA);
         if ($this->Aula_model->adicionaEditaAulaMonitoria($DATA) != 0) {
-            $this->Util->telaResultado($this, "Informações atualizados!", false, "Monitoria/gerenciar" . '/' . $id_monitoria);
+            $this->Util->telaResultado($this, "Informaï¿½ï¿½es atualizados!", false, "Monitoria/gerenciar" . '/' . $id_monitoria);
         } else {
-            $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um perïodo ativo ou já cadastrado.", true);
+            $this->Util->telaResultado($this, "Nï¿½o foi possivel atualizar os dados. Confira os dados informados e se nï¿½o existe um perï¿½odo ativo ou jï¿½ cadastrado.", true);
         }
     }
 
@@ -223,9 +224,9 @@ class Monitoria extends CI_Controller
 
      //   var_dump($DATA);
         if ($this->Aula_model->adicionaEditaReuniaoMonitoria($DATA) != 0) {
-            $this->Util->telaResultado($this, "Informações atualizados!", false, "Monitoria/gerenciar" . '/' . $id_monitoria);
+            $this->Util->telaResultado($this, "Informaï¿½ï¿½es atualizados!", false, "Monitoria/gerenciar" . '/' . $id_monitoria);
         } else {
-            $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um periodo ativo ou jácadastrado.", true);
+            $this->Util->telaResultado($this, "Nï¿½o foi possivel atualizar os dados. Confira os dados informados e se nï¿½o existe um periodo ativo ou jï¿½cadastrado.", true);
         }
     }
 
@@ -237,7 +238,7 @@ class Monitoria extends CI_Controller
         if ($this->Aula_model->excluir_Reuniao($id_atividade) != 0) {
             $this->Util->telaResultado($this, "Atividades excluida com sucesso!", false, "Monitoria/gerenciar" . '/' . $id_monitoria);
         } else {
-            $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se nï¿½o existe um periodo ativo ou ja cadastrado.", true);
+            $this->Util->telaResultado($this, "Nï¿½o foi possivel atualizar os dados. Confira os dados informados e se nï¿½o existe um periodo ativo ou ja cadastrado.", true);
         }
     }
 
@@ -249,7 +250,7 @@ class Monitoria extends CI_Controller
         if ($this->Aula_model->excluir_Aula($id_aula) != 0) {
             $this->Util->telaResultado($this, "Aula excluida com sucesso!", false, "Monitoria/gerenciar" . '/' . $id_monitoria);
         } else {
-            $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um periodo ativo ou já cadastrado.", true);
+            $this->Util->telaResultado($this, "Nï¿½o foi possivel atualizar os dados. Confira os dados informados e se nï¿½o existe um periodo ativo ou jï¿½ cadastrado.", true);
         }
     }
 
@@ -302,9 +303,9 @@ class Monitoria extends CI_Controller
 
         // var_dump($DATA);
         if ($this->Monitoria_model->adicionaEditaHorarioMonitoria($DATA) != 0) {
-            $this->Util->telaResultado($this, "Informações atualizados!", false, "Monitoria/gerenciar" . '/' . $id_monitoria);
+            $this->Util->telaResultado($this, "Informaï¿½ï¿½es atualizados!", false, "Monitoria/gerenciar" . '/' . $id_monitoria);
         } else {
-            $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se nãoo existe um periodo ativo ou não cadastrado.", true);
+            $this->Util->telaResultado($this, "Nï¿½o foi possivel atualizar os dados. Confira os dados informados e se nï¿½oo existe um periodo ativo ou nï¿½o cadastrado.", true);
         }
     }
 
@@ -407,7 +408,7 @@ class Monitoria extends CI_Controller
 
 
         if (!$this->Monitoria_model->verificaEmail($DATA['email']) and !$this->Monitoria_model->verificaMatricula($DATA['matricula']) and $this->Usuario_model->adicionaEditaUsuario($DATA) != 0) {
-            $this->Util->telaResultado($this, "Informações atualizados!", false, "Monitoria/aluno_listar_view/" . $id_monitoria);
+            $this->Util->telaResultado($this, "Informaï¿½ï¿½es atualizados!", false, "Monitoria/aluno_listar_view/" . $id_monitoria);
         } else {
             $this->Util->telaResultado($this, "Email ou Matricula ja existentes.", true);
         }
@@ -458,7 +459,7 @@ class Monitoria extends CI_Controller
 
 
         if (!$this->Monitoria_model->verificaEmail($DATA['email']) and !$this->Monitoria_model->verificaMatricula($DATA['matricula']) and $this->Usuario_model->adicionaEditaUsuario($DATA) != 0) {
-            $this->Util->telaResultado($this, "Informações atualizados!", false, "Monitoria/aluno_listar_view/".$id_monitoria);
+            $this->Util->telaResultado($this, "Informaï¿½ï¿½es atualizados!", false, "Monitoria/aluno_listar_view/".$id_monitoria);
         } else {
             $this->Util->telaResultado($this, "Email ou Matricula ja existentes.", true);
         }
@@ -498,7 +499,7 @@ class Monitoria extends CI_Controller
         if ($this->Monitoria_model->adicionaMonitoria($DATA) != 0) {
             $this->Util->telaResultado($this, "Informcoes atualizadas!", false, "Monitoria/listar_view/".$PERFIL_USUARIO.'/'.$ID_USUARIO);
         } else {
-            $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um perioodo ativo ou já cadastrado.", true);
+            $this->Util->telaResultado($this, "Nï¿½o foi possivel atualizar os dados. Confira os dados informados e se nï¿½o existe um perioodo ativo ou jï¿½ cadastrado.", true);
         }
     }
 
@@ -560,10 +561,10 @@ class Monitoria extends CI_Controller
             if ($this->Monitoria_model->excluirMonitoria($id_monitoria) != 0) {
                 $this->Util->telaResultado($this, "Monitoria excluida com sucesso!", false, "Monitoria/listar_view/".$PERFIL_USUARIO.'/'.$ID_USUARIO);
             } else {
-                $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um periodo ativo ou ja cadastrado.", true);
+                $this->Util->telaResultado($this, "Nï¿½o foi possivel atualizar os dados. Confira os dados informados e se nï¿½o existe um periodo ativo ou ja cadastrado.", true);
             }
         } else {
-            $this->Util->telaResultado($this, "Você tem dados vinculados a esta Monitoria.", true);
+            $this->Util->telaResultado($this, "Vocï¿½ tem dados vinculados a esta Monitoria.", true);
         }
     }
 
@@ -587,7 +588,7 @@ class Monitoria extends CI_Controller
             $DATA['frequencia'] = $this->Frequencia_model->adicionaEditaFrequenciaMonitoria($id_frequencia);
             //var_dump($DATA['horario']);
             if ($DATA['frequencia'] == null) {
-                $this->Util->telaResultado($this, "Entrada Inválido!", true);
+                $this->Util->telaResultado($this, "Entrada Invï¿½lido!", true);
             }
         }
         //revisar essa parte amanha
@@ -607,9 +608,9 @@ class Monitoria extends CI_Controller
 
       //  var_dump($DATA);
         if ($this->Frequencia_model->adicionaEditaFrequenciaMonitoria($DATA) != 0) {
-            $this->Util->telaResultado($this, "Informações atualizados!", false, "Monitoria/frequencia_listar_view/" . $id_monitoria . '/' . $id_aula);
+            $this->Util->telaResultado($this, "Informaï¿½ï¿½es atualizados!", false, "Monitoria/frequencia_listar_view/" . $id_monitoria . '/' . $id_aula);
         } else {
-            $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um período ativo ou já cadastrado.", true);
+            $this->Util->telaResultado($this, "Nï¿½o foi possivel atualizar os dados. Confira os dados informados e se nï¿½o existe um perï¿½odo ativo ou jï¿½ cadastrado.", true);
         }
     }
 
@@ -634,7 +635,27 @@ class Monitoria extends CI_Controller
         if ($this->Frequencia_model->excluirFrequencia($id_frequencia) != 0) {
             $this->Util->telaResultado($this, "Frequencia excluida com sucesso!", false, "Monitoria/frequencia_listar_view/" . $id_monitoria . '/' . $id_aula);
         } else {
-            $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um período ativo ou já cadastrado.", true);
+            $this->Util->telaResultado($this, "Nï¿½o foi possivel atualizar os dados. Confira os dados informados e se nï¿½o existe um perï¿½odo ativo ou jï¿½ cadastrado.", true);
         }
+    }
+
+    function relatorio_mensal($id_monitoria,$id_disciplina)
+    {
+
+        $DATA['monitores'] = $this->Usuario_model->getMonitorById($id_monitoria);
+        $DATA['disciplina'] = $this->Disciplina_model->getDisciplinaById($id_disciplina);
+        $DATA['somatorioAula'] = $this->Aula_model->somatorioHorarioAula($id_monitoria);
+        //$DATA['professores'] = $this->Usuario_model->getProfessorById($id_professor);
+        //var_dump($DATA);
+
+        //$DATA['disciplinas'] = $this->Disciplina_model->getDisciplinas();
+
+
+        $this->Util->verificaPermissao($this, 'Administrador');
+        // $this->Util->verificaPermissao($this, 'Administrador');
+
+
+
+        $this->load->view('relatorios/atestado_frequencia', $DATA);
     }
 }

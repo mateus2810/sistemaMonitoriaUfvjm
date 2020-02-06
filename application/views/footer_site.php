@@ -31,7 +31,7 @@
 
 
   })
-</script> 
+</script>
 
 
 
@@ -75,7 +75,7 @@ function autocomplete(inp, arr, arr_id) {
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();
-              
+
               //redireciona para uma pagina
               alert(id + ' - ' + inp.value);
               //window.location.replace("??????????");
@@ -137,10 +137,10 @@ function autocomplete(inp, arr, arr_id) {
   }
   /*execute a function when someone clicks in the document:*/
   document.addEventListener("click", function (e) {
-      closeAllLists(e.target); 
+      closeAllLists(e.target);
   });
 }
- 
+
 var monitorias_id = <?=$busca_id?>;//[1,2];
 var monitorias = <?=$busca_nome?>;//["opcao 1","opcao 2"];
 

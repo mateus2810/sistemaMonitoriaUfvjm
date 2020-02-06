@@ -5,7 +5,6 @@ $ci =& get_instance();
 $ci->load->model('Util_model');
 $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
 $PERFIL_USUARIO = $this->session->userdata('perfil');
-
 ?>
 
 
@@ -319,7 +318,35 @@ $PERFIL_USUARIO = $this->session->userdata('perfil');
 
     </div>
     <!-- /.row -->
+    <!-- /.Bloco Emissão de Relatórios -->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Relatorios</h3>
+                </div>
 
+                <!-- /.box-body -->
+
+                <div class="box-body">
+                    <div class="row">
+                        <!-- /.col -->
+                        <div class="col-xs-3">
+                            <a href="<?= site_url('Monitoria/relatorio_mensal/' . $monitoria->id_monitoria. "/" .$monitoria->id_disciplina) ?>"
+                               class="btn btn-default btn-block btn-flat">Atestado de Frequência Mensal</a>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /.box -->
+
+        </div>
+        <!-- /.col -->
+
+    </div>
 
 </section>
 <!-- /.content -->
@@ -354,4 +381,4 @@ $PERFIL_USUARIO = $this->session->userdata('perfil');
 
     })
 </script>
- 
+
