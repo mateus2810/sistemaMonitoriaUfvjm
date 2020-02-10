@@ -644,15 +644,25 @@ class Monitoria extends CI_Controller
 
         $DATA['monitores'] = $this->Usuario_model->getMonitorById($id_monitoria);
         $DATA['disciplina'] = $this->Disciplina_model->getDisciplinaById($id_disciplina);
+
+
         $DATA['somatorioAula'] = $this->Aula_model->somatorioHorarioAula($id_monitoria);
+
+        $PERFIL_USUARIO = "Administrador";
+
+        $id_usuario = $this->session->userdata('id_usuario');
+
+        $DATA['monitorias'] = $this->Monitoria_model->getMonitoriasLista($PERFIL_USUARIO, $id_usuario);
+
+
+        $DATA['monitoria'] = $this->Monitoria_model->profMonitoria($id_monitoria);
         //$DATA['professores'] = $this->Usuario_model->getProfessorById($id_professor);
-        //var_dump($DATA);
+       // var_dump($DATA);
 
         //$DATA['disciplinas'] = $this->Disciplina_model->getDisciplinas();
 
 
-        $this->Util->verificaPermissao($this, 'Administrador');
-        // $this->Util->verificaPermissao($this, 'Administrador');
+
 
 
 

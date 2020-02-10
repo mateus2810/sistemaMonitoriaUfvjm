@@ -40,18 +40,18 @@ class Monitoria_model extends CI_Model
             $where .= " '')";
         }
 
-        $sql = 'SELECT 
+        $sql = 'SELECT
                     m.id_monitoria, m.id_disciplina, m.id_professor, m.id_monitor, m.id_periodo,
                     CONCAT(d.codigo, " - ", d.nome) AS nomeDisciplina,d.nome,d.codigo, d.curso, d.campus,
                     CONCAT(p.semestre, "/", p.ano) AS periodo,
                     prof.nome AS professor, mon.nome AS monitor,
-                    hm.*, l.*  
-                FROM 
-                    monitoria AS m 
+                    hm.*, l.*
+                FROM
+                    monitoria AS m
                     JOIN disciplina AS d USING(id_disciplina)
                     JOIN periodo AS p USING(id_periodo)
                     JOIN horario_monitoria AS hm USING (id_monitoria)
-                    JOIN local AS l USING(id_local) 
+                    JOIN local AS l USING(id_local)
                     LEFT JOIN usuario AS prof ON(prof.id_usuario = m.id_professor)
                     LEFT JOIN usuario AS mon ON(mon.id_usuario = m.id_monitor) ' . $where . 'ORDER BY horario_inicio';
 
@@ -104,14 +104,14 @@ class Monitoria_model extends CI_Model
     private function getMonitoriasADM($where = "")
     {
         //recupera os dados do banco de dados
-        $sql = 'SELECT 
+        $sql = 'SELECT
 				m.id_monitoria, m.id_disciplina, m.id_professor, m.id_monitor, m.id_periodo,m.monitoria_remunerada,
 				 m.carga_horaria, m.carga_horaria_aulas,m.numero_edital, m.data_inicio, m.data_fim,
 				CONCAT(d.codigo, " - ", d.nome) AS nomeDisciplina, d.curso, d.campus, d.unidade_academica,
 				CONCAT(p.semestre, "/", p.ano) AS periodo,
-				prof.nome AS professor, mon.nome AS monitor  
-			FROM 
-				monitoria AS m 
+				prof.nome AS professor, mon.nome AS monitor
+			FROM
+				monitoria AS m
 				JOIN disciplina AS d USING(id_disciplina)
 				JOIN periodo AS p USING(id_periodo)
 				LEFT JOIN usuario AS prof ON(prof.id_usuario = m.id_professor)
@@ -127,13 +127,13 @@ class Monitoria_model extends CI_Model
     {
 
         //recupera os dados do banco de dados
-        $sql = 'SELECT 
+        $sql = 'SELECT
 				m.id_monitoria, m.id_disciplina, m.id_professor, m.id_monitor, m.id_periodo,m.monitoria_remunerada, m.carga_horaria, m.carga_horaria_aulas,m.numero_edital, m.data_inicio, m.data_fim,
 				CONCAT(d.codigo, " - ", d.nome) AS nomeDisciplina, d.curso, d.campus, d.unidade_academica,
 				CONCAT(p.semestre, "/", p.ano) AS periodo,
-				prof.nome AS professor, mon.nome AS monitor  
-			FROM 
-				monitoria AS m 
+				prof.nome AS professor, mon.nome AS monitor
+			FROM
+				monitoria AS m
 				JOIN disciplina AS d USING(id_disciplina)
 				JOIN periodo AS p USING(id_periodo)
 				LEFT JOIN usuario AS prof ON(prof.id_usuario = m.id_professor)
@@ -142,20 +142,20 @@ class Monitoria_model extends CI_Model
         $Query = $this->db->query($sql);
         $result = $Query->result();
 
-        return $result;
+        return $result[0];
     }
 
     private function getMonitoriasMON($id_usuario)
     {
 
         //recupera os dados do banco de dados
-        $sql = 'SELECT 
+        $sql = 'SELECT
 				m.id_monitoria, m.id_disciplina, m.id_professor, m.id_monitor, m.id_periodo,m.monitoria_remunerada, m.carga_horaria, m.carga_horaria_aulas,m.numero_edital, m.data_inicio, m.data_fim,
 				CONCAT(d.codigo, " - ", d.nome) AS nomeDisciplina, d.curso, d.campus, d.unidade_academica,
 				CONCAT(p.semestre, "/", p.ano) AS periodo,
-				prof.nome AS professor, mon.nome AS monitor  
-			FROM 
-				monitoria AS m 
+				prof.nome AS professor, mon.nome AS monitor
+			FROM
+				monitoria AS m
 				JOIN disciplina AS d USING(id_disciplina)
 				JOIN periodo AS p USING(id_periodo)
 				LEFT JOIN usuario AS prof ON(prof.id_usuario = m.id_professor)
@@ -192,7 +192,7 @@ class Monitoria_model extends CI_Model
         //recupera os dados do banco de dados
         $sql = "SELECT DISTINCT a.*, u.matricula, u.nome, count(freq.id_aula) as quant_frequencia
         FROM aluno_monitoria a JOIN usuario u on (a.id_aluno = u.id_usuario)
-		LEFT JOIN (SELECT id_aula, id_aluno, id_monitoria FROM `frequencia` JOIN `aula` USING (id_aula)) as freq USING(id_aluno, id_monitoria) 
+		LEFT JOIN (SELECT id_aula, id_aluno, id_monitoria FROM `frequencia` JOIN `aula` USING (id_aula)) as freq USING(id_aluno, id_monitoria)
 		WHERE a.id_monitoria = ? GROUP BY a.idaluno_monitoria";
 
         $Query = $this->db->query($sql, $id_monitoria);
@@ -351,7 +351,7 @@ class Monitoria_model extends CI_Model
 
     public function verificaFrenquencia($ida_aluno_mnnitoria)
     {
-        $sql = "select f.id_frequencia from aluno_monitoria a 
+        $sql = "select f.id_frequencia from aluno_monitoria a
         join frequencia  f JOIN usuario u where a.idaluno_monitoria = $ida_aluno_mnnitoria
         and f.id_aluno=a.id_aluno;";
         $Query = $this->db->query($sql, $ida_aluno_mnnitoria);
@@ -362,10 +362,19 @@ class Monitoria_model extends CI_Model
 //Função para os monitores e professores estão inseridos em algum monitoria
     function verificaExclusaoUsuarioMonitoria($id_usuario)
     {
-        $sql = "Select * from usuario join monitoria m join aluno_monitoria a  where $id_usuario = m.id_monitor or $id_usuario = m.id_professor or  $id_usuario = a.id_aluno ";
+        $sql = "Select * from usuario join monitoria m join aluno_monitoria a  where $id_usuario = m.id_monitor
+        or $id_usuario = m.id_professor or  $id_usuario = a.id_aluno ";
         $Query = $this->db->query($sql, $id_usuario);
         $result = $Query->result();
 
         return $result;
+    }
+
+    public function profMonitoria($id_monitoria){
+        $sql = "SELECT * from usuario u join monitoria m on m.id_professor = u.id_usuario and m.id_monitoria = $id_monitoria ";
+        $Query = $this->db->query($sql);
+        $result = $Query->result();
+
+        return $result[0];
     }
 }
