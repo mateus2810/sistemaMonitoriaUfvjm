@@ -393,6 +393,6 @@ where m.id_monitoria = $id_monitoria and m.id_disciplina = d.id_disciplina and u
         $Query = $this->db->query($sql);
         $result = $Query->result();
 
-        return $result[0];
+        return $result;
     }
 }
