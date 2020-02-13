@@ -1,6 +1,6 @@
 <?php
 
-class Monitoria_model extends CI_Model
+class Relatorio_model extends CI_Model
 {
     public function __construct()
     {
@@ -381,6 +381,15 @@ class Monitoria_model extends CI_Model
     public function teste($id_monitoria){
         $sql = "select distinct d.unidade_academica, u.nome as professor from monitoria m join disciplina d join usuario u
 where m.id_monitoria = $id_monitoria and m.id_disciplina = d.id_disciplina and u.perfil= 'professor' and u.id_usuario = m.id_professor";
+        $Query = $this->db->query($sql);
+        $result = $Query->result();
+
+        return $result[0];
+    }
+
+    public function alunoFrequencia($id_monitoria){
+        $sql = "select distinct cadastrado, u.nome from frequencia f join usuario u  join aluno_monitoria a where a.id_monitoria = $id_monitoria and
+ f.id_aluno = u.id_usuario;";
         $Query = $this->db->query($sql);
         $result = $Query->result();
 

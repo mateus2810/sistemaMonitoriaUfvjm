@@ -56,6 +56,17 @@ $info= '
 '.$remunerada .'
 '.$naoRemunerada .' ____/____/20____ a ____/____/20____
 
+
+
+
+      '. $alunos->nome.'
+
+
+
+
+
+
+
 <br>
 <br>
 <p><center> _________________,____de__________________de20____</center></p>
