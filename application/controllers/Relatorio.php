@@ -35,7 +35,7 @@ class Relatorio extends CI_Controller
         if (@$this->Monitoria_model->verificaIDMonitor($ID_USUARIO, $id_monitoria) or @$this->Monitoria_model->verificaIDProf($ID_USUARIO, $id_monitoria) or $PERFIL_USUARIO == "Administrador") {
             //recupera os periodos
 
-            $DATA['monitores'] = $this->Usuario_model->getMonitorById($id_monitoria);
+            //$DATA['monitores'] = $this->Usuario_model->getMonitorById($id_monitoria);
 
             $DATA['professor'] = $this->Monitoria_model->professorMonitoria($id_monitoria);
 
@@ -47,7 +47,7 @@ class Relatorio extends CI_Controller
 
 
 
-            //var_dump($DATA['alunos'] );
+            var_dump($DATA['alunos'] );
 
 
             $this->load->view('relatorios/atestado_frequencia', $DATA);
