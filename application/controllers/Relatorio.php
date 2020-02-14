@@ -60,14 +60,16 @@ class Relatorio extends CI_Controller
         $this->Util->verificaPermissao($this, 'Administrador');
 
         //recupera os periodos
-        //$DATA['periodos'] = $this->Periodo_model->getPeriodos();
+        $DATA['atestados'] = $this->Relatorio_model->getAtestadoFrequencia();
+        $DATA['periodos'] = $this->Periodo_model->getPeriodos();
 
-        $this->load->view('atestado_listar');
+        $this->load->view('atestado_listar', $DATA);
     }
 
     function editar_view($id_periodo)
     {
         $this->Util->verificaPermissao($this, 'Administrador');
+        $DATA['periodos'] = $this->Periodo_model->getPeriodos();
 
         //Prepara para inserir um novo periodo
         if ($id_periodo == 'novo') {

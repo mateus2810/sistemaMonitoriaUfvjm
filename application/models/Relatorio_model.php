@@ -395,4 +395,14 @@ where m.id_monitoria = $id_monitoria and m.id_disciplina = d.id_disciplina and u
 
         return $result;
     }
+
+    public function getAtestadoFrequencia()
+    {
+        //recupera as informações da tabala atestado_frequencia
+        $sql = "SELECT * FROM atestado_frequencia";
+        $query = $this->db->query($sql);
+        $result = $query->result();
+
+        return($result);
+    }
 }

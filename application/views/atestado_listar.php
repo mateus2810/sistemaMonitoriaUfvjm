@@ -37,9 +37,9 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th>Semestre</th>
-                            <th>Ativo</th>
-                            <th>Ações</th>
+                            <th>Semestre/Ano</th>
+                            <th>Data Inicio</th>
+                            <th>Data Fim</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -68,7 +68,7 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-xs-2">
-                            <a href="<?=site_url('Periodo/editar_view/novo')?>" class="btn btn-default btn-block btn-flat">Novo semestre</a>
+                            <a href="<?=site_url('Relatorio/editar_view/novo')?>" class="btn btn-default btn-block btn-flat">Novo Atestado</a>
                         </div>
                         <!-- /.col -->
                     </div>
