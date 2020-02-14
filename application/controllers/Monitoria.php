@@ -14,6 +14,7 @@ class Monitoria extends CI_Controller
         $this->load->model('Monitoria_model', 'Monitoria_model');
         $this->load->model('Periodo_model', 'Periodo_model');
         $this->load->model('Frequencia_model', 'Frequencia_model');
+        $this->load->model('Relatorio_model', 'Relatorio_model');
         $this->load->model('Aula_model', 'Aula_model');
         $this->load->model('Local_model', 'Local_model');
         $this->load->model('Util_model', 'Util');
@@ -661,11 +662,11 @@ class Monitoria extends CI_Controller
 
         //$DATA['disciplinas'] = $this->Disciplina_model->getDisciplinas();
 
+        $DATA['alunos'] = $this->Relatorio_model->alunoFrequencia($id_monitoria);
 
 
 
 
-
-        $this->load->view('relatorios/atestado_frequencia', $DATA);
+        $this->load->view('relatorios/lista_frequencia', $DATA);
     }
 }
