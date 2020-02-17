@@ -38,7 +38,7 @@ if ($PERFIL_USUARIO == "Administrador") {
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Semestres
+            Atestado de Frequência
         </h1>
         <ol class="breadcrumb">
             <li><a href="<?= site_url('Home/Index/') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -54,13 +54,13 @@ if ($PERFIL_USUARIO == "Administrador") {
 
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title"><?= $periodo->id_periodo == "" ? "Novo" : "Editar" ?> Cadastro de Atestado de Frequência</h3>
+                        <h3 class="box-title"> Cadastro de Atestado de Frequência</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form role="form" action="<?php echo site_url('Periodo/editar'); ?>" method="post">
+                        <form role="form" action="<?php echo
+                        site_url('Relatorio/editar'); ?>" method="post">
                             <div class="box-body">
-                                <input type="hidden" name="id_periodo" value="<?=$periodo->id_periodo?>">
 
         <div class="row">
         <div class="col-md-4">
@@ -68,7 +68,8 @@ if ($PERFIL_USUARIO == "Administrador") {
         <select name="id_periodo" class="form-control select2" style="width: 100%;">
 
             <?php foreach ($periodos as $periodo) { ?>
-                <option value="<?= $periodo->id_periodo ?>" <?= $periodo->id_periodo == $periodo->id_periodo ? 'selected="selected"' : '' ?>>
+                <option value="<?= $periodo->id_periodo ?>" <?= $periodo->id_periodo == $periodo->id_periodo ?
+                    'selected="selected"' : '' ?>>
                     <?= $periodo->semestre.'/'.$periodo->ano ?>
                 </option>
             <?php } ?>
@@ -84,9 +85,10 @@ if ($PERFIL_USUARIO == "Administrador") {
                                                 <div class="input-group-addon" id="data" >
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input class="form-control pull-right"value="<?php echo date('Y-m-d');?>" type="date"  name="data" required>
-
+                                                <input class="form-control pull-right" value="<?php echo date('Y-m-d');?>"
+                                                       type="date"  name="data_inicio" required>
                                             </div>
+
                                         </div>
                                     </div>
 
@@ -97,7 +99,7 @@ if ($PERFIL_USUARIO == "Administrador") {
                                                 <div class="input-group-addon" id="data" >
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input class="form-control pull-right"value="<?php echo date('Y-m-d');?>" type="date"  name="data" required>
+                                                <input class="form-control pull-right"value="<?php echo date('Y-m-d');?>" type="date"  name="data_fim" required>
 
                                             </div>
                                         </div>
