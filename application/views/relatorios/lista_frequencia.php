@@ -37,6 +37,7 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
 
                 <p class="box-body">
 
+                    <img width="300px" height="300px" src="cabecalho.jpg"/>
 
                 <h3><b><center>
                             Anexo III
@@ -63,34 +64,33 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
                 <? echo $remunerada ?>
                 <? echo $naoRemunerada ?>  ____/____/20____ a ____/____/20___
 
+            </div>
 
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Data</th>
-                            </tr>
-                            </thead>
-                            <tbody>
+            <div class="col-md-12" >
+                <table  border="1">
+                    <thead>
+                    <tr>
 
-                            <?php foreach ($alunos as $aluno) { ?>
+                        <th>Data</th>
+                        <th>Presença</th>
 
-                                    <tr>
-                                        <td> <?= $aluno->nome ?> </td>
-                                        <td>   <?= $aluno->cadastrado ?> </td></br>
+                    </tr>
+                    </thead>
 
-                                    </tr>
-
-                            <?php } ?>
-                            </tbody>
-
-                        </table>
-                    </div>
+                    <?php foreach ($frequencia as $aluno) {   ?>
+                    <tr>
+                        <td align="center"> <?=  date("d/m/y", strtotime($aluno->data ))?> </td>
+                            <td align="center"> <?=   $aluno->quant  ?>  </td >
 
 
+                  </tr>
+                    <?php } ?>
+                </table>
+            </div>
 
+
+            <br>
+            <br>
                 <br>
                 <br>
                 <p><center> <?php  echo date("d/m/Y"); ?></center></p>
@@ -137,3 +137,6 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
 
     })
 </script>
+
+
+

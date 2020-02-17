@@ -663,10 +663,11 @@ class Monitoria extends CI_Controller
         //$DATA['disciplinas'] = $this->Disciplina_model->getDisciplinas();
 
         $DATA['alunos'] = $this->Relatorio_model->alunoFrequencia($id_monitoria);
-
-
-
+        $DATA['nome'] = $this->Relatorio_model->alunoNome($id_monitoria);
+        $DATA['frequencia'] = $this->Relatorio_model->getContagemFrequencia($id_monitoria);
+       // var_dump(    $DATA['contagem']);
 
         $this->load->view('relatorios/lista_frequencia', $DATA);
+        //$this->load->view('relatorios/atestado_frequencia', $DATA);
     }
 }

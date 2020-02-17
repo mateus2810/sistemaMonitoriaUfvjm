@@ -48,14 +48,25 @@ where m.id_monitoria = $id_monitoria and m.id_disciplina = d.id_disciplina and u
     }
 
     public function alunoFrequencia($id_monitoria){
-        $sql = "select distinct cadastrado, u.nome from frequencia f join usuario u  join aluno_monitoria a where a.id_monitoria = $id_monitoria and
- f.id_aluno = u.id_usuario;";
+        $sql = "select DISTINCT  a.data,u.nome from aula a join frequencia f join usuario u where a.id_aula = f.id_aula
+and f.id_aluno = u.id_usuario and a.id_monitoria = $id_monitoria;";
         $Query = $this->db->query($sql);
         $result = $Query->result();
 
         return $result;
 
     }
+
+    public function alunoNome($id_monitoria){
+        $sql = "select DISTINCT a.data, u.nome from aula a join frequencia f join usuario u where a.id_aula = f.id_aula
+and f.id_aluno = u.id_usuario and a.id_monitoria = $id_monitoria";
+        $Query = $this->db->query($sql);
+        $result = $Query->result();
+
+        return $result;
+
+    }
+
 
     public function getAtestadoFrequencia()
     {
@@ -65,5 +76,16 @@ where m.id_monitoria = $id_monitoria and m.id_disciplina = d.id_disciplina and u
         $result = $query->result();
 
         return($result);
+    }
+
+    public function  getContagemFrequencia(){
+
+        $sql = "select a.data , COUNT(f.id_frequencia) as quant from frequencia f join aula a where a.id_aula =f.id_aula GROUP by a.data;;";
+        $query = $this->db->query($sql);
+        $result = $query->result();
+
+        return($result);
+
+
     }
 }
