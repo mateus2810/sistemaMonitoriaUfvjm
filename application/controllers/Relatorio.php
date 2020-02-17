@@ -60,38 +60,65 @@ class Relatorio extends CI_Controller
         $this->Util->verificaPermissao($this, 'Administrador');
 
         //recupera os periodos
-        $DATA['atestados'] = $this->Relatorio_model->getAtestadoFrequencia();
-        $DATA['periodos'] = $this->Periodo_model->getPeriodos();
+        $DATA['atestados'] = $this->Relatorio_model->infoAtestadoFrequencia();
 
         $this->load->view('atestado_listar', $DATA);
     }
 
-    function editar_view($id_periodo)
+    function editar_view($id_atestado_frequencia)
     {
         $this->Util->verificaPermissao($this, 'Administrador');
         $DATA['periodos'] = $this->Periodo_model->getPeriodos();
+        $DATA['atestado_frequencia'] = $this->Relatorio_model->getRelatorioById($id_atestado_frequencia);
 
         //Prepara para inserir um novo periodo
-        if ($id_periodo == 'novo') {
-            $periodo = new stdClass();
-            $periodo->id_periodo = "";
-            $periodo->semestre = "";
-            $periodo->ano = "";
-            $periodo->ativo = "";
-            $DATA['periodo'] = $periodo;
-        }
-        //recupera as informacoes do periodo para editar
-        else {
-            //recupera os periodos do sistema
-            $DATA['periodo'] = $this->Periodo_model->getPeriodoById($id_periodo);
-
-            if ($DATA['periodo']  == null) {
-                $this->Util->telaResultado($this, "Entrada Inválido!", true);
-            }
+        if ($id_atestado_frequencia == 'novo') {
+            $atestado_frequencia = new stdClass();
+            $atestado_frequencia->$id_atestado_frequencia = "";
+            $atestado_frequencia->data_inicio = "";
+            $atestado_frequencia->data_fim = "";
+            $DATA['atestado_frequencia'] = $atestado_frequencia;
         }
 
         //var_dump($DATA);
         $this->load->view('atestado_edit', $DATA);
     }
+
+
+    //Retaforar a função, ainda não funcional
+    //Adicionar atestado de frequencia no banco de dados
+    function editar()
+    {
+        $this->Util->verificaPermissao($this, 'Administrador');
+
+        $DATA['id_atestado_frequencia'] = $this->input->post('id_atestado_frequencia');
+        $DATA['id_periodo'] = $this->input->post('id_periodo');
+        $DATA['data_inicio'] = $this->input->post('data_inicio');
+        $DATA['data_fim'] = $this->input->post('data_fim');
+
+
+
+        if ($this->Relatorio_model->adicionaAtestadoFrequencia($DATA) != 0) {
+            $this->Util->telaResultado($this, "Informações atualizados!", false, "Relatorio/listar_view");
+        } else {
+            $this->Util->telaResultado($this, "Não foi possivel atualizar os dados.", true);
+        }
+    }
+
+    public function excluir_atestado_bd($id_atestado_frequencia){
+
+        //recupera as disciplinas do sistema
+        //$this->load->model('Relatorio_model', 'atestado_frequencia');//
+
+
+            if ($this->Relatorio_model->excluirAtestadoFrequencia($id_atestado_frequencia) != 0) {
+                $this->Util->telaResultado($this, "Atestado de Frequência excluido com sucesso!", false, "Relatorio/listar_view");
+            } else {
+                $this->Util->telaResultado($this, "Não foi excluir atestado de frequência", true);
+            }
+
+    }
+
+
 
 }

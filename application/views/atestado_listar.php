@@ -15,7 +15,7 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Semestres
+        Atestados de Frequência
     </h1>
     <ol class="breadcrumb">
         <li><a href="<?= site_url('Home/Index/') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -40,20 +40,23 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
                             <th>Semestre/Ano</th>
                             <th>Data Inicio</th>
                             <th>Data Fim</th>
+                            <th>Ações</th>
                         </tr>
                         </thead>
                         <tbody>
 
-                        <?php foreach ($periodos as $periodo) { ?>
+
+                        <?php foreach ($atestados as $atestado) { ?>
                             <tr>
-                                <td><?= $periodo->semestre.'/'.$periodo->ano ?></td>
-                                <td><?= ($periodo->ativo ? 'Sim' : 'Não')?></td>
+
+
+                                <td><?= $atestado->semestre.'/'.$atestado->ano ?></td>
+                                <td><?= date('d/m/Y', strtotime($atestado->data_inicio)) ?></td>
+                                <td><?= date('d/m/Y', strtotime($atestado->data_fim)) ?></td>
                                 <td>
-                                    <a href="<?=site_url('Periodo/editar_view/'.$periodo->id_periodo)?>">
-                                        <span class="glyphicon glyphicon-edit"title="Editar semestre"></span>
-                                    </a>
-                                    <a href="<?= site_url('Periodo/excluir_periodo_bd/'.$periodo->id_periodo) ?>"
-                                       onclick="return confirm('Deseja realmente excluir?')" class="glyphicon glyphicon-trash"title="Excluir semestre"></a>
+
+                                    <a href="<?= site_url('Relatorio/excluir_atestado_bd/'.$atestado->id_atestado_frequencia) ?>"
+                                       onclick="return confirm('Deseja realmente excluir?')" class="glyphicon glyphicon-trash"title="Excluir Atestado"></a>
                                 </td>
                             </tr>
 
