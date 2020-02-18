@@ -87,7 +87,17 @@ and f.id_aluno = u.id_usuario and a.id_monitoria = $id_monitoria";
 
 
     //Função para apresentar todas infomações da tabela atestado_frequencia + semestre e ano da tabela periodo
-    public function infoAtestadoFrequencia(){
+    public function infoAtestadoFrequencia($id_monitoria){
+        $sql ="SELECT DISTINCT a.id_atestado_frequencia,m.id_monitoria,m.id_disciplina, a.data_inicio, a.data_fim, p.semestre, p.ano
+FROM atestado_frequencia a join periodo p join monitoria m where a.id_periodo = p.id_periodo
+and  m.id_monitoria = $id_monitoria and p.ativo = 1;";
+        $query = $this->db->query($sql);
+        $result = $query->result();
+
+        return $result;
+    }
+
+    public function listarAtestadoFrequencia(){
         $sql ="SELECT id_atestado_frequencia, data_inicio, data_fim, p.semestre, p.ano
 FROM atestado_frequencia a join periodo p where a.id_periodo = p.id_periodo";
         $query = $this->db->query($sql);
@@ -95,6 +105,7 @@ FROM atestado_frequencia a join periodo p where a.id_periodo = p.id_periodo";
 
         return $result;
     }
+
 
     public function getRelatorioById($id_atestado_frequencia)
     {
@@ -156,5 +167,24 @@ FROM atestado_frequencia a join periodo p where a.id_periodo = p.id_periodo";
         return($result);
 
 
+    }
+    //Função para mostrar data inicio e fim para colocar dentro do relatório de atestado de frequência
+    public function dataInicioFim($id_atestado_frequencia){
+        $sql ="select id_atestado_frequencia, data_inicio, data_fim from atestado_frequencia where id_atestado_frequencia = $id_atestado_frequencia";
+        $query = $this->db->query($sql);
+        $result = $query->result();
+
+        return $result[0];
+    }
+
+    public function getAtestadoById($id_monitoria)
+    {
+        //recupera os dados do banco de dados
+        $sql = "select DISTINCT * from monitoria m join periodo  p join atestado_frequencia af
+where m.id_periodo = p.id_periodo and p.id_periodo = af.id_periodo and m.id_monitoria = $id_monitoria;";
+        $Query = $this->db->query($sql,array($id_monitoria) );
+        $result = $Query->result();
+
+        return $result;
     }
 }

@@ -56,11 +56,12 @@ class Relatorio extends CI_Controller
         }
     }
 
+
     public function listar_view(){
         $this->Util->verificaPermissao($this, 'Administrador');
 
         //recupera os periodos
-        $DATA['atestados'] = $this->Relatorio_model->infoAtestadoFrequencia();
+        $DATA['atestados'] = $this->Relatorio_model->listarAtestadoFrequencia();
 
         $this->load->view('atestado_listar', $DATA);
     }
@@ -119,6 +120,14 @@ class Relatorio extends CI_Controller
 
     }
 
+    public function gerar_atestado(){
+        $this->Util->verificaPermissao($this, 'Administrador');
+
+        //recupera os periodos
+        $DATA['relatorio'] = $this->Relatorio_model->infoAtestadoFrequencia();
+
+        $this->load->view('atestado_listar', $DATA);
+    }
 
 
 }

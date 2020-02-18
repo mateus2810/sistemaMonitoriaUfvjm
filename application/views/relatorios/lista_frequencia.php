@@ -54,7 +54,8 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
                 <p><strong>Docente Supervisor:</strong><?= $monitoria->nome?></p>
                 <p><strong>Unidade Curricular:</strong><?=$disciplina->nome ?></p>
                 <p>Declaro que o monitor acima citado cumpriu: <b><?= $somatorioAula->horario_aula ?></b> horas de atividade de monitoria</p>
-
+                <p>Data inicio: <?=$data->data_inicio ?> e a data Fim: <?=$data->data_fim ?></p>
+                <?= date('d/m/Y', strtotime($data->data_inicio)) ?>
                 <?php
                 $remunerada=' ';
                 $naoRemunerada=' ';
