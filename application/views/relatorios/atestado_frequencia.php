@@ -1,24 +1,113 @@
 <?php
+require_once("dompdf/autoload.inc.php");
 
 //referenciar o DomPDF com namespace
 use Dompdf\Dompdf;
 
-// include autoloader
-require_once("dompdf/autoload.inc.php");
+
+
+//===================================================================
+// CSS para o formulario
+$css = '
+<style>
+#customers {
+  border-collapse: collapse;
+  width: 100%;
+}
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 3px;
+}
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+#customers tr:hover {background-color: #bcdae9;}
+#customers th {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  text-align: center;
+  background-color: #0073ae;
+  color: white;
+}
+</style>
+';
+//===================================================================
+
+
+//Monta o cabecalho
+$imgCabecalhoPath = $_SERVER["DOCUMENT_ROOT"] ."/imagens/relatorios/cabecalho.jpg"; //recupera o caminho da imagem no servidor
+//$imgCabecalhoPath = base_url( "/imagens/relatorios/cabecalho.jpg"); //recupera o caminho da imagem no servidor
+
+$htmlStr = '<img style="width: 19cm;" src="'.$imgCabecalhoPath .'" >';
+$htmlStr .= '<h3><b><center>Anexo III - Atestado de Frequência Mensal</center></b></h3>';
+
+
+//Monta as informações basicas do relatorio
+$htmlStr .= '
+<br/>
+<p><strong>Unidade Acadêmica:</strong> '.$disciplina->unidade_academica.'</p>
+<p><strong>Monitor:</strong> '.$monitores->nome.'</p>
+<p><strong>Processo Seletivo(Edital/Ano):</strong> '.$monitores->numero_edital.'</p>
+<p><strong>Docente Supervisor:</strong> '.$monitoria->nome.'</p>
+<p><strong>Unidade Curricular:</strong> '.$disciplina->nome .'</p>
+<p><strong>Monitoria renumerada:</strong> '.$monitores->monitoria_remunerada.'</p>
+<br/>
+';
+
+//Monta a tabela do relatorio
+$htmlStr .= '
+<table id="customers">
+  <tr>
+    <th>Data da Monitoria</th>
+    <th>Quant. Alunos</th>
+  </tr>
+';
+
+foreach ($frequencia as $aluno) {
+    $htmlStr .= '
+      <tr>
+        <td>'.date("d/m/Y", strtotime($aluno->data )).'</td>
+        <td>'.$aluno->quant.'</td>
+      </tr>
+    ';
+}
+
+$htmlStr .= '
+</table>
+';
+
+
+// Monta o final
+$htmlStr .= '
+<br/> <br/>
+<p>
+    Declaro que o monitor acima citado cumpriu <b>'. str_replace (' ','',$somatorioAula->horario_aula) .'</b>
+    horas de atividade de monitoria no périodo de ??/??/???? a ??/??/????
+</p>
+<br/>
+<p style="text-align: center;">
+'. date("d/m/Y") .'
+<br><br>
+___________________________________________________<br/>
+'. $monitoria->nome .'<br/>
+Professor(a) Supervisor(a) da Monitoria /Nº SIAPE
+</p>
+';
+
+
+
 
 //Criando a Instancia
 $dompdf = new DOMPDF();
 
-
-// Carrega seu HTML
-
-
+//Envia o HTML para o DomPDF
 ob_start();
-require __DIR__."/lista_frequencia.php";
+
+echo $css;
+echo $htmlStr;
+//die;
+
 $dompdf->loadHtml(ob_get_clean());
 
-
-
+$dompdf->setPaper('a4', 'portrait');
 
 //Renderizar o html
 $dompdf->render();

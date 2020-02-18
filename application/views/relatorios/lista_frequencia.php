@@ -17,8 +17,6 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
 <body>
 
 
-
-
 <ol class="breadcrumb">
 
 </ol>
@@ -30,14 +28,20 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
     <div class="row">
         <div class="col-xs-12">
 
+
+
             <div class="box">
                 <div class="box-header">
-                    <center><h3 class="box-title">Prograd</h3></center>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+                        <img src="<?=base_url('/AdminLTE-2.4.3/dist/img/cabecalho.jpg');?>" >
+                    </a>
                 </div>
 
-                <p class="box-body">
 
-                    <img width="300px" height="300px" src="cabecalho.jpg"/>
+
+
+                <p class="box-body">
 
                 <h3><b><center>
                             Anexo III
@@ -111,11 +115,6 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
     </div>
     <!-- /.row -->
 </section>
-
-
-
-
-
 
 
 </body>

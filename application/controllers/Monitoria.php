@@ -667,7 +667,7 @@ class Monitoria extends CI_Controller
         $DATA['frequencia'] = $this->Relatorio_model->getContagemFrequencia($id_monitoria);
        // var_dump(    $DATA['contagem']);
 
-        $this->load->view('relatorios/lista_frequencia', $DATA);
-        //$this->load->view('relatorios/atestado_frequencia', $DATA);
+        //$this->load->view('relatorios/lista_frequencia', $DATA);
+        $this->load->view('relatorios/atestado_frequencia', $DATA);
     }
 }
