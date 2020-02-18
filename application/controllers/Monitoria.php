@@ -70,12 +70,16 @@ class Monitoria extends CI_Controller
             $DATA['reuniao'] = $this->Aula_model->getReuniaoByMonitoria($id_monitoria);
             $DATA['horarios'] = $this->Monitoria_model->getMonitoriaHorarios($id_monitoria);
             $DATA['alunos'] = $this->Monitoria_model->getAlunosByMonitoria($id_monitoria);
+            $DATA['atestados'] = $this->Relatorio_model->infoAtestadoFrequencia($id_monitoria);
 
 
             $DATA['cargaHoraria'] = $this->Aula_model->somatorioCargaHoraria($id_monitoria);
 
             $DATA['somatorioAula'] = $this->Aula_model->somatorioHorarioAula($id_monitoria);
             $DATA['somatorioReuniao'] = $this->Aula_model->somatorioHorarioReuniao($id_monitoria);
+
+
+            //$DATA['idAtestado'] = $this->Relatorio_model->getAtestadoById(13);
 
             $this->load->view('monitoria_dados', $DATA);
         } else {
@@ -640,34 +644,36 @@ class Monitoria extends CI_Controller
         }
     }
 
-    function relatorio_mensal($id_monitoria,$id_disciplina)
+    function relatorio_mensal($id_monitoria,$id_disciplina,$id_atestado_frequencia)
     {
-
-        $DATA['monitores'] = $this->Usuario_model->getMonitorById($id_monitoria);
-        $DATA['disciplina'] = $this->Disciplina_model->getDisciplinaById($id_disciplina);
-
-
-        $DATA['somatorioAula'] = $this->Aula_model->somatorioHorarioAula($id_monitoria);
 
         $PERFIL_USUARIO = "Administrador";
 
+        //Listar nome de Monitores e Numero de  Edital
+        $DATA['monitores'] = $this->Usuario_model->getMonitorById($id_monitoria);
+        //Listar Nome da disciplina e Unidade Curricular
+        $DATA['disciplina'] = $this->Disciplina_model->getDisciplinaById($id_disciplina);
+
+        //Somatorio de carga horaria do monitor em suas atividades
+        $DATA['somatorioAula'] = $this->Aula_model->somatorioHorarioAula($id_monitoria);
+
         $id_usuario = $this->session->userdata('id_usuario');
 
-        $DATA['monitorias'] = $this->Monitoria_model->getMonitoriasLista($PERFIL_USUARIO, $id_usuario);
+        //$DATA['monitorias'] = $this->Monitoria_model->getMonitoriasLista($PERFIL_USUARIO, $id_usuario);
 
-
+        //Listar nome professor da monitoria
         $DATA['monitoria'] = $this->Monitoria_model->profMonitoria($id_monitoria);
-        //$DATA['professores'] = $this->Usuario_model->getProfessorById($id_professor);
        // var_dump($DATA);
 
-        //$DATA['disciplinas'] = $this->Disciplina_model->getDisciplinas();
 
         $DATA['alunos'] = $this->Relatorio_model->alunoFrequencia($id_monitoria);
         $DATA['nome'] = $this->Relatorio_model->alunoNome($id_monitoria);
         $DATA['frequencia'] = $this->Relatorio_model->getContagemFrequencia($id_monitoria);
        // var_dump(    $DATA['contagem']);
 
-        $this->load->view('relatorios/lista_frequencia', $DATA);
-        //$this->load->view('relatorios/atestado_frequencia', $DATA);
+        //Model que pega as informações de datas iniciais e finais de atestado de frequencia para geração de relatório
+        $DATA['data'] = $this->Relatorio_model->dataInicioFim($id_atestado_frequencia);
+        //$this->load->view('relatorios/lista_frequencia', $DATA);
+        $this->load->view('relatorios/atestado_frequencia', $DATA);
     }
 }

@@ -10,23 +10,24 @@ class Aula_model extends CI_Model
     public function getAulaById($id_aula)
     {
         //recupera as informacoes das aulas de uma monitoria.
-        //É realizado um join com a tabela frequencia para saber a quantidade de alunos que foram em uma determinada aula
-        $sql = "SELECT a.*, l.*, count(*) as quant_alunos FROM aula a LEFT JOIN frequencia f USING(id_aula) LEFT JOIN local as l USING(id_local) WHERE a.id_aula = ? GROUP BY a.id_aula";
+        //ï¿½ realizado um join com a tabela frequencia para saber a quantidade de alunos que foram em uma determinada aula
+        $sql = "SELECT a.*, l.*, count(*) as quant_alunos FROM aula a LEFT JOIN frequencia f USING(id_aula)
+        LEFT JOIN local as l USING(id_local) WHERE a.id_aula = ? GROUP BY a.id_aula";
         $Query = $this->db->query($sql, array($id_aula));
         $result = $Query->result();
-  
+
         return $result[0];
     }
-    
+
     public function getAulasByMonitoria($id_monitoria)
     {
         //recupera as informacoes das aulas de uma monitoria.
-        //É realizado um join com a tabela frequencia para saber a quantidade de alunos que foram em uma determinada aula
-        $sql = "SELECT a.*, l.*, count(f.id_frequencia) as quant_alunos FROM aula a 
+        //ï¿½ realizado um join com a tabela frequencia para saber a quantidade de alunos que foram em uma determinada aula
+        $sql = "SELECT a.*, l.*, count(f.id_frequencia) as quant_alunos FROM aula a
 LEFT JOIN frequencia f USING(id_aula) LEFT JOIN local as l USING(id_local) WHERE a.id_monitoria = ? GROUP BY a.id_aula";
         $Query = $this->db->query($sql, array($id_monitoria));
         $result = $Query->result();
-  
+
         return $result;
     }
 
@@ -50,7 +51,7 @@ LEFT JOIN frequencia f USING(id_aula) LEFT JOIN local as l USING(id_local) WHERE
 
     public function getAulasByMonitoriaFrequencia($id_aula)
     {
-        $sql = "SELECT * FROM usuario u join aluno_monitoria a on u.id_usuario = a.id_aluno 
+        $sql = "SELECT * FROM usuario u join aluno_monitoria a on u.id_usuario = a.id_aluno
         join monitoria m on a.id_monitoria = m.id_monitoria join aula au on au.id_aula = ".$id_aula;
         $Query = $this->db->query($sql, array($id_aula));
         $result = $Query->result();
@@ -61,7 +62,7 @@ LEFT JOIN frequencia f USING(id_aula) LEFT JOIN local as l USING(id_local) WHERE
     public function getAlunosSemFrequenciaNaAula($id_aula)
     {
         //mudar nome getAlunosSemFrequenciaNaAula
-        $sql = "SELECT DISTINCT * from aluno_monitoria a join usuario u on a.id_aluno = u.id_usuario 
+        $sql = "SELECT DISTINCT * from aluno_monitoria a join usuario u on a.id_aluno = u.id_usuario
 join aula au USING(id_monitoria) left join frequencia fr on (a.id_aluno = fr.id_aluno
  and au.id_aula = fr.id_aula) WHERE au.id_aula = ?  and fr.id_frequencia IS NULL";
 
