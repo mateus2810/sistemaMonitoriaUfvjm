@@ -1,6 +1,6 @@
 <?php
 require_once("dompdf/autoload.inc.php");
-setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 date_default_timezone_set('America/Sao_Paulo');
 
 
@@ -87,10 +87,10 @@ $htmlStr .= '
 <br/>
 <p style="text-align: center;">
 
-'. strftime('%A, %d de %B de %Y', strtotime('today')).'
+'. date("d/m/Y", strtotime('today')).'
 <br><br>
 ___________________________________________________<br/>
-'. $monitoria->nome .'<br/>
+'. $monitoria->nome .' / '. $monitoria->matricula .' <br/>
 Professor(a) Supervisor(a) da Monitoria /Nº SIAPE
 </p>
 ';

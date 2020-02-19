@@ -18,6 +18,7 @@ class Monitoria extends CI_Controller
         $this->load->model('Aula_model', 'Aula_model');
         $this->load->model('Local_model', 'Local_model');
         $this->load->model('Util_model', 'Util');
+        $this->load->helper('date');
     }
 
     public function index()
