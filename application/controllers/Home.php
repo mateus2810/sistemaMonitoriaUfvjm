@@ -10,6 +10,8 @@ class Home extends CI_Controller
         $this->load->library('session');
         $this->load->helper('url');
         $this->load->model('Usuario_model', 'Usuario_model');
+        $this->load->model('Aula_model', 'Aula_model');
+        $this->load->model('Relatorio_model', 'Relatorio_model');
         $this->load->model('Monitoria_model', 'Monitoria_model');
         $this->load->model('Util_model', 'Util');
     }
@@ -153,6 +155,33 @@ class Home extends CI_Controller
         } else {
             redirect('Home/alterar_senha_deslogado_view/', 'refresh');
         }
+    }
+
+    function pesquisar_monitoria($id_monitoria)
+    {
+        $ID_USUARIO = $this->session->userdata('id_usuario');
+        $PERFIL_USUARIO = $this->session->userdata('perfil');
+
+
+        //recupera os periodos
+        $DATA['monitoria'] = $this->Monitoria_model->getMonitoriaById($id_monitoria);
+        $DATA['aulas'] = $this->Aula_model->getAulasByMonitoria($id_monitoria);
+        $DATA['reuniao'] = $this->Aula_model->getReuniaoByMonitoria($id_monitoria);
+        $DATA['horarios'] = $this->Monitoria_model->getMonitoriaHorarios($id_monitoria);
+        $DATA['alunos'] = $this->Monitoria_model->getAlunosByMonitoria($id_monitoria);
+        $DATA['atestados'] = $this->Relatorio_model->infoAtestadoFrequencia($id_monitoria);
+
+
+        // $DATA['cargaHoraria'] = $this->Aula_model->somatorioCargaHoraria($id_monitoria);
+
+        //$DATA['somatorioAula'] = $this->Aula_model->somatorioHorarioAula($id_monitoria);
+        //$DATA['somatorioReuniao'] = $this->Aula_model->somatorioHorarioReuniao($id_monitoria);
+
+
+        //$DATA['idAtestado'] = $this->Relatorio_model->getAtestadoById(13);
+
+        $this->load->view('pesquisa_monitoria', $DATA);
+
     }
 
 }
