@@ -79,7 +79,7 @@
     <nav class="navbar navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="../../index2.html" class="navbar-brand"><b>Gestão de Monitorias</b> </a>
+          <a href="../../" class="navbar-brand"><b>Gestão de Monitorias</b> </a>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
             <i class="fa fa-bars"></i>
           </button>
@@ -91,7 +91,7 @@
             <form class="navbar-form navbar-left" role="search"  >
                 <div class="autocomplete" >
 
-                    <input id="navbar-search-input"  style="width:300px;" type="text" class="form-control"  placeholder="Buscar Monitoria"  name="myCountry">
+                    <input autocomplete="off" id="navbar-search-input"  style="width:300px;" type="text" class="form-control"  placeholder="Buscar Monitoria"  name="myCountry">
 
                 </div>
 
