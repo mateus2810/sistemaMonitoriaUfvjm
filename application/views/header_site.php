@@ -8,14 +8,14 @@
 
 <!DOCTYPE html>
 <html>
- 
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Gestão de Monitorias</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
- 
+
    <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="<?=base_url('/AdminLTE-2.4.3/bower_components/bootstrap/dist/css/bootstrap.min.css');?>">
   <!-- Font Awesome -->
@@ -28,12 +28,12 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?=base_url('/AdminLTE-2.4.3/dist/css/skins/_all-skins.min.css');?>">
 
-    <style> 
+    <style>
         .autocomplete {
             /*the container must be positioned relative:*/
             position: relative;
             display: inline-block;
-        } 
+        }
         .autocomplete-items {
             position: absolute;
             border: 1px solid #d4d4d4;
@@ -44,21 +44,21 @@
             top: 100%;
             left: 0;
             right: 0;
-        } 
+        }
         .autocomplete-items div {
             padding: 10px;
             cursor: pointer;
-            background-color: #fff; 
-            border-bottom: 1px solid #d4d4d4; 
-        } 
+            background-color: #fff;
+            border-bottom: 1px solid #d4d4d4;
+        }
         .autocomplete-items div:hover {
             /*when hovering an item:*/
-            background-color: #e9e9e9; 
-        } 
+            background-color: #e9e9e9;
+        }
         .autocomplete-active {
             /*when navigating through the items using the arrow keys:*/
-            background-color: DodgerBlue !important; 
-            color: #ffffff; 
+            background-color: DodgerBlue !important;
+            color: #ffffff;
         }
     </style>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -95,7 +95,7 @@
 
                 </div>
 
-  
+
           </form>
         </div>
 
@@ -104,7 +104,7 @@
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
 
-            <?php if (false) {?>   
+            <?php if (false) {?>
             <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <img src="<?=base_url('/AdminLTE-2.4.3/dist/img/user2-160x160.jpg');?>" class="user-image" alt="User Image">
@@ -116,13 +116,13 @@
                         <img src="<?=base_url('/AdminLTE-2.4.3/dist/img/user2-160x160.jpg');?>" class="img-circle" alt="User Image">
 
                         <p>
-                        <?=$NOME_USUARIO?> 
+                        <?=$NOME_USUARIO?>
                         </p>
-                    </li> 
+                    </li>
                     <!-- Menu Footer-->
                     <li class="user-footer">
                         <div class="pull-left">
-                            <form id="form_edit_user" action="<?php echo site_url('usuarios/editar_view'); ?>" method="post">   
+                            <form id="form_edit_user" action="<?php echo site_url('usuarios/editar_view'); ?>" method="post">
                                 <input type="hidden" name='id_usuario' value="<?=$ID_USUARIO?>">
                                 <a  href="#" onclick="document.getElementById('form_edit_user').submit()" class="btn btn-default btn-flat">Editar</a>
                             </form>
@@ -132,14 +132,14 @@
                         </div>
                     </li>
                 </ul>
-            </li> 
+            </li>
             <?php } else { ?>
             <li class="dropdown user user-menu">
                 <a href="<?php echo site_url('Home/login'); ?>" >
                      <span class="hidden-xs">Login</span>
-                </a> 
-            </li> 
-            <?php } ?>  
+                </a>
+            </li>
+            <?php } ?>
           </ul>
         </div>
         <!-- /.navbar-custom-menu -->
@@ -168,5 +168,5 @@
 
     </nav>
   </header>
- 
+
 

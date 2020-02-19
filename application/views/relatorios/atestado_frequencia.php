@@ -1,5 +1,8 @@
 <?php
 require_once("dompdf/autoload.inc.php");
+setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+date_default_timezone_set('America/Sao_Paulo');
+
 
 //referenciar o DomPDF com namespace
 use Dompdf\Dompdf;
@@ -42,14 +45,13 @@ $htmlStr .= '<h3><b><center>Anexo III - Atestado de Frequência Mensal</center><
 
 //Monta as informações basicas do relatorio
 $htmlStr .= '
-<br/>
+
 <p><strong>Unidade Acadêmica:</strong> '.$disciplina->unidade_academica.'</p>
 <p><strong>Monitor:</strong> '.$monitores->nome.'</p>
 <p><strong>Processo Seletivo(Edital/Ano):</strong> '.$monitores->numero_edital.'</p>
 <p><strong>Docente Supervisor:</strong> '.$monitoria->nome.'</p>
 <p><strong>Unidade Curricular:</strong> '.$disciplina->nome .'</p>
 <p><strong>Monitoria renumerada:</strong> '.$monitores->monitoria_remunerada.'</p>
-<br/>
 ';
 
 //Monta a tabela do relatorio
@@ -80,11 +82,12 @@ $htmlStr .= '
 <br/> <br/>
 <p>
     Declaro que o monitor acima citado cumpriu <b>'. str_replace (' ','',$somatorioAula->horario_aula) .'</b>
-    horas de atividade de monitoria no périodo de ??/??/???? a ??/??/????
+    horas de atividade de monitoria no périodo de '. date("d/m/Y", strtotime($data->data_inicio)) .' a '. date("d/m/Y", strtotime($data->data_fim)) .'
 </p>
 <br/>
 <p style="text-align: center;">
-'. date("d/m/Y") .'
+
+'. strftime('%A, %d de %B de %Y', strtotime('today')).'
 <br><br>
 ___________________________________________________<br/>
 '. $monitoria->nome .'<br/>

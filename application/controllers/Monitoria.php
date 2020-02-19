@@ -671,11 +671,10 @@ class Monitoria extends CI_Controller
         $DATA['frequencia'] = $this->Relatorio_model->getContagemFrequencia($id_monitoria);
        // var_dump(    $DATA['contagem']);
 
-<<<<<<< HEAD
-=======
+
         //Model que pega as informações de datas iniciais e finais de atestado de frequencia para geração de relatório
         $DATA['data'] = $this->Relatorio_model->dataInicioFim($id_atestado_frequencia);
->>>>>>> fb960d10099fafc97d561e71653983ee8baf4bda
+
         //$this->load->view('relatorios/lista_frequencia', $DATA);
         $this->load->view('relatorios/atestado_frequencia', $DATA);
     }
