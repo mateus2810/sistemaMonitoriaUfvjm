@@ -77,8 +77,8 @@ function autocomplete(inp, arr, arr_id) {
               closeAllLists();
 
               //redireciona para uma pagina
-              alert(id + ' - ' + inp.value);
-              //window.location.replace("??????????");
+              //alert(id + ' - ' + inp.value);
+              window.location.replace(" home/pesquisar_monitoria/"+ id );
           });
           a.appendChild(b);
         }

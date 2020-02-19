@@ -679,4 +679,7 @@ class Monitoria extends CI_Controller
         //$this->load->view('relatorios/lista_frequencia', $DATA);
         $this->load->view('relatorios/atestado_frequencia', $DATA);
     }
+
+
+
 }
