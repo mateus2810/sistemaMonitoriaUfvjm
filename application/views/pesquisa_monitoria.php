@@ -1,4 +1,3 @@
-<?php $this->load->view('header_pesquisar_monitoria'); ?>
 <?php
 //carrega a traducao em portugues para as tabelas
 $ci =& get_instance();
@@ -6,7 +5,7 @@ $ci->load->model('Util_model');
 $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
 $PERFIL_USUARIO = $this->session->userdata('perfil');
 $id_usuario = $this->session->userdata('id_usuario');
-?>
+$this->load->view('header_site'); ?>
 
 
 <!-- Bootstrap time Picker -->
