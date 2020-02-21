@@ -223,10 +223,10 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                                     <select class="form-control select2" checked="checked"  id="monitoria_remunerada"
                                                             name="monitoria_remunerada" value="<?= $monitoria->monitoria_remunerada ?>">
 
-                                                        <option value="Sim"<?= $monitoria->monitoria_remunerada == "Sim" ? 'selected="selected"' : '' ?>>
+                                                        <option id="Sim" value="Sim"<?= $monitoria->monitoria_remunerada == "Sim" ? 'selected="selected"' : '' ?>>
                                                             Sim
                                                         </option>
-                                                        <option value="Nao"<?= $monitoria->monitoria_remunerada == "Nao" ? 'selected="selected"' : '' ?>>
+                                                        <option id="Nao" value="Nao"<?= $monitoria->monitoria_remunerada == "Nao" ? 'selected="selected"' : '' ?>>
                                                             Não
                                                         </option>
                                                     </select>
@@ -412,25 +412,23 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
     })
 </script>
 
-
-
-                                    <script type="text/javascript">
-                                        $(function () {
-                                            $("#monitoria_remunerada").change(function () {
-                                                var st = this.checked;
-                                                if(st == 'Sim'){
-                                                    $("#agencia").prop("disabled", false);
-                                                    $("#banco").prop("disabled", false);
-                                                    $("#conta").prop("disabled", false);
-                                                    $("#cpf").prop("disabled", false);
-                                                }
-                                                else{
-                                                    $("#agencia").prop("disabled", true);
-                                                    $("#banco").prop("disabled", true);
-                                                    $("#conta").prop("disabled", true);
-                                                    $("#cpf").prop("disabled", true);
-                                                }
-                                            })
-                                        });
-                                        </script>
+<script type="text/javascript">
+    $(function () {
+        $("#monitoria_remunerada").change(function () {
+            var st = $(this).val();
+            if(st == 'Nao'){
+                $("#agencia").prop("disabled", true);
+                $("#banco").prop("disabled", true);
+                $("#conta").prop("disabled", true);
+                $("#cpf").prop("disabled", true);
+            }
+           else {
+                $("#agencia").prop("disabled", false);
+                $("#banco").prop("disabled", false);
+                $("#conta").prop("disabled", false);
+                $("#cpf").prop("disabled", false);
+            }
+        })
+    });
+</script>
 
