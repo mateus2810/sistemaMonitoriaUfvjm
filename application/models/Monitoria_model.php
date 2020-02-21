@@ -60,7 +60,9 @@ class Monitoria_model extends CI_Model
 
 
         //ordena as monitorias pelo dia da semana
-        function cmp($a, $b)
+
+
+        usort($result,  function ($a, $b)
         {
             $a->dia_semana = strtoupper($a->dia_semana);
             $b->dia_semana = strtoupper($b->dia_semana);
@@ -76,9 +78,7 @@ class Monitoria_model extends CI_Model
                 return ($w < $z) ? -1 : 1;
             }
             return ($x < $y) ? -1 : 1;
-        }
-
-        usort($result, "cmp");
+        });
 
         return $result;
     }

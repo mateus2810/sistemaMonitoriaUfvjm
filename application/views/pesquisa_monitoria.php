@@ -5,6 +5,7 @@ $ci->load->model('Util_model');
 $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
 $PERFIL_USUARIO = $this->session->userdata('perfil');
 $id_usuario = $this->session->userdata('id_usuario');
+
 $this->load->view('header_site'); ?>
 
 
@@ -233,34 +234,7 @@ $this->load->view('header_site'); ?>
 </section>
 <!-- /.content -->
 
-<?php $this->load->view('footer'); ?>
 
 
-<!-- DataTables -->
-<script src="<?php echo base_url(); ?>/AdminLTE-2.4.3/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url(); ?>/AdminLTE-2.4.3/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
-
-<!-- bootstrap time picker -->
-<script src="<?= base_url('/AdminLTE-2.4.3/plugins/timepicker/bootstrap-timepicker.min.js'); ?>"></script>
-
-
-<!-- page script -->
-
-<script>
-    $(function () {
-
-        $('#example1').DataTable({
-            'language': <?= $datatablesPortugueseBrasil?>
-        })
-        $('#example2').DataTable({
-            'language': <?= $datatablesPortugueseBrasil?>
-        })
-
-        $('#example3').DataTable({
-            'language': <?= $datatablesPortugueseBrasil?>
-        })
-
-    })
-</script>
-
+<?php $this->load->view('footer_site');?>

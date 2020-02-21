@@ -39,13 +39,31 @@ class Home extends CI_Controller
         $monitorias = $this->Monitoria_model->getMonitoriasListaBydia($dias_semana);
 
         //para prencher o campo para buscar monitorias é necessario dois arrays em javascript, um com os nomes e outros com id
+        $busca_data = $this->get_data_pesquisar();
+
+       // $qtd = strlen($monitoria->nomeDisciplina);
+
+
+        $DATA['busca_id'] = $busca_data['busca_id'];
+        $DATA['busca_nome'] = $busca_data['busca_nome'];
+        $DATA['monitorias'] = $monitorias;
+
+        $this->load->view('index', $DATA);
+    }
+
+    public function get_data_pesquisar()
+    {
+
+        //$dias_semana = "Domingo|Segunda-Feira|Terça-Feira|Quarta-feira|Quinta-feira|Sexta-feira|Sábado";
+        $monitorias = $this->Monitoria_model->getMonitoriasListaBydia('');
+
+        //para prencher o campo para buscar monitorias é necessario dois arrays em javascript, um com os nomes e outros com id
         $busca_id = "[";
         $busca_nome = "[";
         $id_adicionado = array();
         foreach ($monitorias as $monitoria) {
-            if (in_array($monitoria->id_monitoria, $id_adicionado)) {
+            if (in_array($monitoria->id_monitoria, $id_adicionado))
                 continue;
-            }
             $id_adicionado[] = $monitoria->id_monitoria;
             $busca_id .= "'" . addslashes($monitoria->id_monitoria) . "',";
             $busca_nome .= "'" . addslashes(mb_strtoupper($monitoria->nomeDisciplina)) . "',";
@@ -53,14 +71,10 @@ class Home extends CI_Controller
         $busca_id .= "]";
         $busca_nome .= "]";
 
-       // $qtd = strlen($monitoria->nomeDisciplina);
-
-
         $DATA['busca_id'] = $busca_id;
         $DATA['busca_nome'] = $busca_nome;
-        $DATA['monitorias'] = $monitorias;
 
-        $this->load->view('index', $DATA);
+        return $DATA;
     }
 
     public function view_home()
@@ -159,10 +173,6 @@ class Home extends CI_Controller
 
     function pesquisar_monitoria($id_monitoria)
     {
-        $ID_USUARIO = $this->session->userdata('id_usuario');
-        $PERFIL_USUARIO = $this->session->userdata('perfil');
-
-
         //recupera os periodos
         $DATA['monitoria'] = $this->Monitoria_model->getMonitoriaById($id_monitoria);
         $DATA['aulas'] = $this->Aula_model->getAulasByMonitoria($id_monitoria);
@@ -172,13 +182,9 @@ class Home extends CI_Controller
         $DATA['atestados'] = $this->Relatorio_model->infoAtestadoFrequencia($id_monitoria);
 
 
-        // $DATA['cargaHoraria'] = $this->Aula_model->somatorioCargaHoraria($id_monitoria);
-
-        //$DATA['somatorioAula'] = $this->Aula_model->somatorioHorarioAula($id_monitoria);
-        //$DATA['somatorioReuniao'] = $this->Aula_model->somatorioHorarioReuniao($id_monitoria);
-
-
-        //$DATA['idAtestado'] = $this->Relatorio_model->getAtestadoById(13);
+        $busca_data = $this->get_data_pesquisar();
+        $DATA['busca_id'] = $busca_data["busca_id"];
+        $DATA['busca_nome'] = $busca_data["busca_nome"];
 
         $this->load->view('pesquisa_monitoria', $DATA);
 
