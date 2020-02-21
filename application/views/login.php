@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="<?=base_url('/AdminLTE-2.4.3/dist/css/AdminLTE.min.css');?>">
   <!-- iCheck -->
   <link rel="stylesheet" href="<?=base_url('/AdminLTE-2.4.3/plugins/iCheck/square/blue.css');?>">
- 
+
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -43,7 +43,7 @@
         <input type="password" name="senha" class="form-control" placeholder="Senha">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
-      <div class="row"> 
+      <div class="row">
         <!-- /.col -->
         <div class="col-xs-4">
           <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
@@ -51,9 +51,9 @@
         <!-- /.col -->
       </div>
     </form>
- 
+
     <br/>
-    <a href="<?=site_url('Home/alterar_senha_deslogado_view/')?>">Esqueci minha senha</a><br>
+
 
 
   </div>
@@ -65,6 +65,6 @@
 <script src="<?=base_url('/AdminLTE-2.4.3/bower_components/jquery/dist/jquery.min.js');?>"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="<?=base_url('/AdminLTE-2.4.3/bower_components/bootstrap/dist/js/bootstrap.min.js');?>"></script>
- 
+
 </body>
 </html>

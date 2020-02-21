@@ -488,6 +488,10 @@ class Monitoria extends CI_Controller
             $DATA['numero_edital'] = $this->input->post('numero_edital');
             $DATA['data_inicio'] = $this->input->post('data_inicio');
             $DATA['data_fim'] = $this->input->post('data_fim');
+            $DATA['banco'] = $this->input->post('banco');
+            $DATA['agencia'] = $this->input->post('agencia');
+            $DATA['conta'] = $this->input->post('conta');
+            $DATA['cpf'] = $this->input->post('cpf');
 
             //var_dump($DATA);
         } else {
@@ -500,6 +504,10 @@ class Monitoria extends CI_Controller
             $DATA['numero_edital'] = $this->input->post('numero_edital');
             $DATA['data_inicio'] = $this->input->post('data_inicio');
             $DATA['data_fim'] = $this->input->post('data_fim');
+            $DATA['banco'] = $this->input->post('banco');
+            $DATA['agencia'] = $this->input->post('agencia');
+            $DATA['conta'] = $this->input->post('conta');
+            $DATA['cpf'] = $this->input->post('cpf');
         }
 
         if ($this->Monitoria_model->adicionaMonitoria($DATA) != 0) {
@@ -535,12 +543,17 @@ class Monitoria extends CI_Controller
                 $aula->numero_edital = "";
                 $aula->data_inicio = "";
                 $aula->data_fim = "";
+                $aula->banco = "";
+                $aula->agencia = "";
+                $aula->conta = "";
+                $aula->cpf = "";
 
                 $DATA['monitoria'] = $aula;
             } //recupera as informacoes da aula para editar
 
             else {
                 $DATA['monitoria'] = $this->Monitoria_model->getMonitoriaById($id_monitoria);
+
 
                 if ($DATA['monitoria'] == null) {
                     $this->Util->telaResultado($this, "Entrada Invalido!", true);
