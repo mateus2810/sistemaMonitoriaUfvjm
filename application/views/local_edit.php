@@ -7,9 +7,7 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
 
 $PERFIL_USUARIO = $this->session->userdata('perfil');
 
-if($PERFIL_USUARIO == "Administrador"){?>
-
-
+if ($PERFIL_USUARIO == "Administrador") {?>
 <!-- DataTables -->
 <link rel="stylesheet" href="<?= base_url('/AdminLTE-2.4.3/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css'); ?>">
 

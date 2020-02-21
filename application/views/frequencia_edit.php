@@ -1,9 +1,9 @@
 <?php $this->load->view('header');?>
 <?php
-	//carrega a traducao em portugues para as tabelas
-	$ci =& get_instance();
-	$ci->load->model('Util_model');
-	$datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
+    //carrega a traducao em portugues para as tabelas
+    $ci =& get_instance();
+    $ci->load->model('Util_model');
+    $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
 ?>
  
   <!-- DataTables -->
@@ -32,7 +32,7 @@
    <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Aula <?= date('d/m/Y',strtotime($aula->data)) ?>
+        Aula <?= date('d/m/Y', strtotime($aula->data)) ?>
       </h1>
       <ol class="breadcrumb">
           <li><a href="<?= site_url('Home/Index') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -48,7 +48,7 @@
         <div class="col-xs-12">
 
 
-	  <div class="row">
+      <div class="row">
         <div class="col-xs-12">
 
           <div class="box">
@@ -67,7 +67,7 @@
                 </thead>
                 <tbody>
 
-				<?php foreach($frequencias as $frequencia){ ?>
+                <?php foreach ($frequencias as $frequencia) { ?>
                 <tr>
                   <td><?= $frequencia->matricula?></td>
                   <td><?= $frequencia->nome?></td>
@@ -75,7 +75,7 @@
                                 href="<?= site_url('Monitoria/excluirFrequencia/'.$aula->id_monitoria.'/'. $frequencia->id_aula.'/' . $frequencia->id_frequencia) ?>"><span
                                     class="glyphicon glyphicon-trash" title="Excluir frenquencia"></span></a></td>
                 </tr>
-				<?php }?>
+                <?php }?>
 
                 </tbody>
 
@@ -147,28 +147,28 @@
    
     //Initialize Select2 Elements
     $('.select2').select2();
-	
+    
 
   
    $('#example1').DataTable({  
-		'language': <?= $datatablesPortugueseBrasil?>
+        'language': <?= $datatablesPortugueseBrasil?>
     });
-	
+    
 
     //Timepicker
     $('#horario_inicio').timepicker({
-		showMeridian: false,
-		showInputs: false,
-		showSeconds: false, 
-		interval: 15
+        showMeridian: false,
+        showInputs: false,
+        showSeconds: false, 
+        interval: 15
     });
-	
+    
     //Timepicker
     $('#horario_fim').timepicker({
-		showMeridian: false,
-		showInputs: false,
-		showSeconds: false, 
-		interval: 15
+        showMeridian: false,
+        showInputs: false,
+        showSeconds: false, 
+        interval: 15
     });
   })
 </script> 

@@ -96,7 +96,6 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                         </div>
 
                                         <?php if ($PERFIL_USUARIO == 'Administrador') { ?>
-
                                             <div class="form-group">
                                                 <label>Selecione o Professor</label>
                                                 <select name="id_professor" class="form-control select2"
@@ -110,7 +109,6 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                             </div>
 
                                         <?php } else { ?>
-
                                             <div class="form-group">
                                                 <label>Selecione o Professor</label>
                                                 <select name="id_professor" class="form-control select2"
@@ -139,7 +137,6 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                         </div>
 
                                         <?php if ($PERFIL_USUARIO == 'Administrador') { ?>
-
                                             <div class="form-group">
                                                 <label>Selecione o Professor</label>
                                                 <select name="id_professor" class="form-control select2"
@@ -153,7 +150,6 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                             </div>
 
                                         <?php } else { ?>
-
                                             <div class="form-group">
                                                 <label>Selecione o Professor</label>
                                                 <select name="id_professor" class="form-control select2"

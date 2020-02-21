@@ -3,7 +3,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 0.0.1
     </div>
-    <strong>Copyright &copy; 2019 PET .</strong> <a href="https://adminlte.io">Template by Almsaeed Studio</a>. All rights
+    <strong>Copyright &copy; 2020 PET .</strong> <a href="https://adminlte.io">Template by Almsaeed Studio</a>. All rights
     reserved.Desenv: Alex Lopes, Mateus Amaral e Thales Mota
   </footer>
 </div>
@@ -24,15 +24,6 @@
 
 <!-- Select2 -->
 <script src="<?=base_url('/AdminLTE-2.4.3/bower_components/select2/dist/js/select2.full.min.js');?>"></script>
-
-
- <script>
-  $(function () {
-
-
-  })
-</script> 
-
 
 
 <script>
@@ -75,10 +66,12 @@ function autocomplete(inp, arr, arr_id) {
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();
-              
+
               //redireciona para uma pagina
-              alert(id + ' - ' + inp.value);
-              //window.location.replace("??????????");
+              //alert(id + ' - ' + inp.value);
+
+              window.location.replace("/home/pesquisar_monitoria/"+ id );
+
           });
           a.appendChild(b);
         }
@@ -137,18 +130,20 @@ function autocomplete(inp, arr, arr_id) {
   }
   /*execute a function when someone clicks in the document:*/
   document.addEventListener("click", function (e) {
-      closeAllLists(e.target); 
+      closeAllLists(e.target);
   });
+
 }
- 
-var monitorias_id = <?=$busca_id?>;//[1,2];
-var monitorias = <?=$busca_nome?>;//["opcao 1","opcao 2"];
+
+var monitorias_id = <?php echo $busca_id?>;//[1,2];
+var monitorias = <?php echo $busca_nome?>;//["opcao 1","opcao 2"];
 
  //$busca_id;
  //$busca_nome;
 
 /*initiate the autocomplete function on the "navbar-search-input" element, and pass along the itens array as possible autocomplete values:*/
 autocomplete(document.getElementById("navbar-search-input"), monitorias, monitorias_id);
+
 
 </script>
 

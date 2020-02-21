@@ -11,7 +11,7 @@ $semana = array(
 //var_dump($monitorias);
     $quantPage = 6 ;
     $corSemana = ["SEGUNDA-FEIRA" => "#2D455F", "TERÇA-FEIRA" => "#596D82", "QUARTA-FEIRA" => "#2D455F", "QUINTA-FEIRA" => "#596D82", "SEXTA-FEIRA" => "#2D455F", "SÁBADO" => "#596D82", "DOMINGO" => "#2D455F" ];
-    ?>
+?>
 <meta http-equiv="refresh" content="300">
 
     <!-- Full Width Column -->
@@ -25,37 +25,46 @@ $semana = array(
                 <div class="carousel-inner">
 
                     <?php
-                    for($i = 0; $i < count($monitorias); $i++){
-                    ?>
+                    for ($i = 0; $i < count($monitorias); $i++) {
+                        ?>
 
 
-                    <?= $i == 0 ? '<div class="item active">' : '<div class="item">'; ?>
+                        <?= $i == 0 ? '<div class="item active">' : '<div class="item">'; ?>
                         <div class="wrapper">
 
                             <?php
-                            for($j=0; $j < $quantPage && $i < count($monitorias); $i++, $j++){
+                            for ($j=0; $j < $quantPage && $i < count($monitorias); $i++, $j++) {
                                 $monitoria = $monitorias[$i];
-                            ?>
+                                ?>
                                 <?php $qtd = strlen($monitoria->nomeDisciplina); ?>
 
                                     <div class="col-md-6" style="height: auto;bottom:auto;" align="center" >
+                                        <a href="<?=site_url('Home/pesquisar_monitoria/'. $monitoria->id_monitoria)?>">
                                 <div  class="callout callout-danger"  style="background-color:<?= $corSemana[mb_strtoupper($monitoria->dia_semana)] ?> !important; border-color: #001f3f !important "   >
+
                                     <b><font size="+1"> <?= mb_strtoupper($monitoria->codigo) ?></font> </b><br/>
                                    <b><font size="+1"> <?= mb_strtoupper($monitoria->nome) ?></font> </b>
                                     <h4><?= mb_strtoupper($monitoria->dia_semana)?>, <?=substr($monitoria->horario_inicio, 0, -3)?>h ATÉ <?=substr($monitoria->horario_fim, 0, -3)?> </h4>
                                     <h4><?= mb_strtoupper($monitoria->sala)?>, <?= mb_strtoupper($monitoria->predio)?>  </h4>
                                     <p><b>MONITOR(A): <?= mb_strtoupper($monitoria->monitor)?></b></p>
-                                    <p><b>STATUS: <?php if ($monitoria->dia_semana!=$semana[$dia]){echo"POR VIR";}else{
-                                                if ($monitoria->horario_fim>$hora && $monitoria->horario_inicio<$hora){echo "EM ANDAMENTO";}
-                                                else if ($monitoria->horario_inicio>$hora){echo "POR VIR";}
-                                                else if ($monitoria->horario_fim<$hora){echo "ENCERRADO";}}?></b></p>
+                                    <p><b>STATUS: <?php if ($monitoria->dia_semana!=$semana[$dia]) {
+                                        echo"POR VIR";
+                                                  } else {
+                                                      if ($monitoria->horario_fim>$hora && $monitoria->horario_inicio<$hora) {
+                                                          echo "EM ANDAMENTO";
+                                                      } elseif ($monitoria->horario_inicio>$hora) {
+                                                          echo "POR VIR";
+                                                      } elseif ($monitoria->horario_fim<$hora) {
+                                                          echo "ENCERRADO";
+                                                      }
+                                                  }?></b></p>
 
                                 </div>
 
                             </div>
 
 
-                                <?php } $i--; ?>
+                            <?php } $i--; ?>
                         </div>
 
                     </div>

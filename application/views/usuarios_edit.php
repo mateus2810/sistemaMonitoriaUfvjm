@@ -7,7 +7,7 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
 
 $PERFIL_USUARIO = $this->session->userdata('perfil');
 
-if($PERFIL_USUARIO == "Administrador"){
+if ($PERFIL_USUARIO == "Administrador") {
     ?>
 
 
@@ -56,7 +56,7 @@ if($PERFIL_USUARIO == "Administrador"){
                         <h3 class="box-title"><?= $usuario->id_usuario == "" ? "Novo" : "Editar" ?> Usuário</h3>
                     </div>
 
-                    <?php if( $usuario->id_usuario == "novo"){ ?>
+                    <?php if ($usuario->id_usuario == "novo") { ?>
                     <!-- /.box-header -->
                     <div class="box-body">
                         <form role="form" action="<?php echo site_url('usuarios/editar'); ?>" method="post">
@@ -99,7 +99,7 @@ if($PERFIL_USUARIO == "Administrador"){
 
 
                             </div>
-                            <?php } else { ?>
+                    <?php } else { ?>
                             <div class="box-body">
                                 <form role="form" action="<?php echo site_url('usuarios/editar'); ?>" method="post">
                                     <div class="box-body">
@@ -144,13 +144,13 @@ if($PERFIL_USUARIO == "Administrador"){
 
 
 
-                            <?php } ?>
+                    <?php } ?>
                             <!-- /.box-body -->
 
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-default" name="opcao" value="salvar" >Salvar</button>
 
-                                <?php if( $usuario->id_usuario != "novo"){ ?>
+                                <?php if ($usuario->id_usuario != "novo") { ?>
                                 <a href="<?=site_url('usuarios/alterar_senha_view/'.$usuario->id_usuario)?>" class="btn btn-default">Alterar Senha</a>
                                 <?php } ?>
                                 <a href="<?=site_url('Usuarios/listar_view/')?>" class="btn btn-default">Voltar</a>

@@ -1,8 +1,8 @@
-<?php 
-    $this->load->helper('url');  
+<?php
+    $this->load->helper('url');
     $this->load->library('session');
-    $ID_USUARIO = $this->session->userdata('id_usuario'); 
-    $NOME_USUARIO = $this->session->userdata('nome'); 
+    $ID_USUARIO = $this->session->userdata('id_usuario');
+    $NOME_USUARIO = $this->session->userdata('nome');
     $PERFIL_USUARIO = $this->session->userdata('perfil');
 
 ?>
@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="<?=base_url('/AdminLTE-2.4.3/bower_components/bootstrap-daterangepicker/daterangepicker.css');?>">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="<?=base_url('/AdminLTE-2.4.3/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css');?>">
- 
+
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -60,7 +60,7 @@
       </a>
 
       <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">  
+        <ul class="nav navbar-nav">
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -73,17 +73,17 @@
                 <img src="<?=base_url('/AdminLTE-2.4.3/dist/img/user2-160x160.jpg');?>" class="img-circle" alt="User Image">
 
                 <p>
-                  <?=$NOME_USUARIO?> 
+                  <?=$NOME_USUARIO?>
                 </p>
-              </li> 
+              </li>
               <!-- Menu Footer-->
 <!--              <li class="user-footer">-->
 <!--                      <div class="pull-left">-->
 <!---->
 <!--                    <form id="form_edit_user" action="--><?php //echo site_url('usuarios/editar_view/'.$ID_USUARIO); ?><!--" method="post">-->
-<!--						<input type="hidden" name='id_usuario' value="--><?//=$ID_USUARIO?><!--">-->
+<!--                        <input type="hidden" name='id_usuario' value="--><?php //=$ID_USUARIO?><!--">-->
 <!--                        <a  href="#" onclick="document.getElementById('form_edit_user').submit()" class="btn btn-default btn-flat">Editar</a>-->
-<!--					</form>-->
+<!--                    </form>-->
 <!--                </div>-->
 
                 <div class="pull-right">
@@ -91,7 +91,7 @@
                 </div>
               </li>
             </ul>
-          </li> 
+          </li>
         </ul>
       </div>
     </nav>
@@ -109,15 +109,15 @@
           <p><?=$NOME_USUARIO?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> <?=$PERFIL_USUARIO?></a>
         </div>
-      </div> 
+      </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-		
-		
+
+
 
         <?php if (strpos("Administrador", $this->session->userdata('perfil')) !== false) {  ?>
-		<li class="treeview">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Gerenciar</span>
             <span class="pull-right-container">
@@ -128,7 +128,8 @@
             <li><a href="<?=site_url('Periodo/listar_view')?>"><i class="fa fa-circle-o"></i> Semestre letivo</a></li>
             <li><a href="<?= site_url('Disciplinas/listar_view')?>"><i class="fa fa-circle-o"></i> Disciplinas</a></li>
             <li><a href="<?= site_url('Local/listar_view') ?>"><i class="fa fa-circle-o"></i> Local</a></li>
-            <li><a href="<?=site_url('Usuarios/listar_view')?>"><i class="fa fa-circle-o"></i> Usuários</a></li> 
+            <li><a href="<?=site_url('Usuarios/listar_view')?>"><i class="fa fa-circle-o"></i> Usuários</a></li>
+              <li><a href="<?=site_url('Relatorio/listar_view')?>"><i class="fa fa-circle-o"></i> Atestado de Frequência</a></li>
           </ul>
         </li>
         <?php } ?>
@@ -138,8 +139,8 @@
           <?php } ?>
 
         <li><a href="<?=site_url('Monitoria/listar_view/'.$PERFIL_USUARIO.'/'.$ID_USUARIO)?>"><i class="fa fa-mortar-board"></i> <span>Monitorias</span></a></li>
-		
-           
+
+
       </ul>
     </section>
     <!-- /.sidebar -->

@@ -24,7 +24,7 @@
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
-		 
+         
           <div class="box">
             <div class="box-header">
               <h3 class="box-title"><?= $usuario->id_usuario == "" ? "Novo" : "Editar" ?> Aluno</h3>
@@ -67,7 +67,7 @@
                 </form> 
             </div>
             <!-- /.box-body -->
-			 
+             
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
@@ -77,7 +77,7 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
-	 
+     
 
 <?php $this->load->view('footer'); ?>
  
@@ -91,7 +91,7 @@
 <script>
   $(function () {
     $('#example1').DataTable({  
-	  'language': <?= $datatablesPortugueseBrasil?>
+      'language': <?= $datatablesPortugueseBrasil?>
     }) 
   })
 </script>

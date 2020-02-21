@@ -32,7 +32,7 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Atividades <?= date('d/m/Y',strtotime($aula->data)) ?>
+        Atividades <?= date('d/m/Y', strtotime($aula->data)) ?>
     </h1>
     <ol class="breadcrumb">
         <li><a href="<?= site_url('Home/Index') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -59,7 +59,7 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
                             <input type="hidden" name="id_monitoria" value="<?=$aula->id_monitoria?>">
 
 
-                            <?php if($aula->id_atividade != ""){ ?>
+                            <?php if ($aula->id_atividade != "") { ?>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">

@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Home extends CI_Controller
 {
@@ -10,6 +10,8 @@ class Home extends CI_Controller
         $this->load->library('session');
         $this->load->helper('url');
         $this->load->model('Usuario_model', 'Usuario_model');
+        $this->load->model('Aula_model', 'Aula_model');
+        $this->load->model('Relatorio_model', 'Relatorio_model');
         $this->load->model('Monitoria_model', 'Monitoria_model');
         $this->load->model('Util_model', 'Util');
     }
@@ -27,13 +29,33 @@ class Home extends CI_Controller
         //recupera as monitorias
         $dias_semana = "";
         $arraySemana = ["Sun" => "Domingo", "Mon" => "Segunda-Feira", "Tue" => "Terça-Feira", "Wed" => "Quarta-feira", "Thu" => "Quinta-feira", "Fri" => "Sexta-feira", "Sat" => "Sábado"];
-        if (date("D") == "Sat")
+        if (date("D") == "Sat") {
             $dias_semana = $arraySemana[date("D")] . "|" . $arraySemana["Sun"];
-        else
+        } else {
             $dias_semana = $arraySemana[date("D")] . "|" . $arraySemana[date('D', strtotime('+1 days'))];
+        }
 
         //$dias_semana = "Segunda-feira|Terça-feira";
         $monitorias = $this->Monitoria_model->getMonitoriasListaBydia($dias_semana);
+
+        //para prencher o campo para buscar monitorias é necessario dois arrays em javascript, um com os nomes e outros com id
+        $busca_data = $this->get_data_pesquisar();
+
+       // $qtd = strlen($monitoria->nomeDisciplina);
+
+
+        $DATA['busca_id'] = $busca_data['busca_id'];
+        $DATA['busca_nome'] = $busca_data['busca_nome'];
+        $DATA['monitorias'] = $monitorias;
+
+        $this->load->view('index', $DATA);
+    }
+
+    public function get_data_pesquisar()
+    {
+
+        //$dias_semana = "Domingo|Segunda-Feira|Terça-Feira|Quarta-feira|Quinta-feira|Sexta-feira|Sábado";
+        $monitorias = $this->Monitoria_model->getMonitoriasListaBydia('');
 
         //para prencher o campo para buscar monitorias é necessario dois arrays em javascript, um com os nomes e outros com id
         $busca_id = "[";
@@ -49,14 +71,10 @@ class Home extends CI_Controller
         $busca_id .= "]";
         $busca_nome .= "]";
 
-       // $qtd = strlen($monitoria->nomeDisciplina);
-
-
         $DATA['busca_id'] = $busca_id;
         $DATA['busca_nome'] = $busca_nome;
-        $DATA['monitorias'] = $monitorias;
 
-        $this->load->view('index', $DATA);
+        return $DATA;
     }
 
     public function view_home()
@@ -78,30 +96,28 @@ class Home extends CI_Controller
         //recupera os dados do formulario
         $matricula = $this->input->post('matricula');
         $senha = $this->input->post('senha');
-        //$password = md5($password); 
+        //$password = md5($password);
 
         $DATA = $this->Usuario_model->verificaLogin($matricula, $senha);
 
         //caso encontre um usuario quer dizer que ele esta registrado no sistema
-        if ($DATA != NULL) {
+        if ($DATA != null) {
             $newdata = array(
                 'id_usuario' => $DATA['id_usuario'],
                 'nome' => $DATA['nome'],
                 'perfil' => $DATA['perfil'],
-                'logged_in' => TRUE
+                'logged_in' => true
             );
 
             if ($DATA['perfil'] == 'Administrador' or $DATA['perfil'] == 'Professor' or $DATA['perfil'] == 'Monitor') {
-
                 $this->session->set_userdata($newdata);
 
                 $this->view_home($DATA['id_usuario']);
             } else {
                 $this->index();
             }
-
         } //caso o usuario digitou um matricula  e uma senha e nao esteja no BD envia uma msg de erro
-        else if (($matricula != NULL || $senha != NULL) && $DATA == NULL) {
+        elseif (($matricula != null || $senha != null) && $DATA == null) {
             $DADOS['msg'] = 'Matrícula ou Senha inválido';
             $this->load->view('login', $DADOS);
         } //caso contrario, mostra a tela de login
@@ -149,13 +165,29 @@ class Home extends CI_Controller
         $DATA = $this->Usuario_model->recuperaSenha($email);
 
         if ($this->Usuario_model->recuperaSenha($email)) {
-            $this->load->view('trocar_senha',$DATA);
+            $this->load->view('trocar_senha', $DATA);
         } else {
             redirect('Home/alterar_senha_deslogado_view/', 'refresh');
         }
-
-
     }
 
+    function pesquisar_monitoria($id_monitoria)
+    {
+        //recupera os periodos
+        $DATA['monitoria'] = $this->Monitoria_model->getMonitoriaById($id_monitoria);
+        $DATA['aulas'] = $this->Aula_model->getAulasByMonitoria($id_monitoria);
+        $DATA['reuniao'] = $this->Aula_model->getReuniaoByMonitoria($id_monitoria);
+        $DATA['horarios'] = $this->Monitoria_model->getMonitoriaHorarios($id_monitoria);
+        $DATA['alunos'] = $this->Monitoria_model->getAlunosByMonitoria($id_monitoria);
+        $DATA['atestados'] = $this->Relatorio_model->infoAtestadoFrequencia($id_monitoria);
+
+
+        $busca_data = $this->get_data_pesquisar();
+        $DATA['busca_id'] = $busca_data["busca_id"];
+        $DATA['busca_nome'] = $busca_data["busca_nome"];
+
+        $this->load->view('pesquisa_monitoria', $DATA);
+
+    }
 
 }

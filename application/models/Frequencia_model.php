@@ -4,14 +4,15 @@ class Frequencia_model extends CI_Model
 {
     public function __construct()
     {
-        $this->load->database(); 
+        $this->load->database();
     }
 
-    public function getFrequenciasByAula($id_aula){
+    public function getFrequenciasByAula($id_aula)
+    {
         //recupera os dados do banco de dados
         $sql = "SELECT id_frequencia, id_aluno, id_aula, cadastrado, matricula, nome 
  FROM `frequencia` as f JOIN usuario as u ON (f.id_aluno = u.id_usuario) WHERE id_aula = ?";
-        $Query = $this->db->query( $sql, array($id_aula) );  
+        $Query = $this->db->query($sql, array($id_aula));
         $result = $Query->result();
   
         return $result;
@@ -38,7 +39,6 @@ class Frequencia_model extends CI_Model
         $this->db->trans_complete();
 
         return $id_frequencia;
-
     }
 
     public function excluirFrequencia($id_frequencia)
@@ -46,8 +46,5 @@ class Frequencia_model extends CI_Model
         $this->db->where('id_frequencia', $id_frequencia);
 
         return $this->db->delete('frequencia');
-
     }
- 
-
 }

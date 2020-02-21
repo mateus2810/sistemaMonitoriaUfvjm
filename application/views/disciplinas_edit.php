@@ -7,8 +7,8 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
 
 $PERFIL_USUARIO = $this->session->userdata('perfil');
 
-if($PERFIL_USUARIO == "Administrador"){
-?>
+if ($PERFIL_USUARIO == "Administrador") {
+    ?>
 
 
 <!-- DataTables -->
@@ -50,7 +50,7 @@ if($PERFIL_USUARIO == "Administrador"){
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
-		 
+         
           <div class="box">
             <div class="box-header">
               <h3 class="box-title"><?= $disciplina->id_disciplina == "" ? "Nova" : "Editar" ?> Disciplina</h3>
@@ -108,7 +108,7 @@ if($PERFIL_USUARIO == "Administrador"){
                 </form> 
             </div>
             <!-- /.box-body -->
-			 
+             
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
@@ -132,7 +132,7 @@ if($PERFIL_USUARIO == "Administrador"){
 <script>
   $(function () {
     $('#example1').DataTable({  
-	  'language': <?= $datatablesPortugueseBrasil?>
+      'language': <?= $datatablesPortugueseBrasil?>
     }) 
   })
 </script>
