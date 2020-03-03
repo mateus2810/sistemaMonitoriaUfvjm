@@ -140,8 +140,8 @@ $id_usuario = $this->session->userdata('id_usuario');
                                 <td> <?= $aula->atividades ?> </td>
                                 <td> <?= $aula->quant_alunos ?> </td>
                                 <?php if ((strpos("Administrador", $this->session->userdata('perfil')) !== false) or strpos("Professor", $this->session->userdata('perfil'))!== false) {  ?>
-                                <td> <?= $ci->Util_model->formatarTimestamp($aula->cadastrado); ?> </td>
                                 <td> <?= $ci->Util_model->formatarTimestamp($aula->atualizado); ?> </td>
+                                <td> <?= $ci->Util_model->formatarTimestamp($aula->cadastrado); ?> </td>
 
                                 <?php } ?>
                                 <td>

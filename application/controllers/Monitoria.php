@@ -160,9 +160,8 @@ class Monitoria extends CI_Controller
         }
     }
 
-    function aula_editar($id_monitoria)
+    function aula_editar($id_monitoria,$id_aula)
     {
-
 
         $DATA['id_aula'] = $this->input->post('id_aula');
         $DATA['id_monitoria'] = $id_monitoria;
@@ -173,12 +172,29 @@ class Monitoria extends CI_Controller
         $DATA['atividades'] = $this->input->post('atividades');
 
 
-       // var_dump($DATA);
+        $aux =0;
+        $aula = $this->Aula_model->getAulaById($id_aula);
+        $diaAtual= date('Y/m/d',strtotime('today'));
+        $somaDias=date('Y/m/d', strtotime('+3 days', strtotime($aula->cadastrado)));
+        //var_dump($somaDias);
+
+        //Condição para não conseguir fazer edição após 3 dias de cadastro das atividades e adicionar nova monitoria
+        if(strtotime($somaDias) >= strtotime($diaAtual) && $this->Aula_model->adicionaEditaAulaMonitoria($DATA) != 0) {
+            $this->Util->telaResultado($this, "Informações atualizadas!",
+                false, "Monitoria/gerenciar" . '/' . $id_monitoria);
+
+    }else {
+        $this->Util->telaResultado($this, "Não é possível fazer a edição, já se passaram 3 dias após o cadastro", true);
+    }
+
+
+
+      /* // var_dump($DATA);
         if ($this->Aula_model->adicionaEditaAulaMonitoria($DATA) != 0) {
-            $this->Util->telaResultado($this, "Informa��es atualizados!", false, "Monitoria/gerenciar" . '/' . $id_monitoria);
+            $this->Util->telaResultado($this, "Informações atualizados!", false, "Monitoria/gerenciar" . '/' . $id_monitoria);
         } else {
-            $this->Util->telaResultado($this, "N�o foi possivel atualizar os dados. Confira os dados informados e se n�o existe um per�odo ativo ou j� cadastrado.", true);
-        }
+            $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um período ativo ou já cadastrado.", true);
+        }*/
     }
 
     function reuniao_editar_view($id_monitoria, $id_atividade)
@@ -256,7 +272,7 @@ class Monitoria extends CI_Controller
         if ($this->Aula_model->excluir_Aula($id_aula) != 0) {
             $this->Util->telaResultado($this, "Aula excluida com sucesso!", false, "Monitoria/gerenciar" . '/' . $id_monitoria);
         } else {
-            $this->Util->telaResultado($this, "N�o foi possivel atualizar os dados. Confira os dados informados e se n�o existe um periodo ativo ou j� cadastrado.", true);
+            $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um periodo ativo ou já cadastrado.", true);
         }
     }
 

@@ -53,7 +53,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <form role="form" action="<?php echo site_url('Monitoria/aula_editar/'.$aula->id_monitoria); ?>" method="post">
+                <form role="form" action="<?php echo site_url('Monitoria/aula_editar/'.$aula->id_monitoria .'/'.$aula->id_aula); ?>" method="post">
                     <div class="box-body">
                         <input type="hidden" name="id_aula" value="<?=$aula->id_aula?>">
                         <input type="hidden" name="id_monitoria" value="<?=$aula->id_monitoria?>">
