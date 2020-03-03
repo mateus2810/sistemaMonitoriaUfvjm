@@ -179,14 +179,13 @@ class Monitoria extends CI_Controller
         //var_dump($somaDias);
 
         //Condição para não conseguir fazer edição após 3 dias de cadastro das atividades e adicionar nova monitoria
-        if(strtotime($somaDias) >= strtotime($diaAtual) && $this->Aula_model->adicionaEditaAulaMonitoria($DATA) != 0) {
+        if($this->Aula_model->adicionaEditaAulaMonitoria($DATA) != 0) {
             $this->Util->telaResultado($this, "Informações atualizadas!",
                 false, "Monitoria/gerenciar" . '/' . $id_monitoria);
 
     }else {
         $this->Util->telaResultado($this, "Não é possível fazer a edição, já se passaram 3 dias após o cadastro", true);
     }
-
 
 
       /* // var_dump($DATA);
@@ -246,9 +245,9 @@ class Monitoria extends CI_Controller
 
      //   var_dump($DATA);
         if ($this->Aula_model->adicionaEditaReuniaoMonitoria($DATA) != 0) {
-            $this->Util->telaResultado($this, "Informa��es atualizados!", false, "Monitoria/gerenciar" . '/' . $id_monitoria);
+            $this->Util->telaResultado($this, "Informações atualizados!", false, "Monitoria/gerenciar" . '/' . $id_monitoria);
         } else {
-            $this->Util->telaResultado($this, "N�o foi possivel atualizar os dados. Confira os dados informados e se n�o existe um periodo ativo ou j�cadastrado.", true);
+            $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um periodo ativo ou já cadastrado.", true);
         }
     }
 
