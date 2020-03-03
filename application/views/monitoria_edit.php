@@ -273,7 +273,7 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                             <div class="form-group"  >
                                                 <label>Banco:</label>
                                                 <select id="banco" class="form-control select2" value="<?= $monitoria->banco ?>"  >
-
+                                                    <option value="">---</option>
                                                     <option value="001">Banco do Brasil</option>
                                                     <option value="104">Banco Caixa</option>
                                                     <option value="341">Banco Itaú</option>
