@@ -268,7 +268,7 @@ class Monitoria extends CI_Controller
 
         $this->load->model('Aula_model', 'aula');//
 
-        if (!$this->Monitoria_model->getVerificaFrequencia($id_aula)) {
+        if (!$this->Frequencia_model->getVerificaFrequencia($id_aula)) {
 
             if ($this->Aula_model->excluir_Aula($id_aula) != 0) {
                 $this->Util->telaResultado($this, "Aula excluida com sucesso!", false, "Monitoria/gerenciar" . '/' . $id_monitoria);
@@ -279,7 +279,7 @@ class Monitoria extends CI_Controller
                 $this->Util->telaResultado($this, "Vocẽ tem frequência cadastrada a essa aula.", true);
             }
         }
-    
+
 
         function horario_editar_view($id_monitoria, $id_horario_monitoria)
         {
@@ -692,7 +692,7 @@ class Monitoria extends CI_Controller
             $DATA['disciplina'] = $this->Disciplina_model->getDisciplinaById($id_disciplina);
 
             //Somatorio de carga horaria do monitor em suas atividades
-            $DATA['somatorioAula'] = $this->Aula_model->somatorioHorarioAula($id_monitoria);
+            $DATA['somatorioAula'] = $this->Aula_model->somatorioCargaHoraria($id_monitoria);
 
             $id_usuario = $this->session->userdata('id_usuario');
 
