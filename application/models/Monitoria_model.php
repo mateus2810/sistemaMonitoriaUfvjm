@@ -144,7 +144,7 @@ class Monitoria_model extends CI_Model
         $Query = $this->db->query($sql);
         $result = $Query->result();
 
-        return $result[0];
+        return $result;
     }
 
     private function getMonitoriasMON($id_usuario)
