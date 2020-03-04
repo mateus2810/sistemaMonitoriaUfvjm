@@ -47,8 +47,7 @@ $id_usuario = $this->session->userdata('id_usuario');
                     <p><b>Horas demais atividades:</b> <?= $somatorioReuniao->horario_reuniao ?></p>
                     <p><b>Carga horária total:</b> <?= $cargaHoraria->carga_horaria ?></p>
                     <p><b>Semestre:</b> <?= $monitoria->periodo ?>  </p>
-                    <p><b>Carga Horária Minima Semanal:</b> <?= date('H:i', strtotime($monitoria->carga_horaria_aulas)) ?>  </p>
-                    <p><b>Carga Horária Semanal:</b> <?= date('H:i', strtotime($monitoria->carga_horaria)) ?>  </p>
+
                     <hr/>
                     <p><b>Alunos cadastrados:</b> <?= count($alunos); ?>  </p>
                     <p><b>Aulas cadastradas:</b> <?= count($aulas); ?>  </p>
