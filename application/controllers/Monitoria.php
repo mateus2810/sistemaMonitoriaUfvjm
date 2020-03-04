@@ -641,7 +641,7 @@ class Monitoria extends CI_Controller
 
         function frequencia_editar($id_monitoria, $id_aula)
         {
-            $this->Util->verificaPermissao($this, 'Administrador');
+            //$this->Util->verificaPermissao($this, 'Administrador');
 
             $DATA['id_frequencia'] = null;
             $DATA['id_aluno'] = $this->input->post('id_aluno');
@@ -649,7 +649,7 @@ class Monitoria extends CI_Controller
 
             //  var_dump($DATA);
             if ($this->Frequencia_model->adicionaEditaFrequenciaMonitoria($DATA) != 0) {
-                $this->Util->telaResultado($this, "Informa��es atualizados!", false, "Monitoria/frequencia_listar_view/" . $id_monitoria . '/' . $id_aula);
+                $this->Util->telaResultado($this, "Informações atualizados!", false, "Monitoria/frequencia_listar_view/" . $id_monitoria . '/' . $id_aula);
             } else {
                 $this->Util->telaResultado($this, "N�o foi possivel atualizar os dados. Confira os dados informados e se n�o existe um per�odo ativo ou j� cadastrado.", true);
             }
