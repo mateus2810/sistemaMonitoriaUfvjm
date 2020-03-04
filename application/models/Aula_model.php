@@ -139,7 +139,7 @@ join aula au USING(id_monitoria) left join frequencia fr on (a.id_aluno = fr.id_
 
         $sql = "SELECT DISTINCT  TIME_FORMAT(SUM(carga_horaria), '%h : %i') as carga_horaria
         from ( SELECT DISTINCT  SUM(TIMEDIFF(horario_fim,horario_inicio))as carga_horaria
-        from atividade  where id_monitoria = $id_monitoria UNION SELECT DISTINCT SUM(TIMEDIFF(horario_fim,horario_inicio))g as carga_horaria
+        from atividade  where id_monitoria = $id_monitoria UNION SELECT DISTINCT SUM(TIMEDIFF(horario_fim,horario_inicio)) as carga_horaria
         from aula  where id_monitoria = $id_monitoria ) as uniao";
 
 

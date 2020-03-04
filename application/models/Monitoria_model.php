@@ -380,4 +380,12 @@ class Monitoria_model extends CI_Model
 
         return $result[0];
     }
+
+    public function getVerificaFrequencia($id_aula){
+        $sql = "select f.id_frequencia from frequencia f where f.id_aula = $id_aula;";
+        $Query = $this->db->query($sql, $id_aula);
+        $result = $Query->result();
+
+        return $result;
+    }
 }
