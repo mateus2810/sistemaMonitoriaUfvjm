@@ -49,10 +49,7 @@ where m.id_monitoria = $id_monitoria and m.id_disciplina = d.id_disciplina and u
 
     public function alunoFrequencia($id_monitoria){
 
-        $sql = "select DISTINCT  a.data,u.nome from aula a join frequencia f join usuario u where a.id_aula = f.id_aula
-and f.id_aluno = u.id_usuario and a.id_monitoria = $id_monitoria;";
-
-        $sql = "select distinct cadastrado, u.nome from frequencia f join usuario u
+               $sql = "select distinct cadastrado, u.nome from frequencia f join usuario u
                 join aluno_monitoria a where a.id_monitoria = $id_monitoria and
                 f.id_aluno = u.id_usuario;";
 
@@ -183,6 +180,28 @@ FROM atestado_frequencia a join periodo p where a.id_periodo = p.id_periodo";
         $sql = "select DISTINCT * from monitoria m join periodo  p join atestado_frequencia af
 where m.id_periodo = p.id_periodo and p.id_periodo = af.id_periodo and m.id_monitoria = $id_monitoria;";
         $Query = $this->db->query($sql,array($id_monitoria) );
+        $result = $Query->result();
+
+        return $result;
+    }
+
+    public function listaAtestadoFinal(){
+        //recupera os dados do banco de dados
+        $sql = 'SELECT
+				m.id_monitoria, m.id_disciplina, m.id_professor, m.id_monitor, m.id_periodo,m.monitoria_remunerada,
+				 m.carga_horaria, m.carga_horaria_aulas,m.numero_edital, m.data_inicio, m.data_fim,
+				 m.banco, m.agencia, m.conta, m.cpf,
+				CONCAT(d.codigo, " - ", d.nome) AS nomeDisciplina, d.curso, d.campus, d.unidade_academica,
+				CONCAT(p.semestre, "/", p.ano) AS periodo,
+				prof.nome AS professor, mon.nome AS monitor
+			FROM
+				monitoria AS m
+				JOIN disciplina AS d USING(id_disciplina)
+				JOIN periodo AS p USING(id_periodo)
+				LEFT JOIN usuario AS prof ON(prof.id_usuario = m.id_professor)
+				LEFT JOIN usuario AS mon ON(mon.id_usuario = m.id_monitor) ';
+
+        $Query = $this->db->query($sql);
         $result = $Query->result();
 
         return $result;

@@ -138,97 +138,9 @@ $this->load->view('header_site'); ?>
     </div>
     <!-- /.row -->
 
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">Outras Atividades(reunião professor,etc)</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <table id="example3" class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                            <th>Data</th>
-                            <th>horário</th>
-                            <th>Descrição</th>
-
-
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        <?php foreach ($reuniao as $aula) { ?>
-                            <tr>
-                                <td><?= date('d/m/Y', strtotime($aula->data)) ?></td>
-                                <td> <?= date('H:i', strtotime($aula->horario_inicio)) . ' - ' . date('H:i', strtotime($aula->horario_fim)) ?> </td>
-                                <td> <?= $aula->descricao ?> </td>
-                            </tr>
-                        <?php } ?>
-                        </tbody>
-
-                    </table>
-                </div>
-                <!-- /.box-body -->
 
 
 
-            </div>
-            <!-- /.box -->
-
-        </div>
-        <!-- /.col -->
-
-    </div>
-    <!-- /.row -->
-
-
-
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">Alunos</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <table id="example2" class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                            <th>Matrícula</th>
-                            <th>Nome</th>
-                            <th>Frequência</th>
-
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        <?php foreach ($alunos as $aluno) { ?>
-                            <tr>
-                                <td> <?= $aluno->matricula ?> </td>
-                                <td> <?= $aluno->nome ?> </td>
-                                <td> <?= $aluno->quant_frequencia ?> </td>
-
-                            </tr>
-                        <?php } ?>
-                        </tbody>
-
-                    </table>
-                </div>
-                <!-- /.box-body -->
-
-
-
-            </div>
-            <!-- /.box -->
-
-            </div>
-            <!-- /.box -->
-
-
-
-        </div>
-        <!-- /.col -->
 
 
 </section>

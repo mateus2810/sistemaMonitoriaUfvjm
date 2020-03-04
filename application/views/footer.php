@@ -4,9 +4,9 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 0.0.1
     </div>
-    <strong>Copyright © 2019 PET . Template by Almsaeed Studio. All rights reserved.Desenv: Alex Lopes, Mateus Amaral e Thales Mota
+    <strong>Copyright © 2020 PET . Template by Almsaeed Studio. All rights reserved.Desenv: Alex Lopes, Mateus Amaral e Thales Mota
   </footer>
-  
+
 </div>
 <!-- ./wrapper -->
 

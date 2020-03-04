@@ -38,7 +38,7 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="<?= base_url('/AdminLTE-2.4.3/dist/css/skins/_all-skins.min.css'); ?>">
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -65,7 +65,7 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                     <!-- /.box-header -->
                     <div class="box-body">
                         <!-- antes ia para o usuarios/editar -->
-                        <form role="form"
+                        <form role="form" ondblclick="habilitar()"
                               action="<?php echo site_url('monitoria/cadastro_monitoria/' . $monitoria->id_monitoria); ?>"
                               method="post">
 
@@ -173,29 +173,19 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                                 <input type="text" style="text-transform:uppercase" class="form-control"name="numero_edital" placeholder="Digite o Edital"value="<?= $monitoria->numero_edital ?>">
                                             </div>
                                         </div>
-
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Remunerada:</label>
-                                                <div class="input-group text">
-                                                    <div class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-ok"></i>
-                                                    </div>
-                                                    <select class="form-control select2" id="monitoria_remunerada"
-                                                            name="monitoria_remunerada">
-                                                        value="<?= $monitoria->monitoria_remunerada ?>">
-                                                        <option value="Sim"<?= $monitoria->monitoria_remunerada == "Sim" ? 'selected="selected"' : '' ?>>
-                                                            Sim
+                                                <label>Selecione o Periodo</label>
+                                                <select name="id_periodo" class="form-control select2" style="width: 100%;">
+                                                    <?php foreach ($periodos as $periodo) { ?>
+                                                        <option value="<?= $periodo->id_periodo ?>" <?= $periodo->id_periodo == $monitoria->id_periodo ? 'selected="selected"' : '' ?>>
+                                                            <?= $periodo->ano . '/' . $periodo->semestre ?>
                                                         </option>
-                                                        <option value="Nao"<?= $monitoria->monitoria_remunerada == "Nao" ? 'selected="selected"' : '' ?>>
-                                                            Não
-                                                        </option>
-                                                    </select>
-
-
-                                                </div>
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
+
 
                                         <div class="col-md-4">
                                             <div class="bootstrap-timepicker">
@@ -216,19 +206,34 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
 
                                     </div>
 
+
+
+
+
                                     <div class="row">
                                         <!-- /.col -->
+
                                         <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Selecione o Periodo</label>
-                                            <select name="id_periodo" class="form-control select2" style="width: 100%;">
-                                                <?php foreach ($periodos as $periodo) { ?>
-                                                    <option value="<?= $periodo->id_periodo ?>" <?= $periodo->id_periodo == $monitoria->id_periodo ? 'selected="selected"' : '' ?>>
-                                                        <?= $periodo->ano . '/' . $periodo->semestre ?>
-                                                    </option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
+                                            <div class="form-group">
+                                                <label>Remunerada:</label>
+                                                <div class="input-group text">
+                                                    <div class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-ok"></i>
+                                                    </div>
+                                                    <select class="form-control select2" checked="checked"  id="monitoria_remunerada"
+                                                            name="monitoria_remunerada" value="<?= $monitoria->monitoria_remunerada ?>">
+
+                                                        <option id="Sim" value="Sim"<?= $monitoria->monitoria_remunerada == "Sim" ? 'selected="selected"' : '' ?>>
+                                                            Sim
+                                                        </option>
+                                                        <option id="Nao" value="Nao"<?= $monitoria->monitoria_remunerada == "Nao" ? 'selected="selected"' : '' ?>>
+                                                            Não
+                                                        </option>
+                                                    </select>
+
+
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="col-md-4">
@@ -245,7 +250,7 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                         </div>
 
                                         <div class="col-md-4">
-                                            <div class="form-group">
+                                            <div class="form-group" >
                                                 <label>Data Fim:</label>
                                                 <div class="input-group date">
                                                     <div class="input-group-addon" id="data_fim" >
@@ -261,6 +266,49 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
 
                                     </div>
                                     <!-- /.row -->
+                                    <div class="row">
+                                        <!-- /.col -->
+
+                                        <div class="col-md-3">
+                                            <div class="form-group"  >
+                                                <label>Banco:</label>
+                                                <select id="banco" class="form-control select2" value="<?= $monitoria->banco ?>"  >
+                                                    <option value="">---</option>
+                                                    <option value="001">Banco do Brasil</option>
+                                                    <option value="104">Banco Caixa</option>
+                                                    <option value="341">Banco Itaú</option>
+                                                    <option value="237">Banco Bradesco</option>
+                                                    <option value="033">Banco Santader</option>
+                                                    <option value="077">Banco Inter</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3" >
+                                            <div class="form-group">
+                                                <label>Agência:</label>
+                                                <input type="text" style="text-transform:uppercase" id="agencia" class="form-control"name="agencia" placeholder="Número da agência"value="<?= $monitoria->agencia ?>">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Conta:</label>
+                                                    <input type="text" style="text-transform:uppercase" id="conta" class="form-control"name="conta" placeholder="Número da conta"value="<?= $monitoria->conta ?>">
+                                                </div>
+                                        </div>
+
+
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>CPF:</label>
+                                                <input type="text" style="text-transform:uppercase" id="cpf" class="form-control"name="cpf" maxlength="11" placeholder="___-___-___."value="<?= $monitoria->cpf ?>">
+                                            </div>
+                                        </div>
+
+
+                                    </div>
 
 
                                 </div>
@@ -363,3 +411,24 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
         });
     })
 </script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#monitoria_remunerada").change(function () {
+            var st = $(this).val();
+            if(st == 'Nao'){
+                $("#agencia").prop("disabled", true);
+                $("#banco").prop("disabled", true);
+                $("#conta").prop("disabled", true);
+                $("#cpf").prop("disabled", true);
+            }
+           else {
+                $("#agencia").prop("disabled", false);
+                $("#banco").prop("disabled", false);
+                $("#conta").prop("disabled", false);
+                $("#cpf").prop("disabled", false);
+            }
+        })
+    });
+</script>
+
