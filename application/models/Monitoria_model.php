@@ -105,8 +105,8 @@ class Monitoria_model extends CI_Model
     {
         //recupera os dados do banco de dados
         $sql = 'SELECT
-				m.id_monitoria, m.id_disciplina, m.id_professor, m.id_monitor, m.id_periodo,m.monitoria_remunerada,
-				 m.carga_horaria, m.carga_horaria_aulas,m.numero_edital, m.data_inicio, m.data_fim,
+				m.id_monitoria, m.id_disciplina, m.id_professor, m.id_monitor, m.id_periodo,m.monitoria_remunerada
+				,m.numero_edital, m.data_inicio, m.data_fim,
 				 m.banco, m.agencia, m.conta, m.cpf,
 				CONCAT(d.codigo, " - ", d.nome) AS nomeDisciplina, d.curso, d.campus, d.unidade_academica,
 				CONCAT(p.semestre, "/", p.ano) AS periodo,
@@ -129,7 +129,7 @@ class Monitoria_model extends CI_Model
 
         //recupera os dados do banco de dados
         $sql = 'SELECT
-				m.id_monitoria, m.id_disciplina, m.id_professor, m.id_monitor, m.id_periodo,m.monitoria_remunerada, m.carga_horaria, m.carga_horaria_aulas,m.numero_edital, m.data_inicio, m.data_fim,
+				m.id_monitoria, m.id_disciplina, m.id_professor, m.id_monitor, m.id_periodo,m.monitoria_remunerada,m.numero_edital, m.data_inicio, m.data_fim,
 				 m.banco, m.agencia, m.conta, m.cpf,
 				CONCAT(d.codigo, " - ", d.nome) AS nomeDisciplina, d.curso, d.campus, d.unidade_academica,
 				CONCAT(p.semestre, "/", p.ano) AS periodo,
@@ -152,7 +152,7 @@ class Monitoria_model extends CI_Model
 
         //recupera os dados do banco de dados
         $sql = 'SELECT
-				m.id_monitoria, m.id_disciplina, m.id_professor, m.id_monitor, m.id_periodo,m.monitoria_remunerada, m.carga_horaria, m.carga_horaria_aulas,m.numero_edital, m.data_inicio, m.data_fim,
+				m.id_monitoria, m.id_disciplina, m.id_professor, m.id_monitor, m.id_periodo,m.carga_horaria_aulas,m.numero_edital, m.data_inicio, m.data_fim,
 				 m.banco, m.agencia, m.conta, m.cpf,
 				CONCAT(d.codigo, " - ", d.nome) AS nomeDisciplina, d.curso, d.campus, d.unidade_academica,
 				CONCAT(p.semestre, "/", p.ano) AS periodo,
