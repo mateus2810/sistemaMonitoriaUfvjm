@@ -155,9 +155,9 @@ FROM atestado_frequencia a join periodo p where a.id_periodo = p.id_periodo";
         return $this->db->delete('atestado_frequencia');
     }
 
-    public function  getContagemFrequencia(){
+    public function  getContagemFrequencia($id_monitoria){
 
-        $sql = "select a.data , COUNT(f.id_frequencia) as quant from frequencia f join aula a where a.id_aula =f.id_aula GROUP by a.data;;";
+        $sql = "select a.data , COUNT(f.id_frequencia) as quant from frequencia f join aula a where a.id_aula =f.id_aula and a.id_monitoria = $id_monitoria GROUP by a.data;";
         $query = $this->db->query($sql);
         $result = $query->result();
 
