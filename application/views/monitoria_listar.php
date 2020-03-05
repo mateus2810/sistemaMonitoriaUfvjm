@@ -29,7 +29,7 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
     <div class="row">
         <div class="col-xs-12">
 
-            <div class="box">
+            <div class="box table-responsive">
                 <div class="box-header">
                     <h3 class="box-title">Monitorias Cadastradas</h3>
                 </div>

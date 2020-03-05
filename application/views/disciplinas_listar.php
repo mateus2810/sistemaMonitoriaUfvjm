@@ -7,11 +7,11 @@
 ?>
 
 
- 
+
   <!-- DataTables -->
   <link rel="stylesheet" href="<?= base_url('/AdminLTE-2.4.3/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css');?>">
- 
-  
+
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -25,10 +25,10 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-         
-          <div class="box">
+      <div class="row ">
+        <div class="col-xs-12 ">
+
+          <div class="box table-responsive">
             <div class="box-header">
               <h3 class="box-title">Disciplinas</h3>
             </div>
@@ -46,7 +46,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                
+
                 <?php foreach ($disciplinas as $disciplina) { ?>
                 <tr>
                   <td><?= $disciplina->nome ?></a></td>
@@ -58,22 +58,22 @@
 
                       <a href="<?= site_url('Disciplinas/excluir_disciplina_bd/'.$disciplina->id_disciplina) ?>"
                          onclick="return confirm('Deseja realmente excluir?')" class="glyphicon glyphicon-trash"title="Editar disciplina"></a></td>
-                </tr> 
+                </tr>
                 <?php }?>
                 </tbody>
 
               </table>
             </div>
             <!-- /.box-body -->
-            
-            <div class="box-body"> 
-                  <div class="row"> 
+
+            <div class="box-body">
+                  <div class="row">
                     <!-- /.col -->
-                    <div class="col-xs-2"> 
+                    <div class="col-xs-2">
                       <a href="<?=site_url('Disciplinas/editar_view/novo')?>" class="btn btn-default btn-block btn-flat">Nova Unidade Curricular</a>
                     </div>
                     <!-- /.col -->
-                  </div> 
+                  </div>
             </div>
             <!-- /.box-body -->
           </div>
@@ -84,21 +84,21 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
-     
+
 
 <?php $this->load->view('footer'); ?>
- 
- 
+
+
 <!-- DataTables -->
 <script src="<?php echo base_url();?>/AdminLTE-2.4.3/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url();?>/AdminLTE-2.4.3/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
- 
+
 <!-- page script -->
 <script>
   $(function () {
-    $('#example1').DataTable({  
+    $('#example1').DataTable({
       'language': <?= $datatablesPortugueseBrasil?>
-    }) 
+    })
   })
 </script>

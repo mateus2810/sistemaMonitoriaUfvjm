@@ -101,7 +101,7 @@
 
         <!-- /.navbar-collapse -->
         <!-- Navbar Right Menu -->
-        <div class="navbar-custom-menu">
+        <div class="navbar-custom-menu ">
           <ul class="nav navbar-nav">
 
             <?php if (false) {?>
@@ -134,9 +134,10 @@
                 </ul>
             </li>
             <?php } else { ?>
-            <li class="dropdown user user-menu">
+
                 <a href="<?php echo site_url('Home/login'); ?>" >
-                     <span class="hidden-xs">Login</span>
+                    <center> <li class="fa fa-fw fa-share-square-o"></center>
+                    <span class="hidden-xs ">Login</span>
                 </a>
             </li>
             <?php } ?>
