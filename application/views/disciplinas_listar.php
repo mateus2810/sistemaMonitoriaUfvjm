@@ -25,16 +25,23 @@
 
     <!-- Main content -->
     <section class="content">
+
       <div class="row ">
         <div class="col-xs-12 ">
 
           <div class="box table-responsive">
+
+      <div class="row">
+        <div class="col-xs-12">
+
+          <div class="box">
+
             <div class="box-header">
               <h3 class="box-title">Disciplinas</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example1" class="table-responsive{-sm|-md|-lg|-xl}" >
                 <thead>
                 <tr>
                   <th>Disciplina</th>

@@ -10,7 +10,7 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
 <!-- DataTables -->
 <link rel="stylesheet"
       href="<?= base_url('/AdminLTE-2.4.3/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css'); ?>">
-
+<meta content="width=device-width, initial-scale=1, maximum-scale=0.5, user-scalable=no" name="viewport">
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
