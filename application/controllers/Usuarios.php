@@ -116,8 +116,8 @@ class Usuarios extends CI_Controller
     {
         $id_usuario = $this->input->post('id_usuario');
 
-        $senha = $this->input->post('senha');
-        $senha2 = $this->input->post('senha2');
+        $senha = md5($this->input->post('senha'));
+        $senha2 = md5($this->input->post('senha2'));
         if ($senha == $senha2 && trim($senha) != "") {
             $this->Usuario_model->alterarSenha($id_usuario, $senha);
             $this->Util->telaResultado($this, "Senha alterada!", false, "Usuarios/listar_view");
