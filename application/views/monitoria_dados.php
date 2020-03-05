@@ -107,9 +107,9 @@ $id_usuario = $this->session->userdata('id_usuario');
     <!-- /.row -->
 
 
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
+    <div class="row ">
+        <div class="col-xs-12 ">
+            <div class="box table-responsive ">
                 <div class="box-header">
                     <h3 class="box-title">Cadastrar atividades aulas</h3>
                 </div>
@@ -188,9 +188,9 @@ $id_usuario = $this->session->userdata('id_usuario');
     </div>
     <!-- /.row -->
 
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
+    <div class="row ">
+        <div class="col-xs-12 ">
+            <div class="box table-responsive">
                 <div class="box-header">
                     <h3 class="box-title">Outras Atividades(reunião professor,etc)</h3>
                 </div>
@@ -265,9 +265,9 @@ $id_usuario = $this->session->userdata('id_usuario');
 
 
 
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
+    <div class="row ">
+        <div class="col-xs-">
+            <div class="box table-responsive">
                 <div class="box-header">
                     <h3 class="box-title">Alunos</h3>
                 </div>
@@ -321,7 +321,7 @@ $id_usuario = $this->session->userdata('id_usuario');
     <!-- /.Bloco Emissão de Relatórios -->
     <div class="row">
         <div class="col-xs-12">
-            <div class="box">
+            <div class="box table-responsive">
 
                 <div class="col-xs-13">
                     <div class="box box-solid">

@@ -12,9 +12,10 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
   <title>Gestão de Monitorias</title>
   <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=0.5, user-scalable=no" name="viewport">
 
    <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="<?=base_url('/AdminLTE-2.4.3/bower_components/bootstrap/dist/css/bootstrap.min.css');?>">
@@ -101,7 +102,7 @@
 
         <!-- /.navbar-collapse -->
         <!-- Navbar Right Menu -->
-        <div class="navbar-custom-menu">
+        <div class="navbar-custom-menu ">
           <ul class="nav navbar-nav">
 
             <?php if (false) {?>
@@ -134,9 +135,10 @@
                 </ul>
             </li>
             <?php } else { ?>
-            <li class="dropdown user user-menu">
+
                 <a href="<?php echo site_url('Home/login'); ?>" >
-                     <span class="hidden-xs">Login</span>
+                    <center> <li class="fa fa-fw fa-share-square-o"></center>
+                    <span class="hidden-xs ">Login</span>
                 </a>
             </li>
             <?php } ?>

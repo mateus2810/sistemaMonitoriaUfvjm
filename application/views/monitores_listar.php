@@ -10,7 +10,7 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
 <!-- DataTables -->
 <link rel="stylesheet"
       href="<?= base_url('/AdminLTE-2.4.3/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css'); ?>">
-
+<meta content="width=device-width, initial-scale=1, maximum-scale=0.5, user-scalable=no" name="viewport">
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -28,7 +28,7 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
     <div class="row">
         <div class="col-xs-12">
 
-            <div class="box">
+            <div class="box table-responsive">
                 <div class="box-header">
                     <h3 class="box-title">Alunos cadastrados</h3>
                 </div>
@@ -81,7 +81,7 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
             </div>
             <!-- /.box -->
 
-            <div class="box">
+            <div class="box table-responsive">
                 <div class="box-header">
                     <h3 class="box-title">Monitores cadastrados</h3>
                 </div>
