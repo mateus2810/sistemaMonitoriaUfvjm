@@ -369,7 +369,7 @@ $id_usuario = $this->session->userdata('id_usuario');
 
                                                             <a href="<?= site_url('Monitoria/relatorio_mensal/'.$monitoria->id_monitoria.'/'.
                                                                 $atestado->id_disciplina.'/'.$atestado->id_atestado_frequencia ) ?>"
-                                                                class="glyphicon glyphicon-unchecked"title="Selecionar Data"></a>
+                                                                class="glyphicon glyphicon-plus-sign"title="Selecionar Data"></a>
                                                         </td>
                                                     </tr>
 
