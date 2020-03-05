@@ -490,7 +490,7 @@ class Monitoria extends CI_Controller
                 $DATA['id_professor'] = $this->input->post('id_professor');
                 $DATA['id_periodo'] = $this->input->post('id_periodo');
                 $DATA['monitoria_remunerada'] = $this->input->post('monitoria_remunerada');
-               // $DATA['carga_horaria'] = $this->input->post('carga_horaria');
+              //  $DATA['carga_horaria'] = $this->input->post('carga_horaria');
                 $DATA['numero_edital'] = $this->input->post('numero_edital');
                 $DATA['data_inicio'] = $this->input->post('data_inicio');
                 $DATA['data_fim'] = $this->input->post('data_fim');
