@@ -186,33 +186,6 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                             </div>
                                         </div>
 
-
-                                        <div class="col-md-4">
-                                            <div class="bootstrap-timepicker">
-                                                <div class="form-group">
-                                                    <label>Carga Horária Semanal:</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-clock-o"></i>
-                                                        </div>
-                                                        <input type="time" class="form-control timepicker"
-                                                               name="carga_horaria" value="12:00"
-                                                               id="carga_horaria" placeholder="Carga horária"
-                                                               value="<?= $monitoria->carga_horaria ?>">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-
-
-
-
-                                    <div class="row">
-                                        <!-- /.col -->
-
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Remunerada:</label>
@@ -235,6 +208,17 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                                 </div>
                                             </div>
                                         </div>
+
+                                    </div>
+
+
+
+
+
+                                    <div class="row">
+                                        <!-- /.col -->
+
+
 
                                         <div class="col-md-4">
                                             <div class="form-group">
@@ -262,14 +246,7 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                             </div>
                                         </div>
 
-
-
-                                    </div>
-                                    <!-- /.row -->
-                                    <div class="row">
-                                        <!-- /.col -->
-
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="form-group"  >
                                                 <label>Banco:</label>
                                                 <select id="banco" class="form-control select2" value="<?= $monitoria->banco ?>"  >
@@ -284,14 +261,21 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                             </div>
                                         </div>
 
-                                        <div class="col-md-3" >
+                                    </div>
+                                    <!-- /.row -->
+                                    <div class="row">
+                                        <!-- /.col -->
+
+
+
+                                        <div class="col-md-4" >
                                             <div class="form-group">
                                                 <label>Agência:</label>
                                                 <input type="text" style="text-transform:uppercase" id="agencia" class="form-control"name="agencia" placeholder="Número da agência"value="<?= $monitoria->agencia ?>">
                                             </div>
                                         </div>
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Conta:</label>
                                                     <input type="text" style="text-transform:uppercase" id="conta" class="form-control"name="conta" placeholder="Número da conta"value="<?= $monitoria->conta ?>">
@@ -300,7 +284,7 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
 
 
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>CPF:</label>
                                                 <input type="text" style="text-transform:uppercase" id="cpf" class="form-control"name="cpf" maxlength="11" placeholder="___-___-___."value="<?= $monitoria->cpf ?>">
