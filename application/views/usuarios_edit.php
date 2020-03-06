@@ -153,7 +153,7 @@ $PERFIL_USUARIO = $this->session->userdata('perfil');
                                 <?php if ($usuario->id_usuario != "novo") { ?>
                                 <a href="<?=site_url('usuarios/alterar_senha_view/'.$usuario->id_usuario)?>" class="btn btn-default">Alterar Senha</a>
                                 <?php } ?>
-                                <a href="<?=site_url('Usuarios/listar_view/')?>" class="btn btn-default">Voltar</a>
+                                <a href="<?=site_url('Home/Index')?>" class="btn btn-default">Voltar</a>
 
                             </div>
                         </form>
