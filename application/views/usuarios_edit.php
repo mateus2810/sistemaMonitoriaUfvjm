@@ -7,7 +7,7 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
 
 $PERFIL_USUARIO = $this->session->userdata('perfil');
 
-if ($PERFIL_USUARIO == "Administrador") {
+
     ?>
 
 
@@ -173,7 +173,7 @@ if ($PERFIL_USUARIO == "Administrador") {
 
 
     <?php $this->load->view('footer'); ?>
-<?php } ?>
+
 
 <!-- DataTables -->
 <script src="<?= base_url('/AdminLTE-2.4.3/bower_components/datatables.net/js/jquery.dataTables.min.js');?>"></script>

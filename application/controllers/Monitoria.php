@@ -341,11 +341,6 @@ class Monitoria extends CI_Controller
             $DATA['usuario'] = $this->Usuario_model->getUsuarioById($id_usuario);
 
 
-            //verifica se o usuario esta editando outro usuario. somente o admin pode fazer isso
-            $usuario = $this->session->userdata('id_usuario');
-            if ($id_usuario != $usuario) {
-                $this->Util->verificaPermissao($this, 'Administrador');
-            }
             $DATA['alunos'] = $this->Usuario_model->getUsuariosAluno();
             $DATA['monitores'] = $this->Usuario_model->getUsuariosMonitor();
             $this->load->view('monitores_listar', $DATA);
@@ -356,18 +351,26 @@ class Monitoria extends CI_Controller
         {
             $DATA['alunos'] = $this->Usuario_model->getUsuariosAluno();
             $DATA['monitores'] = $this->Usuario_model->getUsuariosMonitor();
+            $perfil = $this->session->userdata('perfil');
 
+            if($this->Usuario_model->verificaAlunoDesmatriculado($id_usuario) or $perfil == "Administrador" ){
 
             //recupera os usuarios do sistema
             $DATA['usuario'] = $this->Usuario_model->getUsuarioMonitorAluno($id_usuario);
             $DATA['usuario'] = $this->Usuario_model->getUsuarioById($id_usuario);
 
-
-            //verifica se o usuario esta editando outro usuario. somente o admin pode fazer isso
-            $usuario = $this->session->userdata('id_usuario');
-            if ($id_usuario != $usuario) {
-                $this->Util->verificaPermissao($this, 'Administrador');
+            }else {
+                $this->Util->telaResultado($this, "Você não pode mudar o perfil de um monitor que não seja de sua disciplina.", true);
             }
+
+
+
+
+//            //verifica se o usuario esta editando outro usuario. somente o admin pode fazer isso
+//            $usuario = $this->session->userdata('id_usuario');
+//            if ($id_usuario != $usuario) {
+//                $this->Util->verificaPermissao($this, 'Administrador');
+//            }
             $DATA['alunos'] = $this->Usuario_model->getUsuariosAluno();
             $DATA['monitores'] = $this->Usuario_model->getUsuariosMonitor();
             $this->load->view('monitores_listar', $DATA);

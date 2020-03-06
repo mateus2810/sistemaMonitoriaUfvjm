@@ -76,15 +76,15 @@
                   <?=$NOME_USUARIO?>
                 </p>
               </li>
-              <!-- Menu Footer-->
-<!--              <li class="user-footer">-->
-<!--                      <div class="pull-left">-->
-<!---->
-<!--                    <form id="form_edit_user" action="--><?php //echo site_url('usuarios/editar_view/'.$ID_USUARIO); ?><!--" method="post">-->
-<!--                        <input type="hidden" name='id_usuario' value="--><?php //=$ID_USUARIO?><!--">-->
-<!--                        <a  href="#" onclick="document.getElementById('form_edit_user').submit()" class="btn btn-default btn-flat">Editar</a>-->
-<!--                    </form>-->
-<!--                </div>-->
+
+              <li class="user-footer">
+                      <div class="pull-left">
+
+                    <form id="form_edit_user" action="<?php echo site_url('usuarios/editar_view/'.$ID_USUARIO); ?>" method="post">
+                        <input type="hidden" name='id_usuario' value="<?php $ID_USUARIO?>">
+                        <a  href="#" onclick="document.getElementById('form_edit_user').submit()" class="btn btn-default btn-flat">Editar</a>
+                    </form>
+                </div>
 
                 <div class="pull-right">
                   <a href="<?=site_url('Home/logout'); ?>" class="btn btn-default btn-flat">Sair</a>

@@ -41,7 +41,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table-responsive{-sm|-md|-lg|-xl}" >
+              <table id="example1" class="table table-responsive" >
                 <thead>
                 <tr>
                   <th>Disciplina</th>
