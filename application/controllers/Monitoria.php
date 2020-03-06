@@ -493,7 +493,6 @@ class Monitoria extends CI_Controller
                 $DATA['id_professor'] = $this->input->post('id_professor');
                 $DATA['id_periodo'] = $this->input->post('id_periodo');
                 $DATA['monitoria_remunerada'] = $this->input->post('monitoria_remunerada');
-              //  $DATA['carga_horaria'] = $this->input->post('carga_horaria');
                 $DATA['numero_edital'] = $this->input->post('numero_edital');
                 $DATA['data_inicio'] = $this->input->post('data_inicio');
                 $DATA['data_fim'] = $this->input->post('data_fim');
@@ -508,8 +507,6 @@ class Monitoria extends CI_Controller
                 $DATA['id_disciplina'] = $this->input->post('id_disciplina');
                 $DATA['id_periodo'] = $this->input->post('id_periodo');
                 $DATA['monitoria_remunerada'] = $this->input->post('monitoria_remunerada');
-               // $DATA['carga_horaria'] = $this->input->post('carga_horaria');
-              //  $DATA['carga_horaria'] = $this->input->post('carga_horaria');
                 $DATA['numero_edital'] = $this->input->post('numero_edital');
                 $DATA['data_inicio'] = $this->input->post('data_inicio');
                 $DATA['data_fim'] = $this->input->post('data_fim');
@@ -520,6 +517,7 @@ class Monitoria extends CI_Controller
             }
 
             if ($this->Monitoria_model->adicionaMonitoria($DATA) != 0) {
+
                 $this->Util->telaResultado($this, "Informacoes atualizadas!", false, "Monitoria/listar_view/" . $PERFIL_USUARIO . '/' . $ID_USUARIO);
             } else {
                 $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um período ativo ou já cadastrado.", true);

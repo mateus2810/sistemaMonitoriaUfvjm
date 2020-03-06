@@ -95,7 +95,8 @@ class Home extends CI_Controller
 
         //recupera os dados do formulario
         $matricula = $this->input->post('matricula');
-        $senha = $this->input->post('senha');
+        $senha = md5($this->input->post('senha'));
+        //$senha = $this->input->post('senha');
         //$password = md5($password);
 
         $DATA = $this->Usuario_model->verificaLogin($matricula, $senha);
@@ -147,8 +148,8 @@ class Home extends CI_Controller
     {
         $id_usuario = $this->input->post('id_usuario');
 
-        $senha = $this->input->post('senha');
-        $senha2 = $this->input->post('senha2');
+        $senha = md5($this->input->post('senha'));
+        $senha2 = md5($this->input->post('senha2'));
 
 
         if ($senha == $senha2 && trim($senha) != "") {

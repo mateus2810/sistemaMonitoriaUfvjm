@@ -146,7 +146,8 @@ class Usuario_model extends CI_Model
             $idUsuario = $DADOS['id_usuario'];
         } //caso contrario insere um novo
         else {
-            $DADOS['senha'] = '123456';
+            $encriptado = md5($senha = '123456');
+            $DADOS['senha'] = $encriptado;
             $this->db->insert('usuario', $DADOS);
             $idUsuario = $this->db->insert_id();
         }
