@@ -47,7 +47,7 @@ class Usuarios extends CI_Controller
     function editar_view($id_usuario)
     {
         //Prepara para inserir um novo usuario
-        $this->Util->verificaPermissao($this, 'Administrador');
+
         if ($id_usuario == 'novo') {
             $usuario = new stdClass();
             $usuario->id_usuario = $id_usuario;
@@ -78,9 +78,7 @@ class Usuarios extends CI_Controller
         //verifica se o usuario esta editando outro usuario. somente o admin pode fazer isso
         $id_usuario = $this->session->userdata('id_usuario');
 
-        if ($DATA['id_usuario'] != $id_usuario) {
-            $this->Util->verificaPermissao($this, 'Administrador');
-        }
+
         //  var_dump($DATA);
 
         if ($DATA['id_usuario'] != 0) {
@@ -120,7 +118,7 @@ class Usuarios extends CI_Controller
         $senha2 = md5($this->input->post('senha2'));
         if ($senha == $senha2 && trim($senha) != "") {
             $this->Usuario_model->alterarSenha($id_usuario, $senha);
-            $this->Util->telaResultado($this, "Senha alterada!", false, "Usuarios/listar_view");
+            $this->Util->telaResultado($this, "Senha alterada!", false, "Home/index");
         } else {
             $this->Util->telaResultado($this, "Erro: As senhas estão diferentes!", true);
         }
