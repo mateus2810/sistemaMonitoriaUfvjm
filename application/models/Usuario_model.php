@@ -102,10 +102,11 @@ class Usuario_model extends CI_Model
 
     public function getUsuarioMonitorAluno($id_usuario)
     {
-        $idcliente = $this->db->escape($id_usuario);
+        $this->db->escape($id_usuario);
         //recupera os dados do banco de dados
         $sql = "UPDATE usuario set perfil = 'Aluno' where id_usuario = " . $id_usuario;
         $this->db->query($sql);
+
     }
 
 
@@ -215,5 +216,17 @@ class Usuario_model extends CI_Model
 
         $this->db->where('id_usuario', $id_usuario);
         $this->db->update('usuario', $DADOS);
+    }
+
+    public function verificaAlunoDesmatriculado($id_usuario){
+        $usuario =$this->session->userdata('id_usuario');
+
+        $sql = "select DISTINCT u.nome from usuario u join monitoria m
+        join aluno_monitoria am where m.id_monitor = $id_usuario and m.id_monitoria = am.id_monitoria
+        and  m.id_professor = $usuario and u.id_usuario = m.id_monitor;" ;
+        $Query = $this->db->query($sql);
+        $result = $Query->result();
+
+        return $result;
     }
 }
