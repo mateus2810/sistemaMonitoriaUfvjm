@@ -95,7 +95,7 @@ class Home extends CI_Controller
 
         //recupera os dados do formulario
         $matricula = $this->input->post('matricula');
-        $senha = md5($this->input->post('senha'));
+        $senha = $this->input->post('senha');
         //$senha = $this->input->post('senha');
         //$password = md5($password);
 
