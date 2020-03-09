@@ -44,8 +44,7 @@ $this->load->view('header_site'); ?>
                     <p><b>Monitor:</b> <?= $monitoria->monitor ?>  </p>
                     <p><b>Semestre:</b> <?= $monitoria->periodo ?>  </p>
                     <hr/>
-                    <p><b>Alunos cadastrados:</b> <?= count($alunos); ?>  </p>
-                    <p><b>Aulas cadastradas:</b> <?= count($aulas); ?>  </p>
+
                 </div>
             </div>
             <!-- /.box -->

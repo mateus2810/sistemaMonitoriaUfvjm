@@ -314,7 +314,7 @@ class Monitoria extends CI_Controller
 
             // var_dump($DATA);
             if ($this->Monitoria_model->adicionaEditaHorarioMonitoria($DATA) != 0) {
-                $this->Util->telaResultado($this, "Informa��es atualizados!", false, "Monitoria/gerenciar" . '/' . $id_monitoria);
+                $this->Util->telaResultado($this, "Informações atualizados!", false, "Monitoria/gerenciar" . '/' . $id_monitoria);
             } else {
                 $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um período ativo ou não cadastrado.", true);
             }
@@ -518,7 +518,7 @@ class Monitoria extends CI_Controller
 
             if ($this->Monitoria_model->adicionaMonitoria($DATA) != 0) {
 
-                $this->Util->telaResultado($this, "Informacoes atualizadas!", false, "Monitoria/listar_view/" . $PERFIL_USUARIO . '/' . $ID_USUARIO);
+                $this->Util->telaResultado($this, "Informações atualizadas!", false, "Monitoria/listar_view/" . $PERFIL_USUARIO . '/' . $ID_USUARIO);
             } else {
                 $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um período ativo ou já cadastrado.", true);
             }
