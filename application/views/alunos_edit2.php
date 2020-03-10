@@ -30,7 +30,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <form role="form" action="<?php echo site_url('Monitoria/aluno_editar_2/'.$usuario->id_monitoria); ?>" method="post">
+                <form role="form" action="<?php echo site_url('Monitoria/aluno_editar_2/'.$usuario->id_usuario); ?>" method="post">
                     <div class="box-body">
                         <input type="hidden" name="id_usuario" value="<?=$usuario->id_usuario?>">
                         <div class="form-group">
@@ -60,7 +60,7 @@
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-default" name="opcao" value="salvar" >Salvar</button>
-                        <a href="<?=site_url('Monitoria/aluno_listar_view/'.$usuario->id_monitoria)?>" class="btn btn-default">Voltar</a>
+                        <a href="<?=site_url('Usuarios/listar_monitores_view/')?>" class="btn btn-default">Voltar</a>
 
                     </div>
                 </form>

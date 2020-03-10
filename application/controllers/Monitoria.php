@@ -423,21 +423,21 @@ class Monitoria extends CI_Controller
 
 
             if (!$this->Monitoria_model->verificaEmail($DATA['email']) and !$this->Monitoria_model->verificaMatricula($DATA['matricula']) and $this->Usuario_model->adicionaEditaUsuario($DATA) != 0) {
-                $this->Util->telaResultado($this, "Informações atualizados!", false, "Monitoria/aluno_listar_view/" . $id_monitoria);
+                $this->Util->telaResultado($this, "Informações atualizadas!", false, "Monitoria/aluno_listar_view/" . $id_monitoria);
             } else {
                 $this->Util->telaResultado($this, "Email ou Matricula ja existentes.", true);
             }
         }
 
 
-        function aluno_editar_view_2($id_monitoria, $id_usuario)
+        function aluno_editar_view_2($id_usuario)
         {
 
             //Prepara para inserir um novo usuario
             if ($id_usuario == 'novo') {
                 $usuario = new stdClass();
                 $usuario->id_usuario = $id_usuario;
-                $usuario->id_monitoria = $id_monitoria;
+              //  $usuario->id_monitoria = $id_monitoria;
                 $usuario->matricula = "";
                 $usuario->nome = "";
                 $usuario->email = "";
@@ -474,7 +474,7 @@ class Monitoria extends CI_Controller
 
 
             if (!$this->Monitoria_model->verificaEmail($DATA['email']) and !$this->Monitoria_model->verificaMatricula($DATA['matricula']) and $this->Usuario_model->adicionaEditaUsuario($DATA) != 0) {
-                $this->Util->telaResultado($this, "Informações atualizados!", false, "Monitoria/aluno_listar_view/" . $id_monitoria);
+                $this->Util->telaResultado($this, "Informações atualizadas!", false, "Usuarios/listar_monitores_view");
             } else {
                 $this->Util->telaResultado($this, "Email ou Matricula ja existentes.", true);
             }

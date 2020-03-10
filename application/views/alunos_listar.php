@@ -74,7 +74,7 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-xs-2">
-                            <a href="<?= site_url('Monitoria/aluno_editar_view_2/'.$monitoria->id_monitoria.'/novo') ?>"
+                            <a href="<?= site_url('Monitoria/aluno_editar_view/'.$monitoria->id_monitoria.'/novo') ?>"
                                class="btn btn-default btn-block btn-flat">Cadastrar Aluno</a>
                         </div><!-- /.col -->
                     </div>

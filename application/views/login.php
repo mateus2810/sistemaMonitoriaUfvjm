@@ -25,10 +25,13 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition login-page">
+<body background="../imagens/UFVJM.jpg" >
+
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Gestão de Monitorias</b></a>
+      <font color="#f0f8ff">
+          <h1><b>Gestão de Monitorias</b></h1>
+      </font>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
