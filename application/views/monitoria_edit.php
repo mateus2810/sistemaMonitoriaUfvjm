@@ -38,7 +38,7 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="<?= base_url('/AdminLTE-2.4.3/dist/css/skins/_all-skins.min.css'); ?>">
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -74,7 +74,8 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                     <label>Selecione a Disciplina</label>
                                     <select name="id_disciplina" class="form-control select2" style="width: 100%;">
                                         <?php foreach ($disciplinas as $disciplina) { ?>
-                                            <option value="<?= $disciplina->id_disciplina ?>" <?= $disciplina->id_disciplina == $monitoria->id_disciplina ? 'selected="selected"' : '' ?>>
+                                            <option
+                                                value="<?= $disciplina->id_disciplina ?>" <?= $disciplina->id_disciplina == $monitoria->id_disciplina ? 'selected="selected"' : '' ?>>
                                                 <?= $disciplina->nome . ', ' . $disciplina->curso ?>
                                             </option>
                                         <?php } ?>
@@ -86,7 +87,8 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                             <select name="id_monitor" class="form-control select2" style="width: 100%;">
 
                                                 <?php foreach ($usuarios as $usuario) { ?>
-                                                    <option value="<?= $usuario->id_usuario ?>" <?= $usuario->id_usuario == $monitoria->id_monitor ? 'selected="selected"' : '' ?>>
+                                                    <option
+                                                        value="<?= $usuario->id_usuario ?>" <?= $usuario->id_usuario == $monitoria->id_monitor ? 'selected="selected"' : '' ?>>
                                                         <?= $usuario->nome ?>
                                                     </option>
                                                 <?php } ?>
@@ -101,7 +103,8 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                                 <select name="id_professor" class="form-control select2"
                                                         style="width: 100%;">
                                                     <?php foreach ($usuariosP as $usuario) { ?>
-                                                        <option value="<?= $usuario->id_usuario ?>" <?= $usuario->id_usuario == $monitoria->id_professor ?>>
+                                                        <option
+                                                            value="<?= $usuario->id_usuario ?>" <?= $usuario->id_usuario == $monitoria->id_professor ?>>
                                                             <?= $usuario->nome ?>
                                                         </option>
                                                     <?php } ?>
@@ -113,7 +116,8 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                                 <label>Selecione o Professor</label>
                                                 <select name="id_professor" class="form-control select2"
                                                         style="width: 100%;">
-                                                    <option value="<?= $ID_USUARIO ?>" <?= $ID_USUARIO == $usuario->id_usuario ? 'selected="selected"' : '' ?>>
+                                                    <option
+                                                        value="<?= $ID_USUARIO ?>" <?= $ID_USUARIO == $usuario->id_usuario ? 'selected="selected"' : '' ?>>
                                                         <?= $NOME_USUARIO ?>
                                                     </option>
 
@@ -123,11 +127,13 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                     <?php } else { ?>
                                         <div class="form-group ">
                                             <label>Selecione o Monitor</label>
-                                            <select  name="id_monitor" id="id_monitor" class="form-control select2 " style="width: 100%;"
-                                                     disabled>
+                                            <select name="id_monitor" id="id_monitor" class="form-control select2 "
+                                                    style="width: 100%;"
+                                                    disabled>
 
                                                 <?php foreach ($usuarios as $usuario) { ?>
-                                                    <option readonly="readonly" value="<?= $usuario->id_usuario ?>" <?= $usuario->id_usuario == $monitoria->id_monitor ? 'selected="selected"' : '' ?>>
+                                                    <option readonly="readonly"
+                                                            value="<?= $usuario->id_usuario ?>" <?= $usuario->id_usuario == $monitoria->id_monitor ? 'selected="selected"' : '' ?>>
                                                         <?= $usuario->nome ?>
                                                     </option>
                                                 <?php } ?>
@@ -142,7 +148,8 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                                 <select name="id_professor" class="form-control select2"
                                                         style="width: 100%;" disabled>
                                                     <?php foreach ($usuariosP as $usuario) { ?>
-                                                        <option value="<?= $usuario->id_usuario ?>" <?= $usuario->id_usuario == $monitoria->id_professor ?>>
+                                                        <option
+                                                            value="<?= $usuario->id_usuario ?>" <?= $usuario->id_usuario == $monitoria->id_professor ?>>
                                                             <?= $usuario->nome ?>
                                                         </option>
                                                     <?php } ?>
@@ -154,7 +161,8 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                                 <label>Selecione o Professor</label>
                                                 <select name="id_professor" class="form-control select2"
                                                         style="width: 100%;">
-                                                    <option value="<?= $ID_USUARIO ?>" <?= $ID_USUARIO == $usuario->id_usuario ? 'selected="selected"' : '' ?>>
+                                                    <option
+                                                        value="<?= $ID_USUARIO ?>" <?= $ID_USUARIO == $usuario->id_usuario ? 'selected="selected"' : '' ?>>
                                                         <?= $NOME_USUARIO ?>
                                                     </option>
 
@@ -170,15 +178,19 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Edital Vinculado</label>
-                                                <input type="text" style="text-transform:uppercase" class="form-control"name="numero_edital" placeholder="Digite o Edital"value="<?= $monitoria->numero_edital ?>">
+                                                <input type="text" style="text-transform:uppercase" class="form-control"
+                                                       name="numero_edital" placeholder="Digite o Edital"
+                                                       value="<?= $monitoria->numero_edital ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Selecione o Periodo</label>
-                                                <select name="id_periodo" class="form-control select2" style="width: 100%;">
+                                                <select name="id_periodo" class="form-control select2"
+                                                        style="width: 100%;">
                                                     <?php foreach ($periodos as $periodo) { ?>
-                                                        <option value="<?= $periodo->id_periodo ?>" <?= $periodo->id_periodo == $monitoria->id_periodo ? 'selected="selected"' : '' ?>>
+                                                        <option
+                                                            value="<?= $periodo->id_periodo ?>" <?= $periodo->id_periodo == $monitoria->id_periodo ? 'selected="selected"' : '' ?>>
                                                             <?= $periodo->ano . '/' . $periodo->semestre ?>
                                                         </option>
                                                     <?php } ?>
@@ -193,13 +205,17 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                                     <div class="input-group-addon">
                                                         <i class="glyphicon glyphicon-ok"></i>
                                                     </div>
-                                                    <select class="form-control select2" checked="checked"  id="monitoria_remunerada"
-                                                            name="monitoria_remunerada" value="<?= $monitoria->monitoria_remunerada ?>">
+                                                    <select class="form-control select2" checked="checked"
+                                                            id="monitoria_remunerada"
+                                                            name="monitoria_remunerada"
+                                                            value="<?= $monitoria->monitoria_remunerada ?>">
 
-                                                        <option id="Sim" value="Sim"<?= $monitoria->monitoria_remunerada == "Sim" ? 'selected="selected"' : '' ?>>
+                                                        <option id="Sim"
+                                                                value="Sim"<?= $monitoria->monitoria_remunerada == "Sim" ? 'selected="selected"' : '' ?>>
                                                             Sim
                                                         </option>
-                                                        <option id="Nao" value="Nao"<?= $monitoria->monitoria_remunerada == "Nao" ? 'selected="selected"' : '' ?>>
+                                                        <option id="Nao"
+                                                                value="Nao"<?= $monitoria->monitoria_remunerada == "Nao" ? 'selected="selected"' : '' ?>>
                                                             Não
                                                         </option>
                                                     </select>
@@ -212,52 +228,75 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                     </div>
 
 
-
-
-
                                     <div class="row">
                                         <!-- /.col -->
-
 
 
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Data Inicio:</label>
                                                 <div class="input-group date">
-                                                    <div class="input-group-addon" id="data_inicio" >
+                                                    <div class="input-group-addon" id="data_inicio">
                                                         <i class="fa fa-calendar"></i>
                                                     </div>
-                                                    <input class="form-control pull-right"value="<?php echo date('Y-m-d');?>" type="date"  name="data_inicio" required>
+                                                    <input class="form-control pull-right"
+                                                           value="<?php echo date('Y-m-d'); ?>" type="date"
+                                                           name="data_inicio" required>
 
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="col-md-4">
-                                            <div class="form-group" >
+                                            <div class="form-group">
                                                 <label>Data Fim:</label>
                                                 <div class="input-group date">
-                                                    <div class="input-group-addon" id="data_fim" >
+                                                    <div class="input-group-addon" id="data_fim">
                                                         <i class="fa fa-calendar"></i>
                                                     </div>
-                                                    <input class="form-control pull-right"value="<?=$monitoria->data_fim?>" type="date"  name="data_fim" required>
+                                                    <input class="form-control pull-right"
+                                                           value="<?= $monitoria->data_fim ?>" type="date"
+                                                           name="data_fim" required>
 
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="col-md-4">
-                                            <div class="form-group"  >
+                                            <div class="form-group">
                                                 <label>Banco:</label>
-                                                <select id="banco" name="banco" class="form-control select2"   >
-                                                    <option value="">---</option>
-                                                    <option value="Banco do Brasil" <?= $monitoria->banco == "Banco do Brasil" ? "selected" : "" ?>>Banco do Brasil</option>
-                                                    <option value="Banco Caixa"<?= $monitoria->banco == "Banco Caixa" ? "selected" : "" ?>>Banco Caixa</option>
-                                                    <option value="Banco Itau"<?= $monitoria->banco == "Banco Itau" ? "selected" : "" ?>>Banco Itaú</option>
-                                                    <option value="Banco Bradesco"<?= $monitoria->banco == "Banco Bradesco" ? "selected" : "" ?>>Banco Bradesco</option>
-                                                    <option value="Banco Santader"<?= $monitoria->banco == "Banco Santader" ? "selected" : "" ?>>Banco Santader</option>
-                                                    <option value="Banco Inter"<?= $monitoria->banco == "Banco Inter" ? "selected" : "" ?>>Banco Inter</option>
-                                                </select>
+
+                                         
+
+                                                    <select id="banco" class="form-control select2"
+                                                            value="<?= $monitoria->banco ?>">
+
+                                                        <option value="">---</option>
+                                                        <option
+                                                            value="Banco do Brasil" <?= $monitoria->banco == "Banco do Brasil" ? "selected" : "" ?>>
+                                                            Banco do Brasil
+                                                        </option>
+                                                        <option
+                                                            value="Banco Caixa"<?= $monitoria->banco == "Banco Caixa" ? "selected" : "" ?>>
+                                                            Banco Caixa
+                                                        </option>
+                                                        <option
+                                                            value="Banco Itau"<?= $monitoria->banco == "Banco Itau" ? "selected" : "" ?>>
+                                                            Banco Itaú
+                                                        </option>
+                                                        <option
+                                                            value="Banco Bradesco"<?= $monitoria->banco == "Banco Bradesco" ? "selected" : "" ?>>
+                                                            Banco Bradesco
+                                                        </option>
+                                                        <option
+                                                            value="Banco Santader"<?= $monitoria->banco == "Banco Santader" ? "selected" : "" ?>>
+                                                            Banco Santader
+                                                        </option>
+                                                        <option
+                                                            value="Banco Inter"<?= $monitoria->banco == "Banco Inter" ? "selected" : "" ?>>
+                                                            Banco Inter
+                                                        </option>
+                                                    </select>
                                             </div>
                                         </div>
 
@@ -267,79 +306,97 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                         <!-- /.col -->
 
 
-
-                                        <div class="col-md-4" >
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Agência:</label>
-                                                <input type="text" style="text-transform:uppercase" id="agencia" class="form-control"name="agencia" placeholder="Número da agência"value="<?= $monitoria->agencia ?>">
+                                                <input type="text" style="text-transform:uppercase" id="agencia"
+                                                       class="form-control" name="agencia"
+                                                       placeholder="Número da agência"
+                                                       value="<?= $monitoria->agencia ?>">
                                             </div>
                                         </div>
 
                                         <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>Conta:</label>
-                                                    <input type="text" style="text-transform:uppercase" id="conta" class="form-control"name="conta" placeholder="Número da conta"value="<?= $monitoria->conta ?>">
-                                                </div>
+                                            <div class="form-group">
+                                                <label>Conta:</label>
+                                                <input type="text" style="text-transform:uppercase" id="conta"
+                                                       class="form-control" name="conta" placeholder="Número da conta"
+                                                       value="<?= $monitoria->conta ?>">
+                                            </div>
                                         </div>
-
 
 
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>CPF:</label>
-                                                <input type="text" style="text-transform:uppercase" id="cpf" class="form-control"name="cpf"
-                                                 maxlength="11" placeholder="___-___-___."value="<?= $monitoria->cpf ?>">
+
+                                                <input type="text" style="text-transform:uppercase" id="cpf"
+                                                       class="form-control" name="cpf"
+                                                       maxlength="11" placeholder="___-___-___."
+                                                       value="<?= $monitoria->cpf ?>">
+
+                                                <input type="text" style="text-transform:uppercase" id="cpf"
+                                                       class="form-control" name="cpf" maxlength="11"
+                                                       placeholder="___-___-___." value="<?= $monitoria->cpf ?>">
+
                                             </div>
                                         </div>
-
 
 
                                         <div class="box-body">
 
                                             <i class="fa fa-book"></i>
                                             <label>Plano de Aula:</label>
-                                            <textarea id="plano_aula" name="plano_aula" class="textarea" placeholder="Plano de Aula" value="<?=$monitoria->plano_aula?>"
-                                            style="width: 100%; height: 125px; font-size: 14px; line-height:
-                                            18px; border: 1px solid #dddddd; padding: 10px;" >
+                                            <textarea id="plano_aula" name="plano_aula" class="textarea"
+                                                      placeholder="Plano de Aula" value="<?= $monitoria->plano_aula ?>"
+                                                      style="width: 100%; height: 125px; font-size: 14px; line-height:
+                                            18px; border: 1px solid #dddddd; padding: 10px;">
                                              </textarea>
 
                                         </div>
 
-                    </div>
-
-                </div>
-
-
-                                        <div class="form-check" >
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-                                            <label class="form-check-label" for="exampleCheck1">Certifico que o aluno está presente e concorda com o plano de aula/monitoria apresentado</label>
-                                        </div>
-
-
                                     </div>
 
-
                                 </div>
-                            </div>
-                            <!-- /.box-body -->
 
-                            <div class="box-footer">
-                                <button type="submit" class="btn btn-default" name="opcao" value="salvar">Salvar
-                                </button>
-                                <a href="<?= site_url('Monitoria/listar_view/' . $PERFIL_USUARIO . '/' . $ID_USUARIO) ?>"
-                                   class="btn btn-default">Voltar</a>
+
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                                    <label class="form-check-label" for="exampleCheck1">Certifico que o aluno está
+                                        presente e concorda com o plano de aula/monitoria apresentado</label>
+                                </div>
+
 
                             </div>
-                        </form>
+
 
                     </div>
-                    <!-- /.box-body -->
-
-                    <!-- /.box-body -->
                 </div>
-                <!-- /.box -->
+
+
             </div>
-            <!-- /.col -->
+            <div class="box-footer">
+                <button type="submit" class="btn btn-default" name="opcao" value="salvar">Salvar
+                </button>
+                <a href="<?= site_url('Monitoria/listar_view/' . $PERFIL_USUARIO . '/' . $ID_USUARIO) ?>"
+                   class="btn btn-default">Voltar</a>
+
+            </div>
+        </div>
+
+
+        </form>
+
+
+        </div>
+        <!-- /.box-body -->
+
+
+        <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+        </div>
+        <!-- /.col -->
         </div>
         <!-- /.row -->
     </section>
@@ -351,7 +408,8 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
 
 <!-- DataTables -->
 <script src="<?= base_url('/AdminLTE-2.4.3/bower_components/datatables.net/js/jquery.dataTables.min.js'); ?>"></script>
-<script src="<?= base_url('/AdminLTE-2.4.3/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js'); ?>"></script>
+<script
+    src="<?= base_url('/AdminLTE-2.4.3/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js'); ?>"></script>
 
 
 <!-- InputMask -->
@@ -360,18 +418,21 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
 <script src="<?= base_url('/AdminLTE-2.4.3/plugins/input-mask/jquery.inputmask.extensions.js'); ?>"></script>
 <!-- date-range-picker -->
 <script src="<?= base_url('/AdminLTE-2.4.3/bower_components/moment/min/moment.min.js'); ?>"></script>
-<script src="<?= base_url('/AdminLTE-2.4.3/bower_components/bootstrap-daterangepicker/daterangepicker.js'); ?>"></script>
+<script
+    src="<?= base_url('/AdminLTE-2.4.3/bower_components/bootstrap-daterangepicker/daterangepicker.js'); ?>"></script>
 <!-- bootstrap datepicker -->
-<script src="<?= base_url('/AdminLTE-2.4.3/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js'); ?>"></script>
+<script
+    src="<?= base_url('/AdminLTE-2.4.3/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js'); ?>"></script>
 <!-- bootstrap color picker -->
-<script src="<?= base_url('/AdminLTE-2.4.3/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js'); ?>"></script>
+<script
+    src="<?= base_url('/AdminLTE-2.4.3/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js'); ?>"></script>
 <!-- bootstrap time picker -->
 <script src="<?= base_url('/AdminLTE-2.4.3/plugins/timepicker/bootstrap-timepicker.min.js'); ?>"></script>
 
 <!-- page script -->
 
 <script>
-    $("#id_professor").css("pointer-events","none");
+    $("#id_professor").css("pointer-events", "none");
 
 </script>
 <script>
@@ -424,13 +485,12 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
     $(function () {
         $("#monitoria_remunerada").change(function () {
             var st = $(this).val();
-            if(st == 'Nao'){
+            if (st == 'Nao') {
                 $("#agencia").prop("disabled", true);
                 $("#banco").prop("disabled", true);
                 $("#conta").prop("disabled", true);
                 $("#cpf").prop("disabled", true);
-            }
-           else {
+            } else {
                 $("#agencia").prop("disabled", false);
                 $("#banco").prop("disabled", false);
                 $("#conta").prop("disabled", false);
