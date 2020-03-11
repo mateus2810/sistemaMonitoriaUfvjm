@@ -49,6 +49,7 @@ class Home extends CI_Controller
         $DATA['monitorias'] = $monitorias;
 
         $this->load->view('index', $DATA);
+
     }
 
     public function get_data_pesquisar()
