@@ -500,6 +500,7 @@ class Monitoria extends CI_Controller
                 $DATA['agencia'] = $this->input->post('agencia');
                 $DATA['conta'] = $this->input->post('conta');
                 $DATA['cpf'] = $this->input->post('cpf');
+                $DATA['plano_aula'] = $this->input->post('plano_aula');
 
                 //var_dump($DATA);
             } else {
@@ -514,10 +515,10 @@ class Monitoria extends CI_Controller
                 $DATA['agencia'] = $this->input->post('agencia');
                 $DATA['conta'] = $this->input->post('conta');
                 $DATA['cpf'] = $this->input->post('cpf');
+                $DATA['plano_aula'] = $this->input->post('plano_aula');
             }
 
             if ($this->Monitoria_model->adicionaMonitoria($DATA) != 0) {
-
                 $this->Util->telaResultado($this, "Informações atualizadas!", false, "Monitoria/listar_view/" . $PERFIL_USUARIO . '/' . $ID_USUARIO);
             } else {
                 $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um período ativo ou já cadastrado.", true);
@@ -554,6 +555,7 @@ class Monitoria extends CI_Controller
                     $aula->agencia = "";
                     $aula->conta = "";
                     $aula->cpf = "";
+                    $aula->plano_aula = "";
 
                     $DATA['monitoria'] = $aula;
                 } //recupera as informacoes da aula para editar

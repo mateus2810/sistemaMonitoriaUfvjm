@@ -50,15 +50,15 @@ if ($PERFIL_USUARIO == "Administrador") {
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
-         
+
           <div class="box">
             <div class="box-header">
               <h3 class="box-title"><?= $disciplina->id_disciplina == "" ? "Nova" : "Editar" ?> Disciplina</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body"> 
-                <form role="form" action="<?php echo site_url('disciplinas/editar'); ?>" method="post"> 
-                    <div class="box-body"> 
+            <div class="box-body">
+                <form role="form" action="<?php echo site_url('disciplinas/editar'); ?>" method="post">
+                    <div class="box-body">
                         <input type="hidden" name="id_disciplina" value="<?=$disciplina->id_disciplina?>">
                         <div class="form-group">
                             <label>Nome</label>
@@ -92,11 +92,11 @@ if ($PERFIL_USUARIO == "Administrador") {
                                 <option  value="Campus 1" <?= $disciplina->campus == "Campus 1" ? 'selected="selected"' : ''?>  >Campus 1</option>
                             </select>
                         </div>
-    
+
                         <div class="form-group">
-                            <label>Codigo</label>
+                            <label>Codigo - (Preferência Caixa Alta)</label>
                             <input type="text" class="form-control" name="codigo" placeholder="Entre com o código da disciplina" value="<?=$disciplina->codigo?>" required>
-                        </div> 
+                        </div>
 
                     </div>
                     <!-- /.box-body -->
@@ -105,10 +105,10 @@ if ($PERFIL_USUARIO == "Administrador") {
                         <button type="submit" class="btn btn-default" name="opcao" value="salvar" >Salvar</button>
                         <a href="<?=site_url('Disciplinas/listar_view/')?>" class="btn btn-default">Voltar</a>
                     </div>
-                </form> 
+                </form>
             </div>
             <!-- /.box-body -->
-             
+
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
@@ -122,18 +122,18 @@ if ($PERFIL_USUARIO == "Administrador") {
 
     <?php $this->load->view('footer'); ?>
 <?php } ?>
- 
+
 <!-- DataTables -->
 <script src="<?= base_url('/AdminLTE-2.4.3/bower_components/datatables.net/js/jquery.dataTables.min.js');?>"></script>
 <script src="<?= base_url('/AdminLTE-2.4.3/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js');?>"></script>
 
- 
+
 <!-- page script -->
 <script>
   $(function () {
-    $('#example1').DataTable({  
+    $('#example1').DataTable({
       'language': <?= $datatablesPortugueseBrasil?>
-    }) 
+    })
   })
 </script>
 

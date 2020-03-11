@@ -249,14 +249,14 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                         <div class="col-md-4">
                                             <div class="form-group"  >
                                                 <label>Banco:</label>
-                                                <select id="banco" class="form-control select2" value="<?= $monitoria->banco ?>"  >
+                                                <select id="banco" name="banco" class="form-control select2"   >
                                                     <option value="">---</option>
-                                                    <option value="001">Banco do Brasil</option>
-                                                    <option value="104">Banco Caixa</option>
-                                                    <option value="341">Banco Itaú</option>
-                                                    <option value="237">Banco Bradesco</option>
-                                                    <option value="033">Banco Santader</option>
-                                                    <option value="077">Banco Inter</option>
+                                                    <option value="Banco do Brasil" <?= $monitoria->banco == "Banco do Brasil" ? "selected" : "" ?>>Banco do Brasil</option>
+                                                    <option value="Banco Caixa"<?= $monitoria->banco == "Banco Caixa" ? "selected" : "" ?>>Banco Caixa</option>
+                                                    <option value="Banco Itau"<?= $monitoria->banco == "Banco Itau" ? "selected" : "" ?>>Banco Itaú</option>
+                                                    <option value="Banco Bradesco"<?= $monitoria->banco == "Banco Bradesco" ? "selected" : "" ?>>Banco Bradesco</option>
+                                                    <option value="Banco Santader"<?= $monitoria->banco == "Banco Santader" ? "selected" : "" ?>>Banco Santader</option>
+                                                    <option value="Banco Inter"<?= $monitoria->banco == "Banco Inter" ? "selected" : "" ?>>Banco Inter</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -287,8 +287,32 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>CPF:</label>
-                                                <input type="text" style="text-transform:uppercase" id="cpf" class="form-control"name="cpf" maxlength="11" placeholder="___-___-___."value="<?= $monitoria->cpf ?>">
+                                                <input type="text" style="text-transform:uppercase" id="cpf" class="form-control"name="cpf"
+                                                 maxlength="11" placeholder="___-___-___."value="<?= $monitoria->cpf ?>">
                                             </div>
+                                        </div>
+
+
+
+                                        <div class="box-body">
+
+                                            <i class="fa fa-book"></i>
+                                            <label>Plano de Aula:</label>
+                                            <textarea id="plano_aula" name="plano_aula" class="textarea" placeholder="Plano de Aula" value="<?=$monitoria->plano_aula?>"
+                                            style="width: 100%; height: 125px; font-size: 14px; line-height:
+                                            18px; border: 1px solid #dddddd; padding: 10px;" >
+                                             </textarea>
+
+                                        </div>
+
+                    </div>
+
+                </div>
+
+
+                                        <div class="form-check" >
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                                            <label class="form-check-label" for="exampleCheck1">Certifico que o aluno está presente e concorda com o plano de aula/monitoria apresentado</label>
                                         </div>
 
 

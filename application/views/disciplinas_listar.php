@@ -76,7 +76,7 @@
             <div class="box-body">
                   <div class="row">
                     <!-- /.col -->
-                    <div class="col-xs-2">
+                    <div class="col-xs-3">
                       <a href="<?=site_url('Disciplinas/editar_view/novo')?>" class="btn btn-default btn-block btn-flat">Nova Unidade Curricular</a>
                     </div>
                     <!-- /.col -->
