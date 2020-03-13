@@ -94,6 +94,7 @@ class Home extends CI_Controller
             return;
         }
 
+        
         //recupera os dados do formulario
         $matricula = $this->input->post('matricula');
         $senha = md5($this->input->post('senha')); // senha criptografada

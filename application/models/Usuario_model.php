@@ -230,4 +230,37 @@ class Usuario_model extends CI_Model
 
         return $result;
     }
+
+    public function listarProfessoresHabilitados(){
+        $sql = "select * from usuario where perfil = 'professor' and habilitado = 1;" ;
+        $Query = $this->db->query($sql);
+        $result = $Query->result();
+
+        return $result;
+    }
+    public function listarProfessoresNaoHabilitados(){
+        $sql = "select * from usuario where perfil = 'professor' and (habilitado = 0 or habilitado IS NULL);" ;
+        $Query = $this->db->query($sql);
+        $result = $Query->result();
+
+        return $result;
+    }
+    public function setProfessorHabilitado($id_usuario)
+    {
+        $this->db->escape($id_usuario);
+        //recupera os dados do banco de dados
+        $sql = "UPDATE usuario set habilitado = 1 where id_usuario = " . $id_usuario;
+        $this->db->query($sql);
+
+    }
+
+    public function setProfessorNaoHabilitado($id_usuario)
+    {
+        $this->db->escape($id_usuario);
+        //recupera os dados do banco de dados
+        $sql = "UPDATE usuario set habilitado = 0 where id_usuario = " . $id_usuario;
+        $this->db->query($sql);
+
+    }
+
 }

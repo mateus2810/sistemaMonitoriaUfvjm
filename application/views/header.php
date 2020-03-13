@@ -132,6 +132,8 @@
               <li><a href="<?=site_url('Relatorio/listar_view')?>"><i class="fa fa-circle-o"></i> Atestado de Frequência</a></li>
           </ul>
         </li>
+            <li><a href="<?=site_url('Usuarios/listar_professor_view')?>"><i class="fa fa-users"></i> <span>Habilitar Supervisão</span></a></li>
+
         <?php } ?>
 
           <?php if (strpos("Administrador", $this->session->userdata('perfil')) !== false or strpos("Professor", $this->session->userdata('perfil')) !== false) {  ?>

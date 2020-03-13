@@ -44,6 +44,41 @@ class Usuarios extends CI_Controller
         $this->load->view('usuarios_listar', $DATA);
     }
 
+    public function listar_professor_view(){
+        $DATA['profHabilitado'] = $this->Usuario_model->listarProfessoresHabilitados();
+        $DATA['profNaoHabilitado'] = $this->Usuario_model->listarProfessoresNaoHabilitados();
+        $this->load->view('professores_listar', $DATA);
+    }
+
+    function professor_habilitado_editar_view($id_usuario)
+    {
+
+        //recupera os usuarios do sistema
+        $DATA['usuario'] = $this->Usuario_model->setProfessorHabilitado($id_usuario);
+        $DATA['usuario'] = $this->Usuario_model->getUsuarioById($id_usuario);
+
+
+        $DATA['profHabilitado'] = $this->Usuario_model->listarProfessoresHabilitados();
+        $DATA['profNaoHabilitado'] = $this->Usuario_model->listarProfessoresNaoHabilitados();
+        $this->load->view('professores_listar', $DATA);
+    }
+
+    function professor_nao_habilitado_editar_view($id_usuario)
+    {
+
+        //recupera os usuarios do sistema
+        $DATA['usuario'] = $this->Usuario_model->setProfessorNaoHabilitado($id_usuario);
+        $DATA['usuario'] = $this->Usuario_model->getUsuarioById($id_usuario);
+
+
+        $DATA['profHabilitado'] = $this->Usuario_model->listarProfessoresHabilitados();
+        $DATA['profNaoHabilitado'] = $this->Usuario_model->listarProfessoresNaoHabilitados();
+        $this->load->view('professores_listar', $DATA);
+    }
+
+
+
+
     function editar_view($id_usuario)
     {
         //Prepara para inserir um novo usuario
@@ -96,6 +131,9 @@ class Usuarios extends CI_Controller
         $this->Usuario_model->adicionaEditaUsuario($DATA);
         $this->Util->telaResultado($this, "Informações atualizados!", false, "Usuarios/listar_view");
     }
+
+
+
 
     function alterar_senha_view($id_usuario)
     {

@@ -364,13 +364,6 @@ class Monitoria extends CI_Controller
             }
 
 
-
-
-//            //verifica se o usuario esta editando outro usuario. somente o admin pode fazer isso
-//            $usuario = $this->session->userdata('id_usuario');
-//            if ($id_usuario != $usuario) {
-//                $this->Util->verificaPermissao($this, 'Administrador');
-//            }
             $DATA['alunos'] = $this->Usuario_model->getUsuariosAluno();
             $DATA['monitores'] = $this->Usuario_model->getUsuariosMonitor();
             $this->load->view('monitores_listar', $DATA);
