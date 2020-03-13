@@ -263,4 +263,11 @@ class Usuario_model extends CI_Model
 
     }
 
+    public function verificaProfessorHabilitado($id_usuario){
+        $sql = "select * from usuario u where u.habilitado = 1 and u.id_usuario = $id_usuario;" ;
+        $Query = $this->db->query($sql);
+        $result = $Query->result();
+
+        return $result;
+    }
 }
