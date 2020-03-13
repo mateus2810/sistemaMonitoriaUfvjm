@@ -266,37 +266,36 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                             <div class="form-group">
                                                 <label>Banco:</label>
 
-                                         
 
-                                                    <select id="banco" class="form-control select2"
-                                                            value="<?= $monitoria->banco ?>">
+                                                <select class="form-control select2" id="banco"
+                                                        name="banco">
 
-                                                        <option value="">---</option>
-                                                        <option
-                                                            value="Banco do Brasil" <?= $monitoria->banco == "Banco do Brasil" ? "selected" : "" ?>>
-                                                            Banco do Brasil
-                                                        </option>
-                                                        <option
-                                                            value="Banco Caixa"<?= $monitoria->banco == "Banco Caixa" ? "selected" : "" ?>>
-                                                            Banco Caixa
-                                                        </option>
-                                                        <option
-                                                            value="Banco Itau"<?= $monitoria->banco == "Banco Itau" ? "selected" : "" ?>>
-                                                            Banco Itaú
-                                                        </option>
-                                                        <option
-                                                            value="Banco Bradesco"<?= $monitoria->banco == "Banco Bradesco" ? "selected" : "" ?>>
-                                                            Banco Bradesco
-                                                        </option>
-                                                        <option
-                                                            value="Banco Santader"<?= $monitoria->banco == "Banco Santader" ? "selected" : "" ?>>
-                                                            Banco Santader
-                                                        </option>
-                                                        <option
-                                                            value="Banco Inter"<?= $monitoria->banco == "Banco Inter" ? "selected" : "" ?>>
-                                                            Banco Inter
-                                                        </option>
-                                                    </select>
+                                                    <option value="">---</option>
+                                                    <option
+                                                        value="001" <?= $monitoria->banco == "001" ? "selected" : "" ?>>
+                                                        Banco do Brasil
+                                                    </option>
+                                                    <option
+                                                        value="104"<?= $monitoria->banco == "104" ? "selected" : "" ?>>
+                                                        Banco Caixa
+                                                    </option>
+                                                    <option
+                                                        value="341"<?= $monitoria->banco == "341" ? "selected" : "" ?>>
+                                                        Banco Itaú
+                                                    </option>
+                                                    <option
+                                                        value="237"<?= $monitoria->banco == "237" ? "selected" : "" ?>>
+                                                        Banco Bradesco
+                                                    </option>
+                                                    <option
+                                                        value="033"<?= $monitoria->banco == "033" ? "selected" : "" ?>>
+                                                        Banco Santader
+                                                    </option>
+                                                    <option
+                                                        value="077"<?= $monitoria->banco == "077" ? "selected" : "" ?>>
+                                                        Banco Inter
+                                                    </option>
+                                                </select>
                                             </div>
                                         </div>
 
@@ -335,69 +334,52 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
                                                        maxlength="11" placeholder="___-___-___."
                                                        value="<?= $monitoria->cpf ?>">
 
-                                                <input type="text" style="text-transform:uppercase" id="cpf"
-                                                       class="form-control" name="cpf" maxlength="11"
-                                                       placeholder="___-___-___." value="<?= $monitoria->cpf ?>">
-
                                             </div>
-                                        </div>
-
-
-                                        <div class="box-body">
-
-                                            <i class="fa fa-book"></i>
-                                            <label>Plano de Aula:</label>
-                                            <textarea id="plano_aula" name="plano_aula" class="textarea"
-                                                      placeholder="Plano de Aula" value="<?= $monitoria->plano_aula ?>"
-                                                      style="width: 100%; height: 125px; font-size: 14px; line-height:
-                                            18px; border: 1px solid #dddddd; padding: 10px;">
-                                             </textarea>
-
                                         </div>
 
                                     </div>
 
-                                </div>
+                                    <div>
+                                        <label>Plano de Aula:</label>
+                                        <textarea class="form-control" id="plano_aula" name="plano_aula"
+                                                  value="<?= $monitoria->plano_aula ?>"><?= $monitoria->plano_aula ?></textarea>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">Certifico que o aluno está
+                                            presente e concorda com o plano de aula/monitoria apresentado</label>
+                                    </div>
 
 
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-                                    <label class="form-check-label" for="exampleCheck1">Certifico que o aluno está
-                                        presente e concorda com o plano de aula/monitoria apresentado</label>
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-default" name="opcao" value="salvar">Salvar
+                                        </button>
+                                        <a href="<?= site_url('Monitoria/listar_view/' . $PERFIL_USUARIO . '/' . $ID_USUARIO) ?>"
+                                           class="btn btn-default">Voltar</a>
+                                    </div>
+
+
                                 </div>
 
 
                             </div>
-
-
                     </div>
+
+                    </form>
+
+
                 </div>
+                <!-- /.box-body -->
 
 
+                <!-- /.box-body -->
             </div>
-            <div class="box-footer">
-                <button type="submit" class="btn btn-default" name="opcao" value="salvar">Salvar
-                </button>
-                <a href="<?= site_url('Monitoria/listar_view/' . $PERFIL_USUARIO . '/' . $ID_USUARIO) ?>"
-                   class="btn btn-default">Voltar</a>
-
-            </div>
-        </div>
-
-
-        </form>
-
-
-        </div>
-        <!-- /.box-body -->
-
-
-        <!-- /.box-body -->
-        </div>
-        <!-- /.box -->
+            <!-- /.box -->
         </div>
         <!-- /.col -->
         </div>
+
         <!-- /.row -->
     </section>
     <!-- /.content -->
@@ -430,6 +412,20 @@ if ($PERFIL_USUARIO == "Administrador" or $PERFIL_USUARIO == "Professor") {
 <script src="<?= base_url('/AdminLTE-2.4.3/plugins/timepicker/bootstrap-timepicker.min.js'); ?>"></script>
 
 <!-- page script -->
+
+<!-- CK Editor -->
+<script src="<?= base_url('/AdminLTE-2.4.3/bower_components/ckeditor/ckeditor.js') ?>"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="<?= base_url('/AdminLTE-2.4.3/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') ?>"></script>
+<script>
+    CKEDITOR.replace('plano_aula', {
+        toolbar: 'Basic',
+
+    });
+    CKEDITOR.instances.editor1.setData('', function () {
+        this.checkDirty();  // true
+    });
+</script>
 
 <script>
     $("#id_professor").css("pointer-events", "none");

@@ -493,7 +493,6 @@ class Monitoria extends CI_Controller
                 $DATA['id_professor'] = $this->input->post('id_professor');
                 $DATA['id_periodo'] = $this->input->post('id_periodo');
                 $DATA['monitoria_remunerada'] = $this->input->post('monitoria_remunerada');
-                $DATA['plano_aula'] = $this->input->post('plano_aula');
                 $DATA['numero_edital'] = $this->input->post('numero_edital');
                 $DATA['data_inicio'] = $this->input->post('data_inicio');
                 $DATA['data_fim'] = $this->input->post('data_fim');
@@ -503,7 +502,7 @@ class Monitoria extends CI_Controller
                 $DATA['cpf'] = $this->input->post('cpf');
                 $DATA['plano_aula'] = $this->input->post('plano_aula');
 
-                //var_dump($DATA);
+              //  var_dump($DATA);
             } else {
                 $DATA['id_monitoria'] = $id_monitoria;
                 $DATA['id_disciplina'] = $this->input->post('id_disciplina');
@@ -515,8 +514,10 @@ class Monitoria extends CI_Controller
                 $DATA['banco'] = $this->input->post('banco');
                 $DATA['agencia'] = $this->input->post('agencia');
                 $DATA['conta'] = $this->input->post('conta');
-                $DATA['cpf'] = $this->input->post('cpf');
                 $DATA['plano_aula'] = $this->input->post('plano_aula');
+                $DATA['cpf'] = $this->input->post('cpf');
+
+             //   var_dump($DATA);
             }
 
             if ($this->Monitoria_model->adicionaMonitoria($DATA) != 0) {
@@ -537,7 +538,7 @@ class Monitoria extends CI_Controller
                 $DATA['usuarios'] = $this->Usuario_model->getUsuariosMonitor();
                 $DATA['usuariosP'] = $this->Usuario_model->getUsuariosProfessor();
                 $DATA['periodos'] = $this->Periodo_model->getPeriodos();
-
+                $DATA['monitoria'] = $this->Monitoria_model->getMonitoriaById($id_monitoria);
                 //Prepara para inserir uma nova aula
                 if ($id_monitoria == 'novo') {
                     $aula = new stdClass();
@@ -556,7 +557,7 @@ class Monitoria extends CI_Controller
                     $aula->agencia = "";
                     $aula->conta = "";
                     $aula->cpf = "";
-                    $aula->plano_aula = "";
+
 
                     $DATA['monitoria'] = $aula;
                 } //recupera as informacoes da aula para editar
@@ -569,7 +570,7 @@ class Monitoria extends CI_Controller
                         $this->Util->telaResultado($this, "Entrada Invalido!", true);
                     }
                 }
-
+               // var_dump($DATA['monitoria']);
                 $this->load->view('monitoria_edit', $DATA);
             } else {
                 $this->Util->telaResultado($this, "Acesso negado.", true);
