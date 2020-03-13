@@ -364,13 +364,6 @@ class Monitoria extends CI_Controller
             }
 
 
-
-
-//            //verifica se o usuario esta editando outro usuario. somente o admin pode fazer isso
-//            $usuario = $this->session->userdata('id_usuario');
-//            if ($id_usuario != $usuario) {
-//                $this->Util->verificaPermissao($this, 'Administrador');
-//            }
             $DATA['alunos'] = $this->Usuario_model->getUsuariosAluno();
             $DATA['monitores'] = $this->Usuario_model->getUsuariosMonitor();
             $this->load->view('monitores_listar', $DATA);
@@ -423,21 +416,21 @@ class Monitoria extends CI_Controller
 
 
             if (!$this->Monitoria_model->verificaEmail($DATA['email']) and !$this->Monitoria_model->verificaMatricula($DATA['matricula']) and $this->Usuario_model->adicionaEditaUsuario($DATA) != 0) {
-                $this->Util->telaResultado($this, "Informações atualizados!", false, "Monitoria/aluno_listar_view/" . $id_monitoria);
+                $this->Util->telaResultado($this, "Informações atualizadas!", false, "Monitoria/aluno_listar_view/" . $id_monitoria);
             } else {
                 $this->Util->telaResultado($this, "Email ou Matricula ja existentes.", true);
             }
         }
 
 
-        function aluno_editar_view_2($id_monitoria, $id_usuario)
+        function aluno_editar_view_2($id_usuario)
         {
 
             //Prepara para inserir um novo usuario
             if ($id_usuario == 'novo') {
                 $usuario = new stdClass();
                 $usuario->id_usuario = $id_usuario;
-                $usuario->id_monitoria = $id_monitoria;
+              //  $usuario->id_monitoria = $id_monitoria;
                 $usuario->matricula = "";
                 $usuario->nome = "";
                 $usuario->email = "";
@@ -474,7 +467,7 @@ class Monitoria extends CI_Controller
 
 
             if (!$this->Monitoria_model->verificaEmail($DATA['email']) and !$this->Monitoria_model->verificaMatricula($DATA['matricula']) and $this->Usuario_model->adicionaEditaUsuario($DATA) != 0) {
-                $this->Util->telaResultado($this, "Informações atualizados!", false, "Monitoria/aluno_listar_view/" . $id_monitoria);
+                $this->Util->telaResultado($this, "Informações atualizadas!", false, "Usuarios/listar_monitores_view");
             } else {
                 $this->Util->telaResultado($this, "Email ou Matricula ja existentes.", true);
             }
@@ -500,8 +493,9 @@ class Monitoria extends CI_Controller
                 $DATA['agencia'] = $this->input->post('agencia');
                 $DATA['conta'] = $this->input->post('conta');
                 $DATA['cpf'] = $this->input->post('cpf');
+                $DATA['plano_aula'] = $this->input->post('plano_aula');
 
-                //var_dump($DATA);
+              //  var_dump($DATA);
             } else {
                 $DATA['id_monitoria'] = $id_monitoria;
                 $DATA['id_disciplina'] = $this->input->post('id_disciplina');
@@ -513,11 +507,13 @@ class Monitoria extends CI_Controller
                 $DATA['banco'] = $this->input->post('banco');
                 $DATA['agencia'] = $this->input->post('agencia');
                 $DATA['conta'] = $this->input->post('conta');
+                $DATA['plano_aula'] = $this->input->post('plano_aula');
                 $DATA['cpf'] = $this->input->post('cpf');
+
+             //   var_dump($DATA);
             }
 
             if ($this->Monitoria_model->adicionaMonitoria($DATA) != 0) {
-
                 $this->Util->telaResultado($this, "Informações atualizadas!", false, "Monitoria/listar_view/" . $PERFIL_USUARIO . '/' . $ID_USUARIO);
             } else {
                 $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um período ativo ou já cadastrado.", true);
@@ -535,7 +531,7 @@ class Monitoria extends CI_Controller
                 $DATA['usuarios'] = $this->Usuario_model->getUsuariosMonitor();
                 $DATA['usuariosP'] = $this->Usuario_model->getUsuariosProfessor();
                 $DATA['periodos'] = $this->Periodo_model->getPeriodos();
-
+                $DATA['monitoria'] = $this->Monitoria_model->getMonitoriaById($id_monitoria);
                 //Prepara para inserir uma nova aula
                 if ($id_monitoria == 'novo') {
                     $aula = new stdClass();
@@ -546,7 +542,7 @@ class Monitoria extends CI_Controller
                     $aula->id_periodo = "";
                     $aula->id_monitor = "";
                     $aula->monitoria_remunerada = "";
-                  //  $aula->carga_horaria = "";
+                    $aula->plano_aula = "";
                     $aula->numero_edital = "";
                     $aula->data_inicio = "";
                     $aula->data_fim = "";
@@ -554,6 +550,7 @@ class Monitoria extends CI_Controller
                     $aula->agencia = "";
                     $aula->conta = "";
                     $aula->cpf = "";
+
 
                     $DATA['monitoria'] = $aula;
                 } //recupera as informacoes da aula para editar
@@ -566,7 +563,7 @@ class Monitoria extends CI_Controller
                         $this->Util->telaResultado($this, "Entrada Invalido!", true);
                     }
                 }
-
+               // var_dump($DATA['monitoria']);
                 $this->load->view('monitoria_edit', $DATA);
             } else {
                 $this->Util->telaResultado($this, "Acesso negado.", true);

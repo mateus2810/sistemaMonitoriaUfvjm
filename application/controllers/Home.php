@@ -49,6 +49,7 @@ class Home extends CI_Controller
         $DATA['monitorias'] = $monitorias;
 
         $this->load->view('index', $DATA);
+
     }
 
     public function get_data_pesquisar()
@@ -101,32 +102,37 @@ class Home extends CI_Controller
 
         $DATA = $this->Usuario_model->verificaLogin($matricula, $senha);
 
-        //caso encontre um usuario quer dizer que ele esta registrado no sistema
-        if ($DATA != null) {
-            $newdata = array(
-                'id_usuario' => $DATA['id_usuario'],
-                'nome' => $DATA['nome'],
-                'perfil' => $DATA['perfil'],
-                'logged_in' => true
-            );
+            //caso encontre um usuario quer dizer que ele esta registrado no sistema
 
-            if ($DATA['perfil'] == 'Administrador' or $DATA['perfil'] == 'Professor' or $DATA['perfil'] == 'Monitor') {
-                $this->session->set_userdata($newdata);
+            if ($DATA != null) {
 
-                $this->view_home($DATA['id_usuario']);
-            } else {
-                $this->index();
+                    $newdata = array(
+                        'id_usuario' => $DATA['id_usuario'],
+                        'nome' => $DATA['nome'],
+                        'perfil' => $DATA['perfil'],
+                        'logged_in' => true
+                    );
+
+                    if (($DATA['perfil'] == 'Administrador' or $DATA['perfil'] == 'Monitor') or $this->Usuario_model->verificaProfessorHabilitado($DATA['id_usuario'])) {
+                        $this->session->set_userdata($newdata);
+
+                            $this->view_home($DATA['id_usuario']);
+
+                    } else {
+                        $this->index();
+                    }
+                } //caso o usuario digitou um matricula  e uma senha e nao esteja no BD envia uma msg de erro
+                elseif (($matricula != null || $senha != null) && $DATA == null) {
+                    $DADOS['msg'] = 'Matrícula ou Senha inválido';
+                    $this->load->view('login', $DADOS);
+                } //caso contrario, mostra a tela de login
+                else {
+                    $DADOS['msg'] = 'Entre para iniciar sua sessão';
+                    $this->load->view('login', $DADOS);
+                }
             }
-        } //caso o usuario digitou um matricula  e uma senha e nao esteja no BD envia uma msg de erro
-        elseif (($matricula != null || $senha != null) && $DATA == null) {
-            $DADOS['msg'] = 'Matrícula ou Senha inválido';
-            $this->load->view('login', $DADOS);
-        } //caso contrario, mostra a tela de login
-        else {
-            $DADOS['msg'] = 'Entre para iniciar sua sessão';
-            $this->load->view('login', $DADOS);
-        }
-    }
+
+
 
 
     function logout()
