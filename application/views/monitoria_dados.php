@@ -122,7 +122,8 @@ $id_usuario = $this->session->userdata('id_usuario');
                             <th>horário</th>
                             <th>Atividades</th>
                             <th>Alunos</th>
-                            <?php if ((strpos("Administrador", $this->session->userdata('perfil')) !== false) or strpos("Professor", $this->session->userdata('perfil'))!== false) {  ?>
+                            <?php if ((strpos("Administrador", $this->session->userdata('perfil')) !== false)
+                            or strpos("Professor", $this->session->userdata('perfil'))!== false) {  ?>
                             <th>Atualizado</th>
                             <th>Cadastrado</th>
                             <?php } ?>
