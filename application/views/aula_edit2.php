@@ -158,11 +158,31 @@
 
                     </div>
                     <!-- /.box-body -->
+                    <?php $sei = 2;
+                   // $aula = $this->Aula_model->getAulaById($id_aula);
+                    $diaAtual= date('Y/m/d',strtotime('today'));
+                    $somaDias=date('Y/m/d', strtotime('+5 days', strtotime($diaAtual)));
+                    //var_dump($somaDias);
 
+                    //Condição para não conseguir fazer edição após 3 dias de cadastro das atividades e adicionar nova monitoria
+
+
+                    if (strtotime($somaDias) >= strtotime($diaAtual)) { ?>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-default" name="opcao" value="salvar" >Salvar</button>
+                        <button type="submit" class="btn btn-default" name="opcao" id="opcao" value="salvar" >Salvar</button>
                         <a href="<?=site_url('Monitoria/gerenciar/'.$aula->id_monitoria)?>" class="btn btn-default">Voltar</a>
                     </div>
+                    <?php } else {?>
+
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+                            Não é possível adicionar adicionar atividades de aula após 5 dias que a atividade ocorreu.
+                            Por favor procure a DAA - PROGRAD.
+                        </div>
+
+
+                    <?php } ?>
                 </form>
 
             </div>
@@ -246,7 +266,25 @@
 
   })
 
+</script>
 
-
+<script type="text/javascript">
+    $(function () {
+        $("#data").change(function () {
+            var st = $(this).val();
+            if(st == '12-03-2020'){
+                $("#opcao").prop("disabled", true);
+                $("#banco").prop("disabled", true);
+                $("#conta").prop("disabled", true);
+                $("#cpf").prop("disabled", true);
+            }
+            else {
+                $("#agencia").prop("disabled", false);
+                $("#banco").prop("disabled", false);
+                $("#conta").prop("disabled", false);
+                $("#cpf").prop("disabled", false);
+            }
+        })
+    });
 </script>
 
