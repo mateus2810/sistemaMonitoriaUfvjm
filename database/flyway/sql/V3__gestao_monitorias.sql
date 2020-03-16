@@ -1,5 +1,5 @@
 -- -----------------------------------------------------
--- Table `gestao_monitorias`.`atestado`
+-- Table `gestao_monitorias`.`monitoria`
 -- -----------------------------------------------------
 ALTER TABLE monitoria
 ADD conta varchar(30),
