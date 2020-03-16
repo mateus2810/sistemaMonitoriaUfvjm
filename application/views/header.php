@@ -129,18 +129,19 @@
             <li><a href="<?= site_url('Disciplinas/listar_view')?>"><i class="fa fa-circle-o"></i> Disciplinas</a></li>
             <li><a href="<?= site_url('Local/listar_view') ?>"><i class="fa fa-circle-o"></i> Local</a></li>
             <li><a href="<?=site_url('Usuarios/listar_view')?>"><i class="fa fa-circle-o"></i> Usuários</a></li>
-              <li><a href="<?=site_url('Relatorio/listar_view')?>"><i class="fa fa-circle-o"></i> Atestado de Frequência</a></li>
+
           </ul>
         </li>
-            <li><a href="<?=site_url('Usuarios/listar_professor_view')?>"><i class="fa fa-users"></i> <span>Habilitar Supervisão</span></a></li>
+            <li><a href="<?=site_url('Relatorio/listar_view')?>"><i class="fa fa-calendar-o"></i> Atestado de Frequência</a></li>
+            <li><a href="<?=site_url('Usuarios/listar_professor_view')?>"><i class="fa fa-users"></i> <span>Professores</span></a></li>
 
         <?php } ?>
 
           <?php if (strpos("Administrador", $this->session->userdata('perfil')) !== false or strpos("Professor", $this->session->userdata('perfil')) !== false) {  ?>
-        <li><a href="<?=site_url('Usuarios/listar_monitores_view')?>"><i class="fa fa-users"></i> <span>Monitores</span></a></li>
+        <li><a href="<?=site_url('Usuarios/listar_monitores_view')?>"><i class="fa  fa-graduation-cap"></i> <span>Monitores</span></a></li>
           <?php } ?>
 
-        <li><a href="<?=site_url('Monitoria/listar_view/'.$PERFIL_USUARIO.'/'.$ID_USUARIO)?>"><i class="fa fa-mortar-board"></i> <span>Monitorias</span></a></li>
+        <li><a href="<?=site_url('Monitoria/listar_view/'.$PERFIL_USUARIO.'/'.$ID_USUARIO)?>"><i class="fa  fa-book"></i> <span>Monitorias</span></a></li>
 
 
       </ul>
