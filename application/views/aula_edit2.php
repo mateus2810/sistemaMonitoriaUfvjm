@@ -150,7 +150,7 @@
                             <select class="form-control select2" style="width: 100%;" name="id_local">
                                 <?php foreach ($locais as $local) { ?>
                                     <option value="<?=$local->id_local?>" <?= $aula->id_local == $local->id_local? 'selected="selected"' : '' ?>>
-                                        <?=$local->predio .', '. $local->sala .', '. $local->campus?>
+                                        <?= $local->dependencia . ', ' . $local->campus ?>
                                     </option>
                                 <?php }?>
                             </select>

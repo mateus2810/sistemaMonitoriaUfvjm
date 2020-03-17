@@ -80,7 +80,7 @@ $id_usuario = $this->session->userdata('id_usuario');
 
                                 <td><?= date('H:i', strtotime($horario->horario_inicio)) . ' - ' . date('H:i', strtotime($horario->horario_fim)) ?></td>
 
-                                <td><?= $horario->sala . ', ' . $horario->predio . ', ' . $horario->campus ?></td>
+                                <td><?=  $horario->dependencia . ', ' . $horario->campus ?></td>
                                 <td style="vertical-align: middle;">
 
                                     <a href="<?= site_url('Monitoria/horario_editar_view/' . $horario->id_monitoria . '/' . $horario->id_horario_monitoria) ?>">

@@ -62,26 +62,14 @@ if ($PERFIL_USUARIO == "Administrador") {?>
                                 <select class="form-control select2"  name="campus" style="width: 100%;">
                                     <option  value="Campus JK"<?= $local->campus == "Campus JK" ? 'selected="selected"' : ''?>>Campus JK</option>
                                     <option  value="Campus 1" <?= $local->campus == "Campus 1" ? 'selected="selected"' : ''?>>Campus 1</option>
+                                    <option  value="Campus Janaúba" <?= $local->campus == "Campus Janaúba" ? 'selected="selected"' : ''?>>Campus Janaúba</option>
+                                    <option  value="Campus Unaí"<?= $local->campus == "Campus Unaí" ? 'selected="selected"' : ''?>>Campus Unaí</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label>Predio</label>
-                                <select class="form-control select2"  name="predio" id="" style="width: 100%;">
-                                    <option  value="Pavilhão de Aulas 1"<?= $local->predio == "Pavilhão de Aulas 1" ? 'selected="selected"' : ''?>>Pavilhão de Aulas 1</option>
-                                    <option  value="Pavilhão de Aulas 2"<?= $local->predio == "Pavilhão de Aulas 2" ? 'selected="selected"' : ''?>>Pavilhão de Aulas 2</option>
-                                    <option  value="Pavilhão de Aulas 3"<?= $local->predio == "Pavilhão de Aulas 3" ? 'selected="selected"' : ''?>>Pavilhão de Aulas 3</option>
-                                    <option  value="Pavilhão de Auditorios"<?= $local->predio == "Pavilhão de Auditorios" ? 'selected="selected"' : ''?>>Pavilhão de Auditorios</option>
-                                    <option  value="Predio de Sistemas"<?= $local->predio == "Predio de Sistemas" ? 'selected="selected"' : ''?>>Predio de Sistemas</option>
-                                    <option  value="ICT"<?= $local->predio == "ICT" ? 'selected="selected"' : ''?>>ICT</option>
-                                    <option  value="DCbio"<?= $local->predio == "DCbio" ? 'selected="selected"' : ''?>>DCbio</option>
-                                </select>
-                            </div>
-
-
-                            <div class="form-group">
-                                <label>Sala/Laboratório</label>
-                                <input type="text" style="text-transform:uppercase" class="form-control" name="sala" placeholder="Ex: Sala 103 ou Laboratório 36" value="<?=$local->sala?>" required>
+                                <label>Dependencias</label>
+                                <input type="text" class="form-control" name="dependencia" placeholder="Digite o nome da dependencia..." value="<?=$local->dependencia?>" required>
                             </div>
 
 
