@@ -180,13 +180,34 @@ class Monitoria extends CI_Controller
         $DATA['horario_inicio'] = $this->input->post('horario_inicio');
         $DATA['horario_fim'] = $this->input->post('horario_fim');
         $DATA['atividades'] = $this->input->post('atividades');
+        $PERFIL_USUARIO = $this->session->userdata('perfil');
 
+        //Se for Monitor não será possivel fazer cadastro de atividade aula após 5 dias que foi executada
+        if ($PERFIL_USUARIO == "Monitor") {
+            $diaAtual = date('Y/m/d', strtotime('today'));
+            $somaDias = date('Y/m/d', strtotime('+5 days', strtotime($DATA['data'])));
+            //var_dump($somaDias);
 
-       // var_dump($DATA);
-        if ($this->Aula_model->adicionaEditaAulaMonitoria($DATA) != 0) {
-            $this->Util->telaResultado($this, "Informações atualizados!", false, "Monitoria/gerenciar" . '/' . $id_monitoria);
-        } else {
-            $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um período ativo ou já cadastrado.", true);
+            //Condição para não conseguir fazer edição após 5 dias de cadastro das atividades e adicionar nova monitoria
+            if (strtotime($somaDias) >= strtotime($diaAtual) && $this->Aula_model->adicionaEditaAulaMonitoria($DATA) != 0) {
+                $this->Util->telaResultado($this, "Informações atualizadas!",
+                    false, "Monitoria/gerenciar" . '/' . $id_monitoria);
+
+            } else {
+                $this->Util->telaResultado($this, "Não é possível cadastrar, já se passaram 5 dias após a atividade executada. Procure a DAA", true);
+            }
+        }
+
+        //Perfil Adminsitrador altera data independente de tempo
+        else if ($PERFIL_USUARIO == "Administrador") {
+            if($this->Aula_model->adicionaEditaAulaMonitoria($DATA) != 0) {
+                $this->Util->telaResultado($this, "Informações atualizadas!",
+                    false, "Monitoria/gerenciar" . '/' . $id_monitoria);
+
+            }else {
+                $this->Util->telaResultado($this, "Não é possível fazer a edição !", true);
+            }
+
         }
     }
 
