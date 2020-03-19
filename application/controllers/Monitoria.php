@@ -183,7 +183,7 @@ class Monitoria extends CI_Controller
         $PERFIL_USUARIO = $this->session->userdata('perfil');
 
         //Se for Monitor não será possivel fazer cadastro de atividade aula após 5 dias que foi executada
-        if ($PERFIL_USUARIO == "Monitor") {
+        if ($PERFIL_USUARIO == "Monitor" or $PERFIL_USUARIO == "Professor") {
             $diaAtual = date('Y/m/d', strtotime('today'));
             $somaDias = date('Y/m/d', strtotime('+5 days', strtotime($DATA['data'])));
             //var_dump($somaDias);
@@ -191,10 +191,10 @@ class Monitoria extends CI_Controller
             //Condição para não conseguir fazer edição após 5 dias de cadastro das atividades e adicionar nova monitoria
             if (strtotime($somaDias) >= strtotime($diaAtual) && $this->Aula_model->adicionaEditaAulaMonitoria($DATA) != 0) {
                 $this->Util->telaResultado($this, "Informações atualizadas!",
-                    false, "Monitoria/gerenciar" . '/' . $id_monitoria);
+                    false, "Monitoria/gerenciar/". $id_monitoria);
 
             } else {
-                $this->Util->telaResultado($this, "Não é possível cadastrar, já se passaram 5 dias após a atividade executada. Procure a DAA", true);
+                $this->Util->telaResultado($this, "Não é possível cadastrar, já se passaram 5 dias após a atividade executada. Procure a Prograd", true);
             }
         }
 
