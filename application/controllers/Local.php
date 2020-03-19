@@ -25,8 +25,7 @@ class Local extends CI_Controller
         if ($id_local == 'novo') {
             $local = new stdClass();
             $local->id_local = $id_local;
-            $local->predio = '';
-            $local->sala = '';
+            $local->dependencia = '';
             $local->campus = '';
             $DATA['local'] = $local;
         } else {
@@ -39,11 +38,10 @@ class Local extends CI_Controller
     {
 
         $DATA['id_local'] = $this->input->post('id_local');
-        $DATA['predio'] = $this->input->post('predio');
-        $DATA['sala'] = $this->input->post('sala');
+        $DATA['dependencia'] = $this->input->post('dependencia');
         $DATA['campus'] = $this->input->post('campus');
-       // var_dump($DATA);
-        if (strlen(trim($this->input->post('predio'))) > 0) {
+       var_dump($DATA);
+        if (strlen(trim($this->input->post('dependencia'))) > 0) {
             $this->Local_model->adicionaEditaLocal($DATA);
             $this->Util->telaResultado($this, "Informações atualizados!", false, "Local/listar_view");
         } else {

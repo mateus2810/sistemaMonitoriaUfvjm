@@ -53,7 +53,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <form role="form" action="<?php echo site_url('Monitoria/aula_editar/'.$aula->id_monitoria .'/'.$aula->id_aula); ?>" method="post">
+                <form role="form" action="<?php echo site_url('Monitoria/aula_editar/'.$aula->id_monitoria ); ?>" method="post">
                     <div class="box-body">
                         <input type="hidden" name="id_aula" value="<?=$aula->id_aula?>">
                         <input type="hidden" name="id_monitoria" value="<?=$aula->id_monitoria?>">
@@ -150,7 +150,7 @@
                             <select class="form-control select2" style="width: 100%;" name="id_local">
                                 <?php foreach ($locais as $local) { ?>
                                     <option value="<?=$local->id_local?>" <?= $aula->id_local == $local->id_local? 'selected="selected"' : '' ?>>
-                                        <?=$local->predio .', '. $local->sala .', '. $local->campus?>
+                                        <?= $local->dependencia . ', ' . $local->campus ?>
                                     </option>
                                 <?php }?>
                             </select>

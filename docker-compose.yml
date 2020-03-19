@@ -10,7 +10,7 @@ services:
       - MYSQL_DATABASE=$BANCO
       - MYSQL_ROOT_PASSWORD=$SENHA 
     ports:
-      - 3306:3306
+      - 3307:3307
     restart: "always"
   apache-monitoria:
     build:

@@ -26,14 +26,17 @@ class Monitoria extends CI_Controller
     }
 
 
-    function listar_view($PERFIL_USUARIO, $id_usuario)
+    function listar_view()
     {
         //recupera os periodos
+        $id_usuario = $this->session->userdata('id_usuario');
+        $PERFIL_USUARIO = $this->session->userdata('perfil');
+            $DATA['monitorias'] = $this->Monitoria_model->getMonitoriasLista($PERFIL_USUARIO, $id_usuario);
 
-        $DATA['monitorias'] = $this->Monitoria_model->getMonitoriasLista($PERFIL_USUARIO, $id_usuario);
+            $this->load->view('monitoria_listar', $DATA);
+        }
 
-        $this->load->view('monitoria_listar', $DATA);
-    }
+
 
     function aluno_listar_view($id_monitoria)
     {
@@ -52,10 +55,17 @@ class Monitoria extends CI_Controller
 
     function frequencia_listar_view($id_monitoria, $id_aula)
     {
-        $DATA['aula'] = $this->Aula_model->getAulaById($id_aula);
-        $DATA['frequencias'] = $this->Frequencia_model->getFrequenciasByAula($id_aula);
-        $DATA['matriculados'] = $this->Aula_model->getAlunosSemFrequenciaNaAula($id_aula);
-        $this->load->view('frequencia_edit', $DATA);
+        $ID_USUARIO = $this->session->userdata('id_usuario');
+        $PERFIL_USUARIO = $this->session->userdata('perfil');
+        if (@$this->Monitoria_model->verificaIDMonitor($ID_USUARIO, $id_monitoria) or @$this->Monitoria_model->verificaIDProf($ID_USUARIO, $id_monitoria) or $PERFIL_USUARIO == "Administrador")
+        {
+            $DATA['aula'] = $this->Aula_model->getAulaById($id_aula);
+            $DATA['frequencias'] = $this->Frequencia_model->getFrequenciasByAula($id_aula);
+            $DATA['matriculados'] = $this->Aula_model->getAlunosSemFrequenciaNaAula($id_aula);
+            $this->load->view('frequencia_edit', $DATA);
+        }else{
+            $this->Util->telaResultado($this, "Acesso negado.", true);
+        }
     }
 
     function gerenciar($id_monitoria)
@@ -170,13 +180,34 @@ class Monitoria extends CI_Controller
         $DATA['horario_inicio'] = $this->input->post('horario_inicio');
         $DATA['horario_fim'] = $this->input->post('horario_fim');
         $DATA['atividades'] = $this->input->post('atividades');
+        $PERFIL_USUARIO = $this->session->userdata('perfil');
 
+        //Se for Monitor não será possivel fazer cadastro de atividade aula após 5 dias que foi executada
+        if ($PERFIL_USUARIO == "Monitor" or $PERFIL_USUARIO == "Professor") {
+            $diaAtual = date('Y/m/d', strtotime('today'));
+            $somaDias = date('Y/m/d', strtotime('+5 days', strtotime($DATA['data'])));
+            //var_dump($somaDias);
 
-       // var_dump($DATA);
-        if ($this->Aula_model->adicionaEditaAulaMonitoria($DATA) != 0) {
-            $this->Util->telaResultado($this, "Informações atualizados!", false, "Monitoria/gerenciar" . '/' . $id_monitoria);
-        } else {
-            $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um período ativo ou já cadastrado.", true);
+            //Condição para não conseguir fazer edição após 5 dias de cadastro das atividades e adicionar nova monitoria
+            if (strtotime($somaDias) >= strtotime($diaAtual) && $this->Aula_model->adicionaEditaAulaMonitoria($DATA) != 0) {
+                $this->Util->telaResultado($this, "Informações atualizadas!",
+                    false, "Monitoria/gerenciar/". $id_monitoria);
+
+            } else {
+                $this->Util->telaResultado($this, "Não é possível cadastrar, já se passaram 5 dias após a atividade executada. Procure a Prograd", true);
+            }
+        }
+
+        //Perfil Adminsitrador altera data independente de tempo
+        else if ($PERFIL_USUARIO == "Administrador") {
+            if($this->Aula_model->adicionaEditaAulaMonitoria($DATA) != 0) {
+                $this->Util->telaResultado($this, "Informações atualizadas!",
+                    false, "Monitoria/gerenciar" . '/' . $id_monitoria);
+
+            }else {
+                $this->Util->telaResultado($this, "Não é possível fazer a edição !", true);
+            }
+
         }
     }
 

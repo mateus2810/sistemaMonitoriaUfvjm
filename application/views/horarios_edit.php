@@ -131,7 +131,7 @@ $datatablesPortugueseBrasil = $ci->Util_model->datatablesPortugueseBrasil();
                                 <select class="form-control select2"  name="id_local" style="width: 100%;">
                                     <?php foreach ($locais as $local) { ?>
                                         <option value="<?= $local->id_local ?>" <?= $horario->id_local == $local->id_local ? 'selected="selected"' : '' ?>>
-                                            <?= $local->predio . ', ' . $local->sala . ', ' . $local->campus ?>
+                                            <?= $local->dependencia . ', ' . $local->campus ?>
                                         </option>
                                     <?php } ?>
                                 </select>

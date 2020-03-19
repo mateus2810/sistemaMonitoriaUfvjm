@@ -94,7 +94,7 @@ if ($PERFIL_USUARIO == "Administrador") {
                         </div>
 
                         <div class="form-group">
-                            <label>Codigo - (Preferência Caixa Alta)</label>
+                            <label>Codigo</label>
                             <input type="text" class="form-control" name="codigo" placeholder="Entre com o código da disciplina" value="<?=$disciplina->codigo?>" required>
                         </div>
 

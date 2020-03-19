@@ -141,7 +141,7 @@
         <li><a href="<?=site_url('Usuarios/listar_monitores_view')?>"><i class="fa  fa-graduation-cap"></i> <span>Monitores</span></a></li>
           <?php } ?>
 
-        <li><a href="<?=site_url('Monitoria/listar_view/'.$PERFIL_USUARIO.'/'.$ID_USUARIO)?>"><i class="fa  fa-book"></i> <span>Monitorias</span></a></li>
+        <li><a href="<?=site_url('Monitoria/listar_view')?>"><i class="fa  fa-book"></i> <span>Monitorias</span></a></li>
 
 
       </ul>
