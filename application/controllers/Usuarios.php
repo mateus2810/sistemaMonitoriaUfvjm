@@ -45,6 +45,7 @@ class Usuarios extends CI_Controller
     }
 
     public function listar_professor_view(){
+        $this->Util->verificaPermissao($this, 'Administrador');
         $DATA['profHabilitado'] = $this->Usuario_model->listarProfessoresHabilitados();
         $DATA['profNaoHabilitado'] = $this->Usuario_model->listarProfessoresNaoHabilitados();
         $this->load->view('professores_listar', $DATA);
@@ -52,7 +53,7 @@ class Usuarios extends CI_Controller
 
     function professor_habilitado_editar_view($id_usuario)
     {
-
+        $this->Util->verificaPermissao($this, 'Administrador');
         //recupera os usuarios do sistema
         $DATA['usuario'] = $this->Usuario_model->setProfessorHabilitado($id_usuario);
         $DATA['usuario'] = $this->Usuario_model->getUsuarioById($id_usuario);
@@ -65,7 +66,7 @@ class Usuarios extends CI_Controller
 
     function professor_nao_habilitado_editar_view($id_usuario)
     {
-
+        $this->Util->verificaPermissao($this, 'Administrador');
         //recupera os usuarios do sistema
         $DATA['usuario'] = $this->Usuario_model->setProfessorNaoHabilitado($id_usuario);
         $DATA['usuario'] = $this->Usuario_model->getUsuarioById($id_usuario);

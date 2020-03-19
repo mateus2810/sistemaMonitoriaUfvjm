@@ -26,14 +26,17 @@ class Monitoria extends CI_Controller
     }
 
 
-    function listar_view($PERFIL_USUARIO, $id_usuario)
+    function listar_view()
     {
         //recupera os periodos
+        $id_usuario = $this->session->userdata('id_usuario');
+        $PERFIL_USUARIO = $this->session->userdata('perfil');
+            $DATA['monitorias'] = $this->Monitoria_model->getMonitoriasLista($PERFIL_USUARIO, $id_usuario);
 
-        $DATA['monitorias'] = $this->Monitoria_model->getMonitoriasLista($PERFIL_USUARIO, $id_usuario);
+            $this->load->view('monitoria_listar', $DATA);
+        }
 
-        $this->load->view('monitoria_listar', $DATA);
-    }
+
 
     function aluno_listar_view($id_monitoria)
     {
@@ -52,10 +55,17 @@ class Monitoria extends CI_Controller
 
     function frequencia_listar_view($id_monitoria, $id_aula)
     {
-        $DATA['aula'] = $this->Aula_model->getAulaById($id_aula);
-        $DATA['frequencias'] = $this->Frequencia_model->getFrequenciasByAula($id_aula);
-        $DATA['matriculados'] = $this->Aula_model->getAlunosSemFrequenciaNaAula($id_aula);
-        $this->load->view('frequencia_edit', $DATA);
+        $ID_USUARIO = $this->session->userdata('id_usuario');
+        $PERFIL_USUARIO = $this->session->userdata('perfil');
+        if (@$this->Monitoria_model->verificaIDMonitor($ID_USUARIO, $id_monitoria) or @$this->Monitoria_model->verificaIDProf($ID_USUARIO, $id_monitoria) or $PERFIL_USUARIO == "Administrador")
+        {
+            $DATA['aula'] = $this->Aula_model->getAulaById($id_aula);
+            $DATA['frequencias'] = $this->Frequencia_model->getFrequenciasByAula($id_aula);
+            $DATA['matriculados'] = $this->Aula_model->getAlunosSemFrequenciaNaAula($id_aula);
+            $this->load->view('frequencia_edit', $DATA);
+        }else{
+            $this->Util->telaResultado($this, "Acesso negado.", true);
+        }
     }
 
     function gerenciar($id_monitoria)
