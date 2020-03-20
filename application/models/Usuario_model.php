@@ -263,11 +263,30 @@ class Usuario_model extends CI_Model
 
     }
 
+    public function setTermosDeUso($id_usuario)
+    {
+        $this->db->escape($id_usuario);
+        //recupera os dados do banco de dados
+        $sql = "UPDATE usuario set declaracao = 1 where id_usuario = " . $id_usuario;
+        $this->db->query($sql);
+    }
+
     public function verificaProfessorHabilitado($id_usuario){
         $sql = "select * from usuario u where u.habilitado = 1 and u.id_usuario = $id_usuario;" ;
         $Query = $this->db->query($sql);
         $result = $Query->result();
 
         return $result;
+    }
+
+    public function verificaAceitoTermo($id_usuario)
+    {
+        $this->db->escape($id_usuario);
+        //recupera os dados do banco de dados
+        $sql = "select * from usuario u where u.id_usuario = $id_usuario";
+        $Query = $this->db->query($sql);
+        $result = $Query->result();
+
+        return $result[0];
     }
 }
