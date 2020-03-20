@@ -19,7 +19,7 @@
         strpos("Professor", $this->session->userdata('perfil'))!== false) and $usuario->declaracao == 0) {  ?>
 
 
-            <div class="modal fade" id="modal-default">
+            <div class="modal fade" id="modal-default" data-backdrop="static">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -27,7 +27,7 @@
                             <h4 class="modal-title">TERMOS DE USO DO SISTEMA DE MONITORIA</h4>
                         </div>
                         <div class="modal-body">
-                            <p>textooo do termo</p>
+                            <p>texto</p>
                         </div>
                         <div class="modal-footer">
                             <a href="<?= site_url('Usuarios/termos_de_uso/') ?>" type="button" class="btn btn-primary">Concordo</a>
