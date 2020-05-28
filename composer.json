@@ -10,7 +10,6 @@
   "version": "1.0.0",
   "type": "project",
   "require": {
-    "hirak/prestissimo": "^0.3.9",
     "php": ">=5.6.4"
   },
   "require-dev": {
