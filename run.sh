@@ -20,6 +20,10 @@ docker run --rm --interactive --tty \
             --volume $PWD:/app \
             hub.dds.ufvjm.edu.br/desenvolvimento/composer install --ignore-platform-reqs --no-scripts
 
+echo -e "\nCorrigindo permissões na pasta da aplicação"
+sudo chgrp www-data -R application/logs/
+sudo chmod g+w -R application/logs/
+
 echo -e "\nIniciando a Stack"
 docker-compose up -d
 
