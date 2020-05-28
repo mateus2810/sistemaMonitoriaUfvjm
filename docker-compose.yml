@@ -8,23 +8,25 @@ services:
       - ~/mysql/monitoria:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=$BANCO
-      - MYSQL_ROOT_PASSWORD=$SENHA 
+      - MYSQL_ROOT_PASSWORD=$ROOT_SENHA
+      - MYSQL_USER=$USUARIO
+      - MYSQL_PASSWORD=$SENHA
     ports:
       - 3307:3307
     restart: "always"
   apache-monitoria:
     build:
       context: .
-      dockerfile: Dockerfile 
+      dockerfile: Dockerfile
     environment:
       - HOST=$HOST
       - DRIVER=$DRIVER
       - PORTA=$PORTA
       - BANCO=$BANCO
       - USUARIO=$USUARIO
-      - SENHA=$SENHA 
-      - WEBURL=$WEBURL 
-      - WEBPORT=$WEBPORT 
+      - SENHA=$SENHA
+      - WEBURL=$WEBURL
+      - WEBPORT=$WEBPORT
     volumes:
       - ./:/var/www/html/
     ports:
@@ -38,4 +40,4 @@ services:
     ports:
       - 8080:80
     environment:
-      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql-monitoria
