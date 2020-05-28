@@ -1,9 +1,8 @@
-/src/nbproject/
-
+src/nbproject/
 
 ### Composer ###
 composer.phar
-/vendor/
+vendor/
 
 # Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
@@ -12,7 +11,6 @@ composer.phar
 .env.*.php
 .env.php
 .env
-
 
 ### Node ###
 # Logs
@@ -23,5 +21,8 @@ logs
 
 .DS_Store
 
-/docker-compose-prod.yml
-/composer.lock
+docker-compose-prod.yml
+composer.lock
+
+application/logs/
+!application/logs/.gitkeep

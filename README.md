@@ -36,12 +36,16 @@ cd ~/apps
 git clone git@git.dds.ufvjm.edu.br:prograd/monitoria.git
 ```
 
-
 ### Gerar imagem docker local
 
 Para criar a imagem docker a aplicação locamente para ambiente de desenvolvimento:
 
 ```bash
+# Criar o arquivo de variáveis de ambiente local
+cd ~/apps/monitoria
+cp .env.testing .env
+
+# Criar a imagem docker
 ./build.sh
 ```
 
@@ -79,13 +83,6 @@ de versionamento.
 ```
 
 ### Servidor web
-
-Criar o arquivo de variáveis de ambiente local:
-
-```bash
-cd ~/apps/monitoria
-cp .env.example .env
-```
 
 Substituir os valores de:
 
