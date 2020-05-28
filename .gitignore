@@ -12,11 +12,6 @@ vendor/
 .env.php
 .env
 
-### Node ###
-# Logs
-logs
-*.log
-
 .idea/
 
 .DS_Store
@@ -24,5 +19,5 @@ logs
 docker-compose-prod.yml
 composer.lock
 
-application/logs/
+application/logs/*
 !application/logs/.gitkeep
