@@ -1,19 +1,18 @@
-src/nbproject/
-
-### Composer ###
-composer.phar
+# Bibliotecas baixadas pelo composer
 vendor/
 
+# Variaveis de ambiente locais
 .env
 
+# Pasta de configuracao do PHPStorm
 .idea/
 
+# Arquivos MAC
 .DS_Store
 
-docker-compose-prod.yml
-composer.lock
-
+# Pasta de logs local
 application/logs/*
 !application/logs/.gitkeep
 
+# Pasta de configuracao do Visual Studio
 .vs
