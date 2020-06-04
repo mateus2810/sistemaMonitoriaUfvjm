@@ -15,18 +15,10 @@ services:
     restart: "always"
   apache-monitoria:
     container_name: apache-monitoria
+    image: apache-monitoria:dev
     build:
       context: .
       dockerfile: Dockerfile
-    environment:
-      - HOST=$HOST
-      - DRIVER=$DRIVER
-      - PORTA=$PORTA
-      - BANCO=$BANCO
-      - USUARIO=$USUARIO
-      - SENHA=$SENHA
-      - WEBURL=$WEBURL
-      - WEBPORT=$WEBPORT
     volumes:
       - ./:/var/www/html/
     ports:
@@ -34,6 +26,8 @@ services:
     depends_on:
       - mysql-monitoria
     restart: "always"
+    env_file:
+      - .env
   phpmyadmin-monitoria:
     container_name: phpmyadmin-monitoria
     image: phpmyadmin/phpmyadmin:latest

@@ -8,6 +8,7 @@ Descrição do projeto
   * [Sumário](#sumário)
   * [Instalação](#instalação)
      * [Baixar código fonte](#baixar-código-fonte)
+     * [Client Id e Client Key da Aplicação](#client-id-e-client-key-da-aplicação)
      * [Gerar imagem docker local](#gerar-imagem-docker-local)
      * [Iniciar a stack](#iniciar-a-stack)
      * [Banco de Dados](#banco-de-dados)
@@ -21,12 +22,11 @@ Descrição do projeto
   * [Acesso aos ambientes](#acesso-aos-ambientes)
      * [Testes](#testes)
      * [Produção](#produção)
-
+  * [Desinstalação](#desinstalação)
 
 ## Instalação
 
 ### Baixar código fonte
-
 
 Entrando no diretório e baixando:
 
@@ -36,15 +36,29 @@ cd ~/apps
 git clone git@git.dds.ufvjm.edu.br:prograd/monitoria.git
 ```
 
+### Client Id e Client Key da Aplicação
+
+Criar o arquivo **.env**
+
+```env
+# Criar o arquivo de variáveis de ambiente local
+cd ~/apps/monitoria
+cp .env.example .env
+```
+
+Lançar os valores corretos para os arquivos da integração com os microsserviços no arquivo **.env**. Substituir os valores de **GRAPHQL_APP_ID** e **GRAPHQL_APP_KEY** para os valores cadastrados na stack de Microsserviços DTI/DDS.
+
+```env
+GRAPHQL_URL=https://micro-teste.dds.ufvjm.edu.br/
+GRAPHQL_APP_ID=
+GRAPHQL_APP_KEY=
+```
+
 ### Gerar imagem docker local
 
 Para criar a imagem docker a aplicação locamente para ambiente de desenvolvimento:
 
 ```bash
-# Criar o arquivo de variáveis de ambiente local
-cd ~/apps/monitoria
-cp .env.testing .env
-
 # Criar a imagem docker
 ./build.sh
 ```
@@ -158,3 +172,14 @@ docker exec -it apache-monitoria bash
 
 * Servidor web: [monitoria.prograd.ufvjm.edu.br](https://monitoria.prograd.ufvjm.edu.br)
 * PHPMyAdmin: [pma-selecao.prograd.ufvjm.edu.br](https://pma-monitoria.prograd.ufvjm.edu.br)
+
+## Desinstalação
+
+Para remover a stack (containers, código fonte e base de dados), executar o script abaixo.
+
+**ATENÇÃO**: Tudo será removido, o código fonte não enviado para o repositório será perdido.
+
+```bash
+cd ~/apps/monitoria
+./stop.sh
+```
