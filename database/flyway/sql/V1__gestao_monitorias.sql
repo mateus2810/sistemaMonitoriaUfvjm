@@ -268,13 +268,13 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `gestao_monitorias`;
-INSERT INTO `gestao_monitorias`.`usuario` (`id_usuario`, `matricula`, `nome`, `email`, `senha`, `telefone`, `perfil`) VALUES (1, 'admin', 'Usuário Admin	', 'admin', '123', '(00) 0000-0000', 'Administrador');
-INSERT INTO `gestao_monitorias`.`usuario` (`id_usuario`, `matricula`, `nome`, `email`, `senha`, `telefone`, `perfil`) VALUES (2, '001', 'João Teste', 'professor@gmail.com', '123', '(00) 1111-1111', 'Professor');
-INSERT INTO `gestao_monitorias`.`usuario` (`id_usuario`, `matricula`, `nome`, `email`, `senha`, `telefone`, `perfil`) VALUES (3, '002', 'Maria Teste', 'monitora@gmail.com', '123', '(00) 2222-2222', 'Monitor');
-INSERT INTO `gestao_monitorias`.`usuario` (`id_usuario`, `matricula`, `nome`, `email`, `senha`, `telefone`, `perfil`) VALUES (4, '003', 'Vivian', 'professora@gmail.com', '123', '(00) 3333-3333', 'Professor');
-INSERT INTO `gestao_monitorias`.`usuario` (`id_usuario`, `matricula`, `nome`, `email`, `senha`, `telefone`, `perfil`) VALUES (5, '004', 'Pedro', 'monitor@gmail.com', '123', '(00) 4444-4444', 'Monitor');
-INSERT INTO `gestao_monitorias`.`usuario` (`id_usuario`, `matricula`, `nome`, `email`, `senha`, `telefone`, `perfil`) VALUES (6, '005', 'Felipe', 'aluno@gmail.com', '123', '(00) 5555-5555', 'Aluno');
-INSERT INTO `gestao_monitorias`.`usuario` (`id_usuario`, `matricula`, `nome`, `email`, `senha`, `telefone`, `perfil`) VALUES (7, '006', 'Jose', 'aluno2@gmail.com', '123', 'NULL', 'Aluno');
+INSERT INTO `gestao_monitorias`.`usuario` (`id_usuario`, `matricula`, `nome`, `email`, `senha`, `telefone`, `perfil`) VALUES (1, 'admin', 'Usuário Admin	', 'admin', '202cb962ac59075b964b07152d234b70', '(00) 0000-0000', 'Administrador');
+INSERT INTO `gestao_monitorias`.`usuario` (`id_usuario`, `matricula`, `nome`, `email`, `senha`, `telefone`, `perfil`) VALUES (2, '001', 'João Teste', 'professor@gmail.com', '202cb962ac59075b964b07152d234b70', '(00) 1111-1111', 'Professor');
+INSERT INTO `gestao_monitorias`.`usuario` (`id_usuario`, `matricula`, `nome`, `email`, `senha`, `telefone`, `perfil`) VALUES (3, '002', 'Maria Teste', 'monitora@gmail.com', '202cb962ac59075b964b07152d234b70', '(00) 2222-2222', 'Monitor');
+INSERT INTO `gestao_monitorias`.`usuario` (`id_usuario`, `matricula`, `nome`, `email`, `senha`, `telefone`, `perfil`) VALUES (4, '003', 'Vivian', 'professora@gmail.com', '202cb962ac59075b964b07152d234b70', '(00) 3333-3333', 'Professor');
+INSERT INTO `gestao_monitorias`.`usuario` (`id_usuario`, `matricula`, `nome`, `email`, `senha`, `telefone`, `perfil`) VALUES (5, '004', 'Pedro', 'monitor@gmail.com', '202cb962ac59075b964b07152d234b70', '(00) 4444-4444', 'Monitor');
+INSERT INTO `gestao_monitorias`.`usuario` (`id_usuario`, `matricula`, `nome`, `email`, `senha`, `telefone`, `perfil`) VALUES (6, '005', 'Felipe', 'aluno@gmail.com', '202cb962ac59075b964b07152d234b70', '(00) 5555-5555', 'Aluno');
+INSERT INTO `gestao_monitorias`.`usuario` (`id_usuario`, `matricula`, `nome`, `email`, `senha`, `telefone`, `perfil`) VALUES (7, '006', 'Jose', 'aluno2@gmail.com', '202cb962ac59075b964b07152d234b70', 'NULL', 'Aluno');
 
 COMMIT;
 
