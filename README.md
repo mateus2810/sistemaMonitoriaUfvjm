@@ -21,7 +21,7 @@ Descrição do projeto
   * [Acesso aos ambientes](#acesso-aos-ambientes)
      * [Testes](#testes)
      * [Produção](#produção)
-
+  * [Desinstalação](#desinstalação)
 
 ## Instalação
 
@@ -158,3 +158,14 @@ docker exec -it apache-monitoria bash
 
 * Servidor web: [monitoria.prograd.ufvjm.edu.br](https://monitoria.prograd.ufvjm.edu.br)
 * PHPMyAdmin: [pma-selecao.prograd.ufvjm.edu.br](https://pma-monitoria.prograd.ufvjm.edu.br)
+
+## Desinstalação
+
+Para remover a stack (containers, código fonte e base de dados), executar o script abaixo.
+
+**ATENÇÃO**: Tudo será removido, o código fonte não enviado para o repositório será perdido.
+
+```bash
+cd ~/apps/monitoria
+./stop.sh
+```
