@@ -110,14 +110,14 @@ class Usuario_model extends CI_Model
     }
 
 
-    public function verificaLogin($matricula, $senha)
+    public function verificaLogin($containstitucional)
     {
-        $matricula = $this->db->escape($matricula);
-        $senha = $this->db->escape($senha);
+        $containstitucional = $this->db->escape($containstitucional);
+        //$senha = $this->db->escape($senha);
 
 
         //recupera os dados do banco de dados
-        $sql = "SELECT * FROM usuario WHERE matricula = " . $matricula . " and senha = " . $senha;
+        $sql = "SELECT * FROM usuario WHERE containstitucional = " . $containstitucional;
         $Query = $this->db->query($sql);
         $result = $Query->result_array();
 

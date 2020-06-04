@@ -96,12 +96,12 @@ class Home extends CI_Controller
         }
 
         //recupera os dados do formulario
-        $matricula = $this->input->post('matricula');
-        $senha = md5($this->input->post('senha')); // senha criptografada
+        $containstitucional = $this->input->post('containstitucional');
+        //$senha = md5($this->input->post('senha')); // senha criptografada
         //$senha = $this->input->post('senha');
         //$password = md5($password);
 
-        $DATA = $this->Usuario_model->verificaLogin($matricula, $senha);
+        $DATA = $this->Usuario_model->verificaLogin($containstitucional);
 
             //caso encontre um usuario quer dizer que ele esta registrado no sistema
 
@@ -114,7 +114,8 @@ class Home extends CI_Controller
                         'logged_in' => true
                     );
 
-                    if (($DATA['perfil'] == 'Administrador' or $DATA['perfil'] == 'Monitor') or $this->Usuario_model->verificaProfessorHabilitado($DATA['id_usuario'])) {
+                    if (($DATA['perfil'] == 'Administrador' or $DATA['perfil'] == 'Monitor')
+                        or $this->Usuario_model->verificaProfessorHabilitado($DATA['id_usuario'])) {
                         $this->session->set_userdata($newdata);
 
                             $this->view_home($DATA['id_usuario']);
@@ -122,8 +123,8 @@ class Home extends CI_Controller
                     } else {
                         $this->index();
                     }
-                } //caso o usuario digitou um matricula  e uma senha e nao esteja no BD envia uma msg de erro
-                elseif (($matricula != null || $senha != null) && $DATA == null) {
+                } //caso o usuario digitou a conta institucional e uma senha e nao esteja no BD envia uma msg de erro
+                elseif (($containstitucional != null ) && $DATA == null) {
                     $DADOS['msg'] = 'Matrícula ou Senha inválido';
                     $this->load->view('login', $DADOS);
                 } //caso contrario, mostra a tela de login

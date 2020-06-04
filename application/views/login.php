@@ -42,7 +42,7 @@ $this->load->helper('url');
 
         <form action="<?php echo site_url('home/login'); ?>" method="post">
             <div class="form-group has-feedback">
-                <input name="matricula" class="form-control" placeholder="Matrícula">
+                <input name="containstitucional" class="form-control" placeholder="Conta Institucional">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
