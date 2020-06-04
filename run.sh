@@ -6,8 +6,8 @@ DB_CONTAINER_NAME=mysql-monitoria
 
 set -e
 
-#echo -e "\nCorrigindo permissões na pasta da aplicação"
-#sudo chgrp www-data -R .
+echo -e "\nCorrigindo permissões na pasta da aplicação"
+sudo chown $USER:www-data -R .
 
 # Testando se não existe pasta para o banco de dados
 if [ ! -d "$DB_DIR" ]; then
@@ -21,7 +21,7 @@ docker run --rm --interactive --tty \
             hub.dds.ufvjm.edu.br/desenvolvimento/composer install --ignore-platform-reqs --no-scripts
 
 echo -e "\nCorrigindo permissões na pasta da aplicação"
-sudo chgrp www-data -R application/logs/
+sudo chown $USER:www-data -R .
 sudo chmod g+w -R application/logs/
 
 echo -e "\nIniciando a Stack"
