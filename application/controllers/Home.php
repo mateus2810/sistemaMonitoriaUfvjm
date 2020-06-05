@@ -119,7 +119,7 @@ class Home extends CI_Controller
             $loggedAuthGraphqlRequest = new AuthGraphqlRequest($headers);
 
             // Recupera as informações do usuário logado
-            $me = $loggedAuthGraphqlRequest->me();
+            $usuarioLogadoInfo = $loggedAuthGraphqlRequest->usuarioLogadoInfo();
 
             $DATA = $this->Usuario_model->getUsuarioByContaInstitucional($containstitucional);
 
