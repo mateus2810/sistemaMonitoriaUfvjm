@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+use GraphqlClient\GraphqlRequest\AuthGraphqlRequest;
+
 class Home extends CI_Controller
 {
 
@@ -97,35 +99,59 @@ class Home extends CI_Controller
 
         //recupera os dados do formulario
         $containstitucional = $this->input->post('containstitucional');
-        //$senha = md5($this->input->post('senha')); // senha criptografada
-        //$senha = $this->input->post('senha');
-        //$password = md5($password);
+        $senha = $this->input->post('senha');
 
-        $DATA = $this->Usuario_model->verificaLogin($containstitucional);
+        try {
+            $request = new stdClass();
+
+            if(is_null($containstitucional) or is_null($senha)){
+                throw new \Exception('Usuário ou senha não informados');
+            }
+
+            $request->containstitucional = $containstitucional;
+            $request->password = $senha;
+
+            $authGraphqlRequest = new AuthGraphqlRequest();
+            // Tenta realizar o login na Conta Institucional
+            $headers = $authGraphqlRequest->loginContaInstitucional($request);
+
+            // Login ok, recria a conexao com o GraphQL, agora com cabeçalhos de autenticação
+            $loggedAuthGraphqlRequest = new AuthGraphqlRequest($headers);
+
+            // Recupera as informações do usuário logado
+            $me = $loggedAuthGraphqlRequest->me();
+
+            $DATA = $this->Usuario_model->getUsuarioByContaInstitucional($containstitucional);
+
+            if(is_null($DATA)){
+                throw new \Exception('Não existe usuário cadastrado com a conta institucional '. $containstitucional);
+            }
+        } catch (\Exception $e) {
+            $errorMessage = $e->getMessage();
+        }
 
             //caso encontre um usuario quer dizer que ele esta registrado no sistema
 
-            if ($DATA != null) {
+            if (isset($DATA) && $DATA != null) {
 
                     $newdata = array(
-                        'id_usuario' => $DATA['id_usuario'],
-                        'nome' => $DATA['nome'],
-                        'perfil' => $DATA['perfil'],
+                        'id_usuario' => $DATA->id_usuario,
+                        'nome' => $DATA->nome,
+                        'perfil' => $DATA->perfil,
                         'logged_in' => true
                     );
 
-                    if (($DATA['perfil'] == 'Administrador' or $DATA['perfil'] == 'Monitor')
-                        or $this->Usuario_model->verificaProfessorHabilitado($DATA['id_usuario'])) {
+                    if (($DATA->perfil == 'Administrador' or $DATA->perfil == 'Monitor') or $this->Usuario_model->verificaProfessorHabilitado($DATA->id_usuario)) {
                         $this->session->set_userdata($newdata);
 
-                            $this->view_home($DATA['id_usuario']);
+                            $this->view_home($DATA->id_usuario);
 
                     } else {
                         $this->index();
                     }
-                } //caso o usuario digitou a conta institucional e uma senha e nao esteja no BD envia uma msg de erro
-                elseif (($containstitucional != null ) && $DATA == null) {
-                    $DADOS['msg'] = 'Matrícula ou Senha inválido';
+                } //caso o usuario digitou um matricula  e uma senha e nao esteja no BD envia uma msg de erro
+                elseif (($containstitucional != null || $senha != null) && isset($errorMessage)) {
+                    $DADOS['msg'] = $errorMessage;
                     $this->load->view('login', $DADOS);
                 } //caso contrario, mostra a tela de login
                 else {
