@@ -92,6 +92,22 @@ class Usuario_model extends CI_Model
         return $result[0];
     }
 
+    public function getUsuarioByContaInstitucional($containstitucional)
+    {
+        $containstitucional = $this->db->escape($containstitucional);
+
+        //recupera os dados do banco de dados
+        $sql = "SELECT * FROM usuario WHERE containstitucional = " . $containstitucional;
+        $Query = $this->db->query($sql);
+        $result = $Query->result();
+
+        if ($result == null) {
+            return null;
+        }
+
+        return $result[0];
+    }
+
     public function getUsuarioAlunoMonitor($id_usuario)
     {
         $idcliente = $this->db->escape($id_usuario);
