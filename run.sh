@@ -7,6 +7,9 @@ COMPOSER_IMG=composer
 
 set -e
 
+echo -e "\nAtualizando o código do projeto"
+git pull --all
+
 echo -e "\nCorrigindo permissões na pasta da aplicação"
 sudo chown $USER:www-data -R .
 
