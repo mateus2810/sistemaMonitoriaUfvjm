@@ -3,6 +3,7 @@
 DB_DIR=~/mysql/monitoria
 WEB_CONTAINER_NAME=apache-monitoria
 DB_CONTAINER_NAME=mysql-monitoria
+COMPOSER_IMG=hub.dds.ufvjm.edu.br/desenvolvimento/composer
 
 set -e
 
@@ -15,10 +16,18 @@ if [ ! -d "$DB_DIR" ]; then
     mkdir -p "$DB_DIR"
 fi
 
+echo -e "\nAtualizando imagem"
+docker pull $COMPOSER_IMG
+
+echo -e "\nAtualizando composer.lock"
+docker run --rm --interactive --tty \
+            --volume $PWD:/app \
+            $COMPOSER_IMG update
+
 echo -e "\nInstalando dependências localmente"
 docker run --rm --interactive --tty \
             --volume $PWD:/app \
-            hub.dds.ufvjm.edu.br/desenvolvimento/composer install --ignore-platform-reqs --no-scripts
+            $COMPOSER_IMG install --ignore-platform-reqs --no-scripts
 
 echo -e "\nCorrigindo permissões na pasta da aplicação"
 sudo chown $USER:www-data -R .
