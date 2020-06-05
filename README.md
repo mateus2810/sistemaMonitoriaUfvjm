@@ -7,6 +7,7 @@ Descrição do projeto
 * [Monitoria](#monitoria)
   * [Sumário](#sumário)
   * [Instalação](#instalação)
+     * [Gerar chave de SSH](#gerar-chave-de-ssh)
      * [Baixar código fonte](#baixar-código-fonte)
      * [Client Id e Client Key da Aplicação](#client-id-e-client-key-da-aplicação)
      * [Gerar imagem docker local](#gerar-imagem-docker-local)
@@ -25,6 +26,22 @@ Descrição do projeto
   * [Desinstalação](#desinstalação)
 
 ## Instalação
+
+### Gerar chave de SSH
+
+Caso não tenha, gerar a chave de ssh (substituir o `email`):
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "email@example.com"
+```
+
+Pegar o conteúdo da sua chave pública (.pub) e adicionar no Gitlab no seu [Perfil](https://git.dds.ufvjm.edu.br/profile/keys)
+
+Conteúdo da chave:
+
+```bash
+cat ~/.ssh/id_rsa.pub
+```
 
 ### Baixar código fonte
 
