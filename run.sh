@@ -3,7 +3,7 @@
 DB_DIR=~/mysql/monitoria
 WEB_CONTAINER_NAME=apache-monitoria
 DB_CONTAINER_NAME=mysql-monitoria
-COMPOSER_IMG=hub.dds.ufvjm.edu.br/desenvolvimento/composer
+COMPOSER_IMG=composer
 
 set -e
 
