@@ -33,7 +33,7 @@ Entrando no diretório e baixando:
 ```bash
 mkdir ~/apps
 cd ~/apps
-git clone git@git.dds.ufvjm.edu.br:prograd/monitoria.git
+git clone https://git.dds.ufvjm.edu.br/prograd/monitoria.git
 ```
 
 ### Client Id e Client Key da Aplicação
