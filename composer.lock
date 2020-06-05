@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "518b4e9f593636fa31dcfda5dbbd4873",
+    "content-hash": "fecb0bb9a14f922333488f3158f0b76f",
     "packages": [
         {
             "name": "gmostafa/php-graphql-client",
@@ -58,10 +58,6 @@
                 "query",
                 "query-builder"
             ],
-            "support": {
-                "issues": "https://github.com/mghoneimy/php-graphql-client/issues",
-                "source": "https://github.com/mghoneimy/php-graphql-client/tree/v1.5"
-            },
             "time": "2020-05-18T21:29:04+00:00"
         },
         {
@@ -129,10 +125,6 @@
                 "rest",
                 "web service"
             ],
-            "support": {
-                "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/6.5"
-            },
             "time": "2020-05-25T19:35:05+00:00"
         },
         {
@@ -184,10 +176,6 @@
             "keywords": [
                 "promise"
             ],
-            "support": {
-                "issues": "https://github.com/guzzle/promises/issues",
-                "source": "https://github.com/guzzle/promises/tree/master"
-            },
             "time": "2016-12-20T10:07:11+00:00"
         },
         {
@@ -259,23 +247,24 @@
                 "uri",
                 "url"
             ],
-            "support": {
-                "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/1.6.1"
-            },
             "time": "2019-07-01T23:21:34+00:00"
         },
         {
             "name": "micro/graphql-client",
-            "version": "dev-dev",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://git.dds.ufvjm.edu.br/micro/graphql-client.git",
-                "reference": "45a22f8ce425c35f3850dd5cc8157566de23c9b8"
+                "reference": "b4e6097d0c130e4d63b6885b52a5fad3e256aae3"
             },
             "require": {
                 "gmostafa/php-graphql-client": "^1.4",
-                "php": ">=5.6.4"
+                "php": ">=5.6.4 | ^7.0"
+            },
+            "require-dev": {
+                "phpmd/phpmd": "@stable",
+                "phpunit/phpunit": "~6.0",
+                "squizlabs/php_codesniffer": "^3.0"
             },
             "type": "library",
             "autoload": {
@@ -293,7 +282,7 @@
                 }
             ],
             "description": "Cliente GraphQL para realizar requisições para a API GraphQL da UFVJM.",
-            "time": "2020-06-04 19:51:32"
+            "time": "2020-06-05 14:21:29"
         },
         {
             "name": "psr/http-message",
@@ -343,9 +332,6 @@
                 "request",
                 "response"
             ],
-            "support": {
-                "source": "https://github.com/php-fig/http-message/tree/master"
-            },
             "time": "2016-08-06T14:39:51+00:00"
         },
         {
@@ -386,10 +372,6 @@
                 }
             ],
             "description": "A polyfill for getallheaders.",
-            "support": {
-                "issues": "https://github.com/ralouphie/getallheaders/issues",
-                "source": "https://github.com/ralouphie/getallheaders/tree/develop"
-            },
             "time": "2019-03-08T08:55:37+00:00"
         },
         {
@@ -452,9 +434,6 @@
                 "portable",
                 "shim"
             ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-intl-idn/tree/master"
-            },
             "time": "2020-05-12T16:47:27+00:00"
         },
         {
@@ -514,9 +493,6 @@
                 "portable",
                 "shim"
             ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.17.0"
-            },
             "time": "2020-05-12T16:47:27+00:00"
         },
         {
@@ -572,9 +548,6 @@
                 "portable",
                 "shim"
             ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-php72/tree/master"
-            },
             "time": "2020-05-12T16:47:27+00:00"
         }
     ],
