@@ -33,6 +33,9 @@ COPY database/migrate.sh /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/migrate.sh
 
+# limpando o cache do composer
+RUN composer clearcache
+
 # instalando dependências do composer
 RUN composer install
 
