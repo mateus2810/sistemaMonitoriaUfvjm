@@ -66,7 +66,7 @@ cp .env.example .env
 Lançar os valores corretos para os arquivos da integração com os microsserviços no arquivo **.env**. Substituir os valores de **GRAPHQL_APP_ID** e **GRAPHQL_APP_KEY** para os valores cadastrados na stack de Microsserviços DTI/DDS.
 
 ```env
-GRAPHQL_URL=https://micro-teste.dds.ufvjm.edu.br/
+GRAPHQL_ENVNAME=teste
 GRAPHQL_APP_ID=
 GRAPHQL_APP_KEY=
 ```
