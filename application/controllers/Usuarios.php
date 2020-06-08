@@ -181,4 +181,17 @@ class Usuarios extends CI_Controller
             $this->Util->telaResultado($this, "Você tem dados vinculados a esse usuario.", true);
         }
     }
+
+
+
+    public function termos_de_uso()
+    {
+        $ID_USUARIO = $this->session->userdata('id_usuario');
+        $DATA['usuario'] = $this->Usuario_model->verificaAceitoTermo($ID_USUARIO);
+
+        $this->Usuario_model->setTermosDeUso($ID_USUARIO);
+       // var_dump($DATA);
+
+        $this->load->view('home',$DATA);
+    }
 }

@@ -7,7 +7,9 @@ Descrição do projeto
 * [Monitoria](#monitoria)
   * [Sumário](#sumário)
   * [Instalação](#instalação)
+     * [Gerar chave de SSH](#gerar-chave-de-ssh)
      * [Baixar código fonte](#baixar-código-fonte)
+     * [Client Id e Client Key da Aplicação](#client-id-e-client-key-da-aplicação)
      * [Gerar imagem docker local](#gerar-imagem-docker-local)
      * [Iniciar a stack](#iniciar-a-stack)
      * [Banco de Dados](#banco-de-dados)
@@ -21,27 +23,60 @@ Descrição do projeto
   * [Acesso aos ambientes](#acesso-aos-ambientes)
      * [Testes](#testes)
      * [Produção](#produção)
-
+  * [Desinstalação](#desinstalação)
 
 ## Instalação
 
-### Baixar código fonte
+### Gerar chave de SSH
 
+Caso não tenha, gerar a chave de ssh (substituir o `email`):
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "email@example.com"
+```
+
+Pegar o conteúdo da sua chave pública (.pub) e adicionar no Gitlab no seu [Perfil](https://git.dds.ufvjm.edu.br/profile/keys)
+
+Conteúdo da chave:
+
+```bash
+cat ~/.ssh/id_rsa.pub
+```
+
+### Baixar código fonte
 
 Entrando no diretório e baixando:
 
 ```bash
 mkdir ~/apps
 cd ~/apps
-git clone git@git.dds.ufvjm.edu.br:prograd/monitoria.git
+git clone https://git.dds.ufvjm.edu.br/prograd/monitoria.git
 ```
 
+### Client Id e Client Key da Aplicação
+
+Criar o arquivo **.env**
+
+```env
+# Criar o arquivo de variáveis de ambiente local
+cd ~/apps/monitoria
+cp .env.example .env
+```
+
+Lançar os valores corretos para os arquivos da integração com os microsserviços no arquivo **.env**. Substituir os valores de **GRAPHQL_APP_ID** e **GRAPHQL_APP_KEY** para os valores cadastrados na stack de Microsserviços DTI/DDS.
+
+```env
+GRAPHQL_ENVNAME=teste
+GRAPHQL_APP_ID=
+GRAPHQL_APP_KEY=
+```
 
 ### Gerar imagem docker local
 
 Para criar a imagem docker a aplicação locamente para ambiente de desenvolvimento:
 
 ```bash
+# Criar a imagem docker
 ./build.sh
 ```
 
@@ -79,13 +114,6 @@ de versionamento.
 ```
 
 ### Servidor web
-
-Criar o arquivo de variáveis de ambiente local:
-
-```bash
-cd ~/apps/monitoria
-cp .env.example .env
-```
 
 Substituir os valores de:
 
@@ -161,3 +189,14 @@ docker exec -it apache-monitoria bash
 
 * Servidor web: [monitoria.prograd.ufvjm.edu.br](https://monitoria.prograd.ufvjm.edu.br)
 * PHPMyAdmin: [pma-selecao.prograd.ufvjm.edu.br](https://pma-monitoria.prograd.ufvjm.edu.br)
+
+## Desinstalação
+
+Para remover a stack (containers, código fonte e base de dados), executar o script abaixo.
+
+**ATENÇÃO**: Tudo será removido, o código fonte não enviado para o repositório será perdido.
+
+```bash
+cd ~/apps/monitoria
+./stop.sh
+```

@@ -1,30 +1,24 @@
 version: "2"
 services:
   mysql-monitoria:
-    #image: mysql:8
-    #image: mysql:5.7
+    container_name: mysql-monitoria
     image: mysql:5.7
     volumes:
       - ~/mysql/monitoria:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=$BANCO
-      - MYSQL_ROOT_PASSWORD=$SENHA 
+      - MYSQL_ROOT_PASSWORD=$ROOT_SENHA
+      - MYSQL_USER=$USUARIO
+      - MYSQL_PASSWORD=$SENHA
     ports:
-      - 3307:3307
+      - 3307:3306
     restart: "always"
   apache-monitoria:
+    container_name: apache-monitoria
+    image: apache-monitoria:dev
     build:
       context: .
-      dockerfile: Dockerfile 
-    environment:
-      - HOST=$HOST
-      - DRIVER=$DRIVER
-      - PORTA=$PORTA
-      - BANCO=$BANCO
-      - USUARIO=$USUARIO
-      - SENHA=$SENHA 
-      - WEBURL=$WEBURL 
-      - WEBPORT=$WEBPORT 
+      dockerfile: Dockerfile
     volumes:
       - ./:/var/www/html/
     ports:
@@ -32,10 +26,14 @@ services:
     depends_on:
       - mysql-monitoria
     restart: "always"
-  phpmyadmin:
+    env_file:
+      - .env
+  phpmyadmin-monitoria:
+    container_name: phpmyadmin-monitoria
     image: phpmyadmin/phpmyadmin:latest
-
     ports:
       - 8080:80
     environment:
-      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql-monitoria
+    depends_on:
+      - mysql-monitoria

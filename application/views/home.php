@@ -15,40 +15,43 @@
     <!-- Main content -->
     <section class="content" >
       <!-- Small boxes (Stat box) -->
-        <?php if ((strpos("Monitor", $this->session->userdata('perfil')) !== false)
-        or strpos("Professor", $this->session->userdata('perfil'))!== false) {  ?>
-        <div class="row col-md-6" >
+        <?php if (((strpos("Monitor", $this->session->userdata('perfil')) !== false) or
+        strpos("Professor", $this->session->userdata('perfil'))!== false) and $usuario->declaracao == 0) {  ?>
 
-          <div class="box box-solid"   >
-              <div class="box-header with-border " >
-                  <i class="fa fa-text-width"></i>
 
-                  <h3 class="box-title">Termo de Não Vinculo Empregatício </h3>
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body ">
-                  <dl>
-                      <dt>Descrição</dt>
-                      <dd>Declaro para os fins de registro na modalidade fretamento, que não possuo vínculo
-                          direta ou indiretamente com a Administração Pública FEDERAL, ESTADUAL
-                          ou MUNICIPAL, em conformidade com inciso XVI do artigo 37 da Constituição
-                          Federal.</dd>
-
-                  </dl>
-              </div>
-              <!-- /.box-body -->
-          </div>
-
-          <button type="button" class="btn btn-primary btn-sm">Concordo</button>
-          <button type="button" class="btn btn-secondary btn-sm">Não Concordo</button>
-
+            <div class="modal fade" id="modal-default" data-backdrop="static">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                                <span aria-hidden="true"></span></button>
+                            <h4 class="modal-title">TERMOS DE USO DO SISTEMA DE MONITORIA</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>texto</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="<?= site_url('Usuarios/termos_de_uso/') ?>" type="button" class="btn btn-primary">Concordo</a>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
         <!-- ./col -->
       </div>
       <!-- /.row (main row) -->
         <?php } ?>
     </section>
     <!-- /.content -->
+<script src="<?= base_url('/AdminLTE-2.4.3/bower_components/jquery/dist/jquery.min.js'); ?>"></script>
 
+<!-- chamada da função -->
+<script>
+    $(function(){
+        $("#modal-default").modal("show");
+    });
 
+</script>
 
 <?php $this->load->view('footer'); ?>

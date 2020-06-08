@@ -1,27 +1,18 @@
-/src/nbproject/
+# Bibliotecas baixadas pelo composer
+vendor/
 
-
-### Composer ###
-composer.phar
-/vendor/
-
-# Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
-# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
-# composer.lock
-
-.env.*.php
-.env.php
+# Variaveis de ambiente locais
 .env
 
-
-### Node ###
-# Logs
-logs
-*.log
-
+# Pasta de configuracao do PHPStorm
 .idea/
 
+# Arquivos MAC
 .DS_Store
 
-/docker-compose-prod.yml
-/composer.lock
+# Pasta de logs local
+application/logs/*
+!application/logs/.gitkeep
+
+# Pasta de configuracao do Visual Studio
+.vs

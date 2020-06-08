@@ -92,6 +92,22 @@ class Usuario_model extends CI_Model
         return $result[0];
     }
 
+    public function getUsuarioByContaInstitucional($containstitucional)
+    {
+        $containstitucional = $this->db->escape($containstitucional);
+
+        //recupera os dados do banco de dados
+        $sql = "SELECT * FROM usuario WHERE containstitucional = " . $containstitucional;
+        $Query = $this->db->query($sql);
+        $result = $Query->result();
+
+        if ($result == null) {
+            return null;
+        }
+
+        return $result[0];
+    }
+
     public function getUsuarioAlunoMonitor($id_usuario)
     {
         $idcliente = $this->db->escape($id_usuario);
@@ -110,14 +126,14 @@ class Usuario_model extends CI_Model
     }
 
 
-    public function verificaLogin($matricula, $senha)
+    public function verificaLogin($containstitucional)
     {
-        $matricula = $this->db->escape($matricula);
-        $senha = $this->db->escape($senha);
+        $containstitucional = $this->db->escape($containstitucional);
+        //$senha = $this->db->escape($senha);
 
 
         //recupera os dados do banco de dados
-        $sql = "SELECT * FROM usuario WHERE matricula = " . $matricula . " and senha = " . $senha;
+        $sql = "SELECT * FROM usuario WHERE containstitucional = " . $containstitucional;
         $Query = $this->db->query($sql);
         $result = $Query->result_array();
 
@@ -263,11 +279,30 @@ class Usuario_model extends CI_Model
 
     }
 
+    public function setTermosDeUso($id_usuario)
+    {
+        $this->db->escape($id_usuario);
+        //recupera os dados do banco de dados
+        $sql = "UPDATE usuario set declaracao = 1 where id_usuario = " . $id_usuario;
+        $this->db->query($sql);
+    }
+
     public function verificaProfessorHabilitado($id_usuario){
         $sql = "select * from usuario u where u.habilitado = 1 and u.id_usuario = $id_usuario;" ;
         $Query = $this->db->query($sql);
         $result = $Query->result();
 
         return $result;
+    }
+
+    public function verificaAceitoTermo($id_usuario)
+    {
+        $this->db->escape($id_usuario);
+        //recupera os dados do banco de dados
+        $sql = "select * from usuario u where u.id_usuario = $id_usuario";
+        $Query = $this->db->query($sql);
+        $result = $Query->result();
+
+        return $result[0];
     }
 }

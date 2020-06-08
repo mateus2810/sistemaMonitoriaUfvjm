@@ -9,9 +9,15 @@
   "license": "MIT",
   "version": "1.0.0",
   "type": "project",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://git.dds.ufvjm.edu.br/micro/graphql-client.git"
+    }
+  ],
   "require": {
-    "hirak/prestissimo": "^0.3.9",
-    "php": ">=5.6.4"
+    "micro/graphql-client": "dev-master",
+    "php": ">=7.0.0"
   },
   "require-dev": {
     "mockery/mockery": "0.9.*",
