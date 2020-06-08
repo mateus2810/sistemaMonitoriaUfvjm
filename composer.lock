@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa4bd374754bc3f0cc2e1346e205701f",
+    "content-hash": "fcc8f8a062e1d0fee1e49345e2857245",
     "packages": [
         {
             "name": "firebase/php-jwt",
@@ -301,16 +301,16 @@
         },
         {
             "name": "micro/graphql-client",
-            "version": "dev-master",
+            "version": "0.0.1",
             "source": {
                 "type": "git",
                 "url": "https://git.dds.ufvjm.edu.br/micro/graphql-client.git",
-                "reference": "01800ef8a521578501b189153d938766648f2040"
+                "reference": "ee1a417a0a28180091438fc70b346db7a043ffd6"
             },
             "require": {
                 "firebase/php-jwt": "5.*",
                 "gmostafa/php-graphql-client": "^1.4",
-                "php": "^7.0"
+                "php": ">=7.0.0"
             },
             "require-dev": {
                 "phpmd/phpmd": "@stable",
@@ -333,7 +333,7 @@
                 }
             ],
             "description": "Cliente GraphQL para realizar requisições para a API GraphQL da UFVJM.",
-            "time": "2020-06-08T09:40:54+00:00"
+            "time": "2020-06-08T18:55:01+00:00"
         },
         {
             "name": "psr/http-message",
@@ -2282,9 +2282,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "micro/graphql-client": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
