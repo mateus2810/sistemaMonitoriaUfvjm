@@ -111,15 +111,15 @@ class Home extends CI_Controller
             $request->containstitucional = $containstitucional;
             $request->password = $senha;
 
+            // Carrega a classe de autenticação
             $authGraphqlRequest = new AuthGraphqlRequest();
-            // Tenta realizar o login na Conta Institucional
-            $headers = $authGraphqlRequest->loginContaInstitucional($request);
 
-            // Login ok, recria a conexao com o GraphQL, agora com cabeçalhos de autenticação
-            $loggedAuthGraphqlRequest = new AuthGraphqlRequest($headers);
+            // Tenta realizar o login na Conta Institucional
+            $authGraphqlRequest->loginContaInstitucional($request);
 
             // Recupera as informações do usuário logado
-            $usuarioLogadoInfo = $loggedAuthGraphqlRequest->usuarioLogadoInfo();
+            // Dados pessoais e vinculos (aluno, docente, tae, coordenador de curso, etc) com a UFVJM
+            $usuarioLogadoInfo = $authGraphqlRequest->usuarioLogadoInfo();
 
             $DATA = $this->Usuario_model->getUsuarioByContaInstitucional($containstitucional);
 
