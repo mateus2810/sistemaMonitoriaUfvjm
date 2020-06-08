@@ -1,5 +1,10 @@
 FROM php:7.3-apache
 
+#Configurando timezone
+ENV TZ America/Sao_Paulo
+RUN echo $TZ > /etc/timezone
+RUN dpkg-reconfigure -f noninteractive tzdata
+
 WORKDIR /var/www/html/
 
 ENV PHP_MEMORY_LIMIT 384M
