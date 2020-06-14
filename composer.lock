@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6978d2282db32f84cff9f634fb3fa71b",
+    "content-hash": "06929f6ceeb502d80ce99cea55e267c9",
     "packages": [
         {
             "name": "firebase/php-jwt",
@@ -300,48 +300,6 @@
             "time": "2019-07-01T23:21:34+00:00"
         },
         {
-            "name": "micro/graphql-client",
-            "version": "0.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://git.dds.ufvjm.edu.br/micro/graphql-client.git",
-                "reference": "910f0403b7a94a1a2b952497261b5009ab622330"
-            },
-            "require": {
-                "firebase/php-jwt": "5.*",
-                "gmostafa/php-graphql-client": "^1.4",
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "phpmd/phpmd": "@stable",
-                "phpunit/phpunit": ">=4.8 <=9",
-                "sensiolabs/security-checker": "^6.0",
-                "squizlabs/php_codesniffer": "^3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "GraphqlClient\\": "src/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "GraphqlClient\\Tests\\": "tests/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Divisão de Desenvolvimento de Sistemas",
-                    "email": "devsis@ufvjm.edu.br"
-                }
-            ],
-            "description": "Cliente GraphQL para realizar requisições para a API GraphQL da UFVJM.",
-            "time": "2020-06-14T14:55:28+00:00"
-        },
-        {
             "name": "psr/http-message",
             "version": "1.0.1",
             "source": {
@@ -606,6 +564,54 @@
                 "shim"
             ],
             "time": "2020-05-12T16:47:27+00:00"
+        },
+        {
+            "name": "ufvjm/graphql-client",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/evertonpaiva/graphql-php-client.git",
+                "reference": "89b8fad6fe0ada367d5d6072d5599ba897009a11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/evertonpaiva/graphql-php-client/zipball/89b8fad6fe0ada367d5d6072d5599ba897009a11",
+                "reference": "89b8fad6fe0ada367d5d6072d5599ba897009a11",
+                "shasum": ""
+            },
+            "require": {
+                "firebase/php-jwt": "5.*",
+                "gmostafa/php-graphql-client": "^1.4",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "phpmd/phpmd": "@stable",
+                "phpunit/phpunit": ">=4.8 <=9",
+                "sensiolabs/security-checker": "^6.0",
+                "squizlabs/php_codesniffer": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GraphqlClient\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Divisão de Desenvolvimento de Sistemas",
+                    "email": "devsis@ufvjm.edu.br"
+                },
+                {
+                    "name": "Éverton de Oliveira Paiva",
+                    "email": "everton.paiva@ufvjm.edu.br"
+                }
+            ],
+            "description": "Cliente GraphQL para realizar requisições para a API GraphQL da UFVJM.",
+            "time": "2020-06-14T16:51:13+00:00"
         }
     ],
     "packages-dev": [
