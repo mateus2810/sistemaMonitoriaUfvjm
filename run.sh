@@ -22,7 +22,7 @@ fi
 echo -e "\nInstalando dependências localmente"
 docker run --rm --interactive --tty \
             --volume $PWD:/app \
-            $COMPOSER_IMG install
+            $COMPOSER_IMG composer install
 
 echo -e "\nCorrigindo permissões na pasta da aplicação"
 sudo chown $USER:www-data -R .
