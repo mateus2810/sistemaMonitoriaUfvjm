@@ -16,8 +16,8 @@
     }
   ],
   "require": {
-    "micro/graphql-client": "0.0.*",
-    "php": ">=7.0.0"
+      "micro/graphql-client": ">= 0.0.2",
+      "php": ">=7.1"
   },
   "require-dev": {
     "mockery/mockery": "0.9.*",

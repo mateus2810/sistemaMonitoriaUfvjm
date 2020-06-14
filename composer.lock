@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fcc8f8a062e1d0fee1e49345e2857245",
+    "content-hash": "6978d2282db32f84cff9f634fb3fa71b",
     "packages": [
         {
             "name": "firebase/php-jwt",
@@ -301,26 +301,32 @@
         },
         {
             "name": "micro/graphql-client",
-            "version": "0.0.1",
+            "version": "0.0.2",
             "source": {
                 "type": "git",
                 "url": "https://git.dds.ufvjm.edu.br/micro/graphql-client.git",
-                "reference": "ee1a417a0a28180091438fc70b346db7a043ffd6"
+                "reference": "910f0403b7a94a1a2b952497261b5009ab622330"
             },
             "require": {
                 "firebase/php-jwt": "5.*",
                 "gmostafa/php-graphql-client": "^1.4",
-                "php": ">=7.0.0"
+                "php": ">=7.1"
             },
             "require-dev": {
                 "phpmd/phpmd": "@stable",
-                "phpunit/phpunit": "~6.0",
+                "phpunit/phpunit": ">=4.8 <=9",
+                "sensiolabs/security-checker": "^6.0",
                 "squizlabs/php_codesniffer": "^3.0"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "GraphqlClient\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "GraphqlClient\\Tests\\": "tests/"
                 }
             },
             "license": [
@@ -333,7 +339,7 @@
                 }
             ],
             "description": "Cliente GraphQL para realizar requisições para a API GraphQL da UFVJM.",
-            "time": "2020-06-08T18:55:01+00:00"
+            "time": "2020-06-14T14:55:28+00:00"
         },
         {
             "name": "psr/http-message",
@@ -2286,7 +2292,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.0.0"
+        "php": ">=7.1"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"
