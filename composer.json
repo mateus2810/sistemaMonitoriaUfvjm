@@ -10,7 +10,7 @@
   "version": "1.0.0",
   "type": "project",
   "require": {
-      "php": ">=7.1",
+    "php": ">=7.1",
     "ufvjm/graphql-client": "^0.0.1"
   },
   "require-dev": {

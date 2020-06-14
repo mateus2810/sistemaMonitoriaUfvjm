@@ -1,6 +1,9 @@
 # Bibliotecas baixadas pelo composer
 vendor/
 
+# Cache do composer
+composer.lock
+
 # Variaveis de ambiente locais
 .env
 
