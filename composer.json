@@ -11,7 +11,7 @@
   "type": "project",
   "require": {
     "php": ">=7.1",
-    "ufvjm/graphql-client": "^0.0.1"
+    "ufvjm/graphql-client": "^0.0"
   },
   "require-dev": {
     "mockery/mockery": "0.9.*",
