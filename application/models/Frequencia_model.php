@@ -48,6 +48,7 @@ class Frequencia_model extends CI_Model
         return $this->db->delete('frequencia');
     }
 
+    //Verifica apenas id_frenquencia da tabela Frequencia
     public function getVerificaFrequencia($id_aula){
         $sql = "select f.id_frequencia from frequencia f where f.id_aula = $id_aula;";
         $Query = $this->db->query($sql, $id_aula);
