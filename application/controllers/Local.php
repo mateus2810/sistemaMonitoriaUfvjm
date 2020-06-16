@@ -11,6 +11,9 @@ class Local extends CI_Controller
         $this->load->helper('url');
         $this->load->model('Local_model');
         $this->load->model('Util_model', 'Util');
+        $this->load->model('Aula_model', 'Aula_model');
+        $this->load->model('Local_model', 'local');
+        $this->load->model('Horario_model', 'Horario_model');
     }
 
     function listar_view()
@@ -40,7 +43,7 @@ class Local extends CI_Controller
         $DATA['id_local'] = $this->input->post('id_local');
         $DATA['dependencia'] = $this->input->post('dependencia');
         $DATA['campus'] = $this->input->post('campus');
-       var_dump($DATA);
+       //var_dump($DATA);
         if (strlen(trim($this->input->post('dependencia'))) > 0) {
             $this->Local_model->adicionaEditaLocal($DATA);
             $this->Util->telaResultado($this, "Informações atualizados!", false, "Local/listar_view");
@@ -56,14 +59,21 @@ class Local extends CI_Controller
     //Entra na model e excluir disciplina do banco de dados
     function excluir_local_bd($id_local)
     {
-        //recupera as disciplinas do sistema
-        $this->load->model('Local_model', 'local');//
+
         //var_dump($id_monitoria);
 
-        if ($this->Local_model->excluirLocal($id_local) != 0) {
+        if(!$this->Aula_model->getVerificaLocal($id_local) && !$this->Horario_model->getVerificaHorario($id_local) ){
+            if ($this->Local_model->excluirLocal($id_local) != 0) {
             $this->Util->telaResultado($this, "Local excluido com sucesso!", false, "Local/listar_view");
-        } else {
-            $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um periodo ativo ou ja cadastrado.", true);
+            } else {
+            $this->Util->telaResultado($this, "Não foi possivel atualizar os dados.
+            Confira os dados informados e se não existe um periodo ativo ou ja cadastrado.", true);
+            }
         }
+
+        else {
+        $this->Util->telaResultado($this, "Você tem horário ou atividade vinculado a esse local.", true);
     }
+    }
+
 }

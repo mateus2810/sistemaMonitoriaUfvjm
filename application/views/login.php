@@ -55,7 +55,12 @@ $this->load->helper('url');
                     <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
                 </div>
                 <!-- /.col -->
+
             </div>
+            <br>
+
+            <a target="_blank" href="https://sistemas.ufvjm.edu.br/recuperar-senha">Esqueci minha senha!</a>
+
         </form>
 
         <br/>

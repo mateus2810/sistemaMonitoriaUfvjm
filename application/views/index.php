@@ -45,7 +45,7 @@ $semana = array(
                                     <b><font size="+1"> <?= mb_strtoupper($monitoria->codigo) ?></font> </b><br/>
                                    <b><font size="+1"> <?= mb_strtoupper($monitoria->nome) ?></font> </b>
                                     <h4><?= mb_strtoupper($monitoria->dia_semana)?>, <?=substr($monitoria->horario_inicio, 0, -3)?>h ATÉ <?=substr($monitoria->horario_fim, 0, -3)?> </h4>
-                                    <h4><?= mb_strtoupper($monitoria->sala)?>, <?= mb_strtoupper($monitoria->predio)?>  </h4>
+                                    <h4><?= mb_strtoupper($monitoria->dependencia)?> </h4>
                                     <p><b>MONITOR(A): <?= mb_strtoupper($monitoria->monitor)?></b></p>
                                     <p><b>STATUS: <?php if ($monitoria->dia_semana!=$semana[$dia]) {
                                         echo"POR VIR";
