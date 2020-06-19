@@ -360,7 +360,8 @@ class Monitoria extends CI_Controller
             if ($this->Monitoria_model->excluirHorario($id_horario_monitoria) != 0) {
                 $this->Util->telaResultado($this, "Horario excluido com sucesso!", false, "Monitoria/gerenciar" . '/' . $id_monitoria);
             } else {
-                $this->Util->telaResultado($this, "Não foi possivel atualizar os dados. Confira os dados informados e se não existe um período ativo ou já cadastrado.", true);
+                $this->Util->telaResultado($this, "Não foi possivel atualizar os dados.
+                Confira os dados informados e se não existe um período ativo ou já cadastrado.", true);
             }
         }
 

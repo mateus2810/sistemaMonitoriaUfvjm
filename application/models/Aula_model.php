@@ -172,4 +172,13 @@ join aula au USING(id_monitoria) left join frequencia fr on (a.id_aluno = fr.id_
         $result = $Query->result();
         return $result[0];
     }
+
+    //Verifica local cadastrado na tabela Aula
+    public function getVerificaLocal($id_local){
+        $sql = "select a.id_aula from aula a where a.id_local = $id_local;";
+        $Query = $this->db->query($sql, $id_local);
+        $result = $Query->result();
+
+        return $result;
+    }
 }

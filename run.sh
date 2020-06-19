@@ -3,7 +3,7 @@
 DB_DIR=~/mysql/monitoria
 WEB_CONTAINER_NAME=apache-monitoria
 DB_CONTAINER_NAME=mysql-monitoria
-COMPOSER_IMG=composer
+COMPOSER_IMG=apache-monitoria:dev
 
 set -e
 
@@ -19,18 +19,15 @@ if [ ! -d "$DB_DIR" ]; then
     mkdir -p "$DB_DIR"
 fi
 
-echo -e "\nAtualizando imagem"
-docker pull $COMPOSER_IMG
-
 echo -e "\nAtualizando composer.lock"
 docker run --rm --interactive --tty \
             --volume $PWD:/app \
-            $COMPOSER_IMG update
+            $COMPOSER_IMG composer update
 
 echo -e "\nInstalando dependências localmente"
 docker run --rm --interactive --tty \
             --volume $PWD:/app \
-            $COMPOSER_IMG install --ignore-platform-reqs --no-scripts
+            $COMPOSER_IMG composer install
 
 echo -e "\nCorrigindo permissões na pasta da aplicação"
 sudo chown $USER:www-data -R .

@@ -141,7 +141,7 @@ class Home extends CI_Controller
                         'logged_in' => true
                     );
 
-                    if (($DATA->perfil == 'Administrador' or $DATA->perfil == 'Monitor') or $this->Usuario_model->verificaProfessorHabilitado($DATA->id_usuario)) {
+                    if (($DATA->perfil == 'Administrador' or $DATA->perfil == 'Monitor' or $DATA->perfil == 'Professor') or $this->Usuario_model->verificaProfessorHabilitado($DATA->id_usuario)) {
                         $this->session->set_userdata($newdata);
 
                             $this->view_home($DATA->id_usuario);
@@ -150,8 +150,8 @@ class Home extends CI_Controller
                         $this->index();
                     }
                 } //caso o usuario digitou um matricula  e uma senha e nao esteja no BD envia uma msg de erro
-                elseif (($containstitucional != null || $senha != null) && isset($errorMessage)) {
-                    $DADOS['msg'] = $errorMessage;
+                elseif (($containstitucional != null || $senha != null) ) {
+                    $DADOS['msg'] = "Usuario ou senha inválido";
                     $this->load->view('login', $DADOS);
                 } //caso contrario, mostra a tela de login
                 else {
