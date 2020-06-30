@@ -50,7 +50,7 @@
                         </div>
     
                         <div class="form-group">
-                            <label>Telefone</label>
+                            <label>Telefonee</label>
                             <input type="text" class="form-control" name="telefone" placeholder="Entre com o telefone" value="<?=$usuario->telefone?>" >
                         </div> 
 
