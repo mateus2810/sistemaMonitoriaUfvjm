@@ -1,4 +1,4 @@
--- Table `gestao_monitorias`.`usuario`
+-- Table `gestao_monitorias`.`local`
 -- -----------------------------------------------------
 ALTER TABLE local
 ADD dependencia varchar(50),

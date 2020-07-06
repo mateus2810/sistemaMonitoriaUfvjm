@@ -89,8 +89,8 @@ class Usuarios extends CI_Controller
             $usuario->id_usuario = $id_usuario;
             $usuario->matricula = "";
             $usuario->nome = "";
+            $usuario->containstitucional = "";
             $usuario->email = "";
-            $usuario->senha = "";
             $usuario->telefone = "";
             $usuario->perfil = "";
             $DATA['usuario'] = $usuario;
@@ -107,6 +107,7 @@ class Usuarios extends CI_Controller
         $DATA['id_usuario'] = $this->input->post('id_usuario');
         $DATA['matricula'] = $this->input->post('matricula');
         $DATA['nome'] = $this->input->post('nome');
+        $DATA['containstitucional'] = $this->input->post('containstitucional');
         $DATA['email'] = $this->input->post('email');
         $DATA['telefone'] = $this->input->post('telefone');
         $DATA['perfil'] = $this->input->post('perfil');
