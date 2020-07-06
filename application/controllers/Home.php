@@ -119,9 +119,11 @@ class Home extends CI_Controller
 
             // Recupera as informações do usuário logado
             // Dados pessoais e vinculos (aluno, docente, tae, coordenador de curso, etc) com a UFVJM
-            $usuarioLogadoInfo = $authGraphqlRequest->usuarioLogadoInfo();
+            //$usuarioLogadoInfo = $authGraphqlRequest->usuarioLogadoInfo();
 
             $DATA = $this->Usuario_model->getUsuarioByContaInstitucional($containstitucional);
+
+
 
             if(is_null($DATA)){
                 throw new \Exception('Não existe usuário cadastrado com a conta institucional '. $containstitucional);
@@ -129,6 +131,7 @@ class Home extends CI_Controller
         } catch (\Exception $e) {
             $errorMessage = $e->getMessage();
         }
+
 
             //caso encontre um usuario quer dizer que ele esta registrado no sistema
 

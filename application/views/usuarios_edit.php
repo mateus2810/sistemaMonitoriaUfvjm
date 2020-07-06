@@ -73,7 +73,10 @@ $PERFIL_USUARIO = $this->session->userdata('perfil');
                                     <label>Matricula/Siape</label>
                                     <input type="text" class="form-control" name="matricula" placeholder="Entre com a matricula" value="<?=$usuario->matricula?>" required>
                                 </div>
-
+                                <div class="form-group">
+                                    <label>Conta Institucional</label>
+                                    <input type="text" class="form-control" name="containstitucional" placeholder="Entre com o Login Institucional" value="<?=$usuario->containstitucional?>" required>
+                                </div>
 
                                 <div class="form-group">
                                     <label>E-mail</label>
@@ -115,7 +118,10 @@ $PERFIL_USUARIO = $this->session->userdata('perfil');
                                             <label>Matricula/Siape</label>
                                             <input type="text" class="form-control" name="matricula" placeholder="Entre com a matricula" value="<?=$usuario->matricula?>" readonly>
                                         </div>
-
+                                        <div class="form-group">
+                                            <label>Conta Institucional</label>
+                                            <input type="text" class="form-control" name="containstitucional" placeholder="Entre com o Login Institucional" value="<?=$usuario->containstitucional?>" required>
+                                        </div>
 
                                         <div class="form-group">
                                             <label>E-mail</label>
@@ -150,10 +156,8 @@ $PERFIL_USUARIO = $this->session->userdata('perfil');
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-default" name="opcao" value="salvar" >Salvar</button>
 
-                                <?php if ($usuario->id_usuario != "novo") { ?>
-                                <a href="<?=site_url('usuarios/alterar_senha_view/'.$usuario->id_usuario)?>" class="btn btn-default">Alterar Senha</a>
-                                <?php } ?>
-                                <a href="<?=site_url('Home/Index')?>" class="btn btn-default">Voltar</a>
+
+                                <a href="<?=site_url('Usuarios/listar_view')?>" class="btn btn-default">Voltar</a>
 
                             </div>
                         </form>
