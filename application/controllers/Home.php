@@ -115,7 +115,7 @@ class Home extends CI_Controller
             $authGraphqlRequest = new AuthGraphqlRequest();
 
             // Tenta realizar o login na Conta Institucional
-            //$authGraphqlRequest->loginContaInstitucional($request);
+            $authGraphqlRequest->loginContaInstitucional($request);
 
             // Recupera as informações do usuário logado
             // Dados pessoais e vinculos (aluno, docente, tae, coordenador de curso, etc) com a UFVJM
