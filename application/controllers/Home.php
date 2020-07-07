@@ -115,7 +115,7 @@ class Home extends CI_Controller
             $authGraphqlRequest = new AuthGraphqlRequest();
 
             // Tenta realizar o login na Conta Institucional
-            $authGraphqlRequest->loginContaInstitucional($request);
+            //$authGraphqlRequest->loginContaInstitucional($request);
 
             // Recupera as informações do usuário logado
             // Dados pessoais e vinculos (aluno, docente, tae, coordenador de curso, etc) com a UFVJM
@@ -144,7 +144,8 @@ class Home extends CI_Controller
                         'logged_in' => true
                     );
 
-                    if (($DATA->perfil == 'Administrador' or $DATA->perfil == 'Monitor' or $DATA->perfil == 'Professor') or $this->Usuario_model->verificaProfessorHabilitado($DATA->id_usuario)) {
+
+                    if (($DATA->perfil == 'Administrador' or $DATA->perfil == 'Monitor' or ($DATA->perfil == 'Professor') and $this->Usuario_model->verificaProfessorHabilitado($DATA->id_usuario))) {
                         $this->session->set_userdata($newdata);
 
                             $this->view_home($DATA->id_usuario);
