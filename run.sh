@@ -19,11 +19,6 @@ if [ ! -d "$DB_DIR" ]; then
     mkdir -p "$DB_DIR"
 fi
 
-echo -e "\nAtualizando composer.lock"
-docker run --rm --interactive --tty \
-            --volume $PWD:/var/www/html \
-            $COMPOSER_IMG composer update
-
 echo -e "\nInstalando dependências localmente"
 docker run --rm --interactive --tty \
             --volume $PWD:/var/www/html \
