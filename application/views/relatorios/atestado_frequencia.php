@@ -76,6 +76,18 @@ $htmlStr .= '
 </table>
 ';
 
+//Tratar erro caso nao tenha registro de horarios
+if ($somatorioReuniao->horario_reuniao==null){
+    $somatorioReuniao->horario_reuniao = 0;
+}
+if($somatorioAula->horario_aula==null){
+    $somatorioAula->horario_aula = 0;
+}
+
+if($cargaHoraria->carga_horaria==null){
+    $cargaHoraria->carga_horaria = 0;
+}
+
 
 // Monta o final
 $htmlStr .= '
