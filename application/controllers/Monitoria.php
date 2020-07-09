@@ -703,8 +703,14 @@ class Monitoria extends CI_Controller
             //Listar Nome da disciplina e Unidade Curricular
             $DATA['disciplina'] = $this->Disciplina_model->getDisciplinaById($id_disciplina);
 
-            //Somatorio de carga horaria do monitor em suas atividades
-            $DATA['somatorioAula'] = $this->Aula_model->somatorioCargaHoraria($id_monitoria);
+            //Somatorio de carga horaria total do monitor
+            $DATA['cargaHoraria'] = $this->Aula_model->somatorioCargaHoraria($id_monitoria);
+
+            //Somatorio de carga horaria demais atividades
+            $DATA['somatorioReuniao'] = $this->Aula_model->somatorioHorarioReuniao($id_monitoria);
+
+            //Somatorio de carga horaria atividades aulas executadas
+            $DATA['somatorioAula'] = $this->Aula_model->somatorioHorarioAula($id_monitoria);
 
             $id_usuario = $this->session->userdata('id_usuario');
 
@@ -741,6 +747,8 @@ class Monitoria extends CI_Controller
 
             //Somatorio de carga horaria do monitor em suas atividades
             $DATA['somatorioAula'] = $this->Aula_model->somatorioHorarioAula($id_monitoria);
+
+
 
             $id_usuario = $this->session->userdata('id_usuario');
 

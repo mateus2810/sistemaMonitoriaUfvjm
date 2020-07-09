@@ -81,8 +81,11 @@ $htmlStr .= '
 $htmlStr .= '
 <br/> <br/>
 <p>
-    Declaro que o monitor acima citado cumpriu <b>'. str_replace (' ','',$somatorioAula->carga_horaria) .'</b>
-    horas de atividade de monitoria no périodo de '. date("d/m/Y", strtotime($data->data_inicio)) .' a '. date("d/m/Y", strtotime($data->data_fim)) .'
+    Declaro que o monitor acima citado cumpriu
+    <b>'. str_replace (' ','',$somatorioReuniao->horario_reuniao) .'</b> hora(s) demais atividades
+    e <b>'. str_replace (' ','',$somatorioAula->horario_aula) .'</b> hora(s) de atividade monitoria,
+    totalizando <b>'. str_replace (' ','',$cargaHoraria->carga_horaria) .'</b>
+    hora(s) de atividade de monitoria no périodo de '. date("d/m/Y", strtotime($data->data_inicio)) .' a '. date("d/m/Y", strtotime($data->data_fim)) .'
 </p>
 <br/>
 <p style="text-align: center;">
