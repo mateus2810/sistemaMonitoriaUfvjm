@@ -156,7 +156,7 @@ class Home extends CI_Controller
                     }
                 } //caso o usuario digitou um matricula  e uma senha e nao esteja no BD envia uma msg de erro
                 elseif (($containstitucional != null || $senha != null) ) {
-                    $DADOS['msg'] = "Usuario ou senha não existe";
+                    $DADOS['msg'] = $errorMessage;
                     $this->load->view('login', $DADOS);
                 } //caso contrario, mostra a tela de login
                 else {
