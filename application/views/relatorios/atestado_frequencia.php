@@ -76,13 +76,28 @@ $htmlStr .= '
 </table>
 ';
 
+//Tratar erro caso nao tenha registro de horarios
+if ($somatorioReuniao->horario_reuniao==null){
+    $somatorioReuniao->horario_reuniao = 0;
+}
+if($somatorioAula->horario_aula==null){
+    $somatorioAula->horario_aula = 0;
+}
+
+if($cargaHoraria->carga_horaria==null){
+    $cargaHoraria->carga_horaria = 0;
+}
+
 
 // Monta o final
 $htmlStr .= '
 <br/> <br/>
 <p>
-    Declaro que o monitor acima citado cumpriu <b>'. str_replace (' ','',$somatorioAula->carga_horaria) .'</b>
-    horas de atividade de monitoria no périodo de '. date("d/m/Y", strtotime($data->data_inicio)) .' a '. date("d/m/Y", strtotime($data->data_fim)) .'
+    Declaro que o monitor acima citado cumpriu
+    <b>'. str_replace (' ','',$somatorioReuniao->horario_reuniao) .'</b> hora(s) demais atividades
+    e <b>'. str_replace (' ','',$somatorioAula->horario_aula) .'</b> hora(s) de atividade monitoria,
+    totalizando <b>'. str_replace (' ','',$cargaHoraria->carga_horaria) .'</b>
+    hora(s) de atividade de monitoria no périodo de '. date("d/m/Y", strtotime($data->data_inicio)) .' a '. date("d/m/Y", strtotime($data->data_fim)) .'
 </p>
 <br/>
 <p style="text-align: center;">

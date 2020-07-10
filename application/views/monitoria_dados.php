@@ -368,7 +368,7 @@ $id_usuario = $this->session->userdata('id_usuario');
                                                         <td><?= date('d/m/Y', strtotime($atestado->data_fim)) ?></td>
                                                         <td>
 
-                                                            <a href="<?= site_url('Monitoria/relatorio_mensal/'.$monitoria->id_monitoria.'/'.
+                                                            <a target="_blank" href="<?= site_url('Monitoria/relatorio_mensal/'.$monitoria->id_monitoria.'/'.
                                                                 $atestado->id_disciplina.'/'.$atestado->id_atestado_frequencia ) ?>"
                                                                 class="glyphicon glyphicon-plus-sign"title="Selecionar Data"></a>
                                                         </td>
